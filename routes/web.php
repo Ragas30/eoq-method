@@ -4,8 +4,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.user.index');
-});
+})->name('home');
 
+//login
+Route::get('/login', function () {
+    return view('pages.auth.loginPage');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('pages.auth.register');
+});
 
 // Dashboard Menu
 Route::prefix('dashboard')->group(function () {
