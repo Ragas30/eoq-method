@@ -3,7 +3,7 @@
     <ul class="flex-grow">
         <a href="{{ route('dashboard.home') }}">
             <li class="{{ Route::is('dashboard.home') ? $isRoute : $isNotRoute }}">
-                Dashboard
+                <i class="fa-solid fa-gauge"></i>Dashboard
             </li>
         </a>
         <li class="mt-5">Maintenance</li>
@@ -11,32 +11,32 @@
         <ul class="flex flex-col gap-1 px-3">
             <a href="{{ route('dashboard.maintenance.supplier') }}">
                 <li class="{{ Route::is('dashboard.maintenance.supplier') ? $isRoute : $isNotRoute }}">
-                    Supplier
+                    <i class="fa-solid fa-truck-field"></i>Supplier
                 </li>
             </a>
             <a href="{{ route('dashboard.maintenance.product') }}">
                 <li class="{{ Route::is('dashboard.maintenance.product') ? $isRoute : $isNotRoute }}">
-                    Product
+                    <i class="fa-solid fa-boxes-stacked"></i>Product
                 </li>
             </a>
             <a href="{{ route('dashboard.maintenance.stock') }}">
                 <li class="{{ Route::is('dashboard.maintenance.stock') ? $isRoute : $isNotRoute }}">
-                    Stock
+                    <i class="fa-solid fa-box"></i>Stock
                 </li>
             </a>
             <a href="{{ route('dashboard.maintenance.shipping_rate') }}">
                 <li class="{{ Route::is('dashboard.maintenance.shipping_rate') ? $isRoute : $isNotRoute }}">
-                    Shipping Rate
+                    <i class="fa-regular fa-paper-plane"></i>Shipping Rate
                 </li>
             </a>
             <a href="{{ route('dashboard.maintenance.users') }}">
                 <li class="{{ Route::is('dashboard.maintenance.users') ? $isRoute : $isNotRoute }}">
-                    Users
+                    <i class="fa-solid fa-users"></i>Users
                 </li>
             </a>
             <a href="{{ route('dashboard.maintenance.transactions') }}">
                 <li class="{{ Route::is('dashboard.maintenance.transactions') ? $isRoute : $isNotRoute }}">
-                    Transactions
+                    <i class="fa-solid fa-money-bill-transfer"></i>Transactions
                 </li>
             </a>
         </ul>
@@ -45,20 +45,22 @@
         <ul class="flex flex-col gap-1 px-3">
             <a href="{{ route('dashboard.report.daily') }}">
                 <li class="{{ Route::is('dashboard.report.daily') ? $isRoute : $isNotRoute }}">
-                    Daily
+                    <i class="fa-solid fa-calendar-days"></i>Daily
                 </li>
             </a>
             <a href="{{ route('dashboard.report.monthly') }}">
                 <li class="{{ Route::is('dashboard.report.monthly') ? $isRoute : $isNotRoute }}">
-                    Monthly
+                    <i class="fa-solid fa-calendar-days"></i>Monthly
                 </li>
             </a>
             <a href="{{ route('dashboard.report.yearly') }}">
                 <li class="{{ Route::is('dashboard.report.yearly') ? $isRoute : $isNotRoute }}">
-                    Yearly
+                    <i class="fa-solid fa-calendar-days"></i>Yearly
                 </li>
             </a>
         </ul>
     </ul>
-    <a href="#">LOGOUT</a>
+    <a href="#" class="flex gap-2 items-center">
+        <i class="fa-solid fa-door-open hidden group-hover:block"></i>LOGOUT
+    </a>
 </aside>
