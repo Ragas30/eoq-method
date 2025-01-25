@@ -21,6 +21,8 @@ class sidebar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard.sidebar');
+        $isRoute = 'bg-accent1 text-secondary font-bold px-3 py-1 rounded';
+        $isNotRoute = 'hover:translate-x-4 hover:bg-accent2 px-3 py-1 rounded hover:text-secondary transition-all';
+        return view('components.dashboard.sidebar', compact('isRoute', 'isNotRoute'));
     }
 }
