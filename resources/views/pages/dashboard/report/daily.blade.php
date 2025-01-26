@@ -1,7 +1,10 @@
 @extends('layout.layout_dashboard')
 
-@section('title', 'Report')
+@section('title', 'Report | Toko Bangunan YD')
 
 @section('content')
-    <h1>Daily</h1>
+    <div>
+        <label for="Date">Date</label>
+        <input type="date" class="border border-slate-500 rounded px-2">
+    </div>
 @endsection
