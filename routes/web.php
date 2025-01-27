@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,9 +28,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         return view('pages.dashboard.maintenance.supplier');
     })->name('dashboard.maintenance.supplier');
 
-    Route::get('/product', function () {
-        return view('pages.dashboard.maintenance.product');
-    })->name('dashboard.maintenance.product');
+    Route::resource('products', ProdukController::class);
 
     Route::get('/stock', function () {
         return view('pages.dashboard.maintenance.stock');
