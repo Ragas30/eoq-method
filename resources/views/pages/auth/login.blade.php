@@ -9,36 +9,38 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen flex justify-center items-center">
-    <div class="flex flex-col bg-green-500 p-8 rounded-lg shadow-2xl">
+<body class="min-h-screen flex justify-center items-center bg-gray-100">
+    <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
         <form action="" method="POST" class="space-y-6">
             @csrf
-            <div class="mt-4">
-                <label for="username" class="block text-white font-semibold">Username</label>
+            <div>
+                <label for="username" class="block text-sm font-semibold text-gray-700">Username</label>
                 <input type="text" name="username" id="username"
-                    class="w-full p-2 mt-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF2D20]" required>
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                    required>
                 @error('username')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
                 @enderror
             </div>
-            <div class="mt-4">
-                <label for="password" class="block text-white font-semibold">Password</label>
+            <div>
+                <label for="password" class="block text-sm font-semibold text-gray-700">Password</label>
                 <input type="password" name="password" id="password"
-                    class="w-full p-2 mt-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF2D20]" required>
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                    required>
                 @error('password')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                    <span class="text-red-500 text-xs">{{ $message }}</span>
                 @enderror
             </div>
             <button type="submit"
-                class="w-full bg-blue-300 text-white py-2 mt-4 rounded-lg hover:bg-blue-500 transition-colors duration-200 ease-in-out hover:scale-105">
+                class="w-full px-3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-200 ease-in-out">
                 Login
             </button>
         </form>
-        <div class="text-white text-center mt-4">
-            Don't have an account? <a href="" class="text-blue-800">Register</a>
+        <div class="text-center mt-4">
+            Don't have an account? <a href="{{ route('register') }}" class="text-blue-500 hover:underline">Register</a>
         </div>
         <div class="text-center">
-            <a href="{{ route('home') }}" class="text-blue-700 hover:underline">Back To Home</a>
+            <a href="{{ route('home') }}" class="text-blue-500 hover:underline">Back To Home</a>
         </div>
     </div>
 </body>

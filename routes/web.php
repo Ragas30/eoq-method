@@ -62,3 +62,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         return view('pages.dashboard.report.yearly');
     })->name('dashboard.report.yearly');
 });
+
+// Users Menu
+Route::get('/product-menu', function () {
+    return view('pages.user.product');
+})->name('product_menu');
