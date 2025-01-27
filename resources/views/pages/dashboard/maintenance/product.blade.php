@@ -5,7 +5,11 @@
 @section('content')
 
     <div class="bg-slate-200 w-full px-3 py-1">
-        <h1 class="text-xl font-bold mb-8">Products</h1>
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-xl font-bold">Products</h1>
+            <button class="bg-green-600 px-3 py-1 h-fit rounded text-white font-semibold" onclick="showAddModal()">Add
+                Product</button>
+        </div>
         <table class="w-full">
             <thead class="*:border *:border-b-black">
                 <th>Product Name</th>
@@ -21,7 +25,7 @@
                     <td>Pcs</td>
                     <td>10.000</td>
                     <td>
-                        <button class="bg-yellow-400 w-6 rounded border" onclick="openModal()">
+                        <button class="bg-yellow-400 w-6 rounded border" onclick="openDetailModal()">
                             <i class="fa-solid fa-info"></i>
                         </button>
                         <button class="bg-green-500 w-6 rounded border">
@@ -52,7 +56,47 @@
             </tbody>
         </table>
     </div>
-    <dialog class="absolute top-0 right-0 bottom-0 left-0">
+
+    {{-- Add Product Modal --}}
+    <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0">
+        <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
+            <h2>Add Product</h2>
+            <form
+                class="*:flex *:flex-col *:w-full flex flex-col gap-2 items-center w-80 p-4 border border-black rounded-xl">
+                <div>
+                    <label for="Product Name">Product Name</label>
+                    <input type="text" name="name" placeholder="Type here..." class="border border-black p-1 rounded">
+                </div>
+                <div>
+                    <label for="Product Stock">Product Stock</label>
+                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded">
+                </div>
+                <div>
+                    <label for="Product Stock">Product Stock</label>
+                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded">
+                </div>
+                <div>
+                    <label for="Product Price">Product Price</label>
+                    <input type="number" name="price" placeholder="Type here..." class="border border-black p-1 rounded">
+                </div>
+                <div>
+                    <label for="Product Description">Product Description</label>
+                    <input type="text" name="description" placeholder="Type here..."
+                        class="border border-black p-1 rounded">
+                </div>
+                <div>
+                    <label for="Product Image">Product Image</label>
+                    <input type="file" name="image" class="border border-black p-1 rounded">
+                </div>
+                <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded">
+                    Save Product
+                </button>
+            </form>
+        </div>
+    </dialog>
+
+    {{-- Detail Product Modal --}}
+    <dialog id="detail" class="absolute top-0 right-0 bottom-0 left-0">
         <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
             <img src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
                 alt="Product Image" class="h-48 w-48">
@@ -70,8 +114,13 @@
     </dialog>
 
     <script>
-        function openModal() {
-            const modal = document.querySelector("dialog");
+        function openDetailModal() {
+            const modal = document.querySelector("#detail");
+            modal.showModal();
+        }
+
+        function showAddModal() {
+            const modal = document.querySelector("#add");
             modal.showModal();
         }
     </script>
