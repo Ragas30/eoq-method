@@ -24,6 +24,11 @@
                     <i class="fa-solid fa-box"></i>Stock
                 </li>
             </a>
+            <a href="{{ route('dashboard.maintenance.proses_eoq') }}">
+                <li class="{{ Route::is('dashboard.maintenance.proses_eoq') ? $isRoute : $isNotRoute }}">
+                    <i class="fa fa-spinner"></i>Proses Eoq
+                </li>
+            </a>
             <a href="{{ route('dashboard.maintenance.shipping_rate') }}">
                 <li class="{{ Route::is('dashboard.maintenance.shipping_rate') ? $isRoute : $isNotRoute }}">
                     <i class="fa-regular fa-paper-plane"></i>Shipping Rate

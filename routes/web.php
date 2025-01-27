@@ -42,6 +42,10 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         return view('pages.dashboard.maintenance.users');
     })->name('dashboard.maintenance.users');
 
+    Route::get('/proses-eoq', function () {
+        return view('pages.dashboard.maintenance.proses_eoq');
+    })->name('dashboard.maintenance.proses_eoq');
+
     Route::get('/transactions', function () {
         return view('pages.dashboard.maintenance.transactions');
     })->name('dashboard.maintenance.transactions');
