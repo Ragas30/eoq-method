@@ -6,9 +6,14 @@
                 <i class="fa-solid fa-gauge"></i>Dashboard
             </li>
         </a>
-        <li class="mt-5">Maintenance</li>
+        <li class="mt-5">
+            <button class="w-full flex justify-between" onclick="openMenu('maintenance')">
+                <span>Maintenance</span>
+                <i class="fa-solid fa-caret-down"></i>
+            </button>
+        </li>
         <hr class="mb-2">
-        <ul class="flex flex-col gap-1 px-3">
+        <ul class="hidden flex-col gap-1 px-3" id="maintenance">
             <a href="{{ route('dashboard.maintenance.supplier') }}">
                 <li class="{{ Route::is('dashboard.maintenance.supplier') ? $isRoute : $isNotRoute }}">
                     <i class="fa-solid fa-truck-field"></i>Supplier
@@ -45,9 +50,14 @@
                 </li>
             </a>
         </ul>
-        <li class="mt-5">Report</li>
+        <li class="mt-5">
+            <button class="w-full flex justify-between" onclick="openMenu('report')">
+                <span>Report</span>
+                <i class="fa-solid fa-caret-down"></i>
+            </button>
+        </li>
         <hr class="mb-2">
-        <ul class="flex flex-col gap-1 px-3">
+        <ul class="hidden flex-col gap-1 px-3" id="report">
             <a href="{{ route('dashboard.report.daily') }}">
                 <li class="{{ Route::is('dashboard.report.daily') ? $isRoute : $isNotRoute }}">
                     <i class="fa-solid fa-calendar-days"></i>Daily
@@ -72,3 +82,22 @@
         </button>
     </form>
 </aside>
+
+<script>
+    function openMenu(title) {
+        const maintenance = document.querySelector('#maintenance');
+        const report = document.querySelector('#report');
+
+        if (title == 'maintenance') {
+            maintenance.classList.remove('hidden');
+            maintenance.classList.add('flex');
+            report.classList.remove('flex');
+            report.classList.add('hidden');
+        } else if (title == 'report') {
+            maintenance.classList.remove('flex');
+            maintenance.classList.add('hidden');
+            report.classList.remove('hidden');
+            report.classList.add('flex');
+        }
+    }
+</script>
