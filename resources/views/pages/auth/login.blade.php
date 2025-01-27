@@ -14,10 +14,10 @@
         <form action="" method="POST" class="space-y-6">
             @csrf
             <div class="mt-4">
-                <label for="email" class="block text-white font-semibold">Email</label>
-                <input type="email" name="email" id="email"
+                <label for="username" class="block text-white font-semibold">Username</label>
+                <input type="text" name="username" id="username"
                     class="w-full p-2 mt-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF2D20]" required>
-                @error('email')
+                @error('username')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
             </div>

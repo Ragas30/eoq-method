@@ -1,22 +1,24 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.user.index');
 })->name('home');
 
-//login
-Route::get('/login', function () {
-    return view('pages.auth.loginPage');
-})->name('login');
+// Login
+Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/register', function () {
-    return view('pages.auth.register');
-});
+// Register
+Route::get('/register', [AuthController::class, 'registerPage'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 // Dashboard Menu
-Route::prefix('dashboard')->group(function () {
+Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('pages.dashboard.home');
     })->name('dashboard.home');

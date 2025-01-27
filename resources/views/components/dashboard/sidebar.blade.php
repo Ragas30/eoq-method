@@ -60,7 +60,10 @@
             </a>
         </ul>
     </ul>
-    <a href="#" class="flex gap-2 items-center">
-        <i class="fa-solid fa-door-open hidden group-hover:block"></i>LOGOUT
-    </a>
+    <form action="{{ route('logout') }}" method="POST" class="inline">
+        @csrf
+        <button type="submit" class="flex gap-2 items-center bg-transparent border-none cursor-pointer">
+            <i class="fa-solid fa-door-open hidden group-hover:block"></i>LOGOUT
+        </button>
+    </form>
 </aside>
