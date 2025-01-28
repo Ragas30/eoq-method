@@ -5,20 +5,24 @@
 @section('content')
     <div class="bg-gray-200 p-4 flex justify-between">
         <h1>Data Stock</h1>
-        <button class="bg-green-600 px-3 py-1 h-fit rounded text-white font-semibold" onclick="showAddModal()">Add
-            Product</button>
+
     </div>
 
     <div class="mt-4">
-        <div class="flex justify-end">
-            <label for="limit" class="mr-2">Tampilkan</label>
-            <select name="limit" id="limit" class="border border-gray-400 rounded-md px-2 py-1" onchange="updateTable()">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-            </select>
+        <div class="flex justify-between">
+            <button class="bg-primary px-3 py-1 h-fit rounded text-white font-semibold" onclick="showAddModal()">Add
+                Product</button>
+            <div>
+                <label for="limit" class="mr-2">Tampilkan</label>
+                <select name="limit" id="limit" class="border border-gray-400 rounded-md px-2 py-1"
+                    onchange="updateTable()">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
         </div>
         <table class="w-full table-auto mt-4">
             <thead>
@@ -39,14 +43,16 @@
                     <td>Pcs</td>
                     <td>10.000</td>
                     <td>
-                        <button class="bg-yellow-400 w-6 rounded border" onclick="openDetailModal()">
-                            <i class="fa-solid fa-info"></i>
+                        <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
+                            onclick="openDetailModal()">
+                            Detail
                         </button>
-                        <button class="bg-green-500 w-6 rounded border">
-                            <i class="fa-solid fa-pen-to-square"></i>
+                        <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
+                            onclick="showEditModal()">
+                            Edit
                         </button>
-                        <button class="bg-red-600 w-6 rounded border">
-                            <i class="fa-solid fa-trash"></i>
+                        <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
+                            Delete
                         </button>
                     </td>
                 </tr>
@@ -57,14 +63,16 @@
                     <td>Pcs</td>
                     <td>10.000</td>
                     <td>
-                        <button class="bg-yellow-400 w-6 rounded border" onclick="openDetailModal()">
-                            <i class="fa-solid fa-info"></i>
+                        <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
+                            onclick="openDetailModal()">
+                            Detail
                         </button>
-                        <button class="bg-green-500 w-6 rounded border">
-                            <i class="fa-solid fa-pen-to-square"></i>
+                        <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
+                            onclick="showEditModal()">
+                            Edit
                         </button>
-                        <button class="bg-red-600 w-6 rounded border">
-                            <i class="fa-solid fa-trash"></i>
+                        <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
+                            Delete
                         </button>
                     </td>
                 </tr>
@@ -76,6 +84,44 @@
     <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0">
         <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
             <h2>Add Product</h2>
+            <form
+                class="*:flex *:flex-col *:w-full flex flex-col gap-2 items-center w-80 p-4 border border-black rounded-xl">
+                <div>
+                    <label for="Product Name">Product Name</label>
+                    <input type="text" name="name" placeholder="Type here..." class="border border-black p-1 rounded">
+                </div>
+                <div>
+                    <label for="Product Stock">Product Stock</label>
+                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded">
+                </div>
+                <div>
+                    <label for="Product Stock">Product Stock</label>
+                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded">
+                </div>
+                <div>
+                    <label for="Product Price">Product Price</label>
+                    <input type="number" name="price" placeholder="Type here..." class="border border-black p-1 rounded">
+                </div>
+                <div>
+                    <label for="Product Description">Product Description</label>
+                    <input type="text" name="description" placeholder="Type here..."
+                        class="border border-black p-1 rounded">
+                </div>
+                <div>
+                    <label for="Product Image">Product Image</label>
+                    <input type="file" name="image" class="border border-black p-1 rounded">
+                </div>
+                <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded">
+                    Save Product
+                </button>
+            </form>
+        </div>
+    </dialog>
+
+    {{-- Edit Product Modal --}}
+    <dialog id="edit" class="absolute top-0 right-0 bottom-0 left-0">
+        <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
+            <h2>Edit Product</h2>
             <form
                 class="*:flex *:flex-col *:w-full flex flex-col gap-2 items-center w-80 p-4 border border-black rounded-xl">
                 <div>
@@ -136,6 +182,11 @@
 
         function showAddModal() {
             const modal = document.querySelector("#add");
+            modal.showModal();
+        }
+
+        function showEditModal() {
+            const modal = document.querySelector("#edit");
             modal.showModal();
         }
     </script>
