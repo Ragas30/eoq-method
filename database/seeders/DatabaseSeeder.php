@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            OngkirSeeder::class
+            OngkirSeeder::class,
+            SupplierSeeder::class
         ]);
     }
 }
