@@ -84,34 +84,59 @@
     <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0">
         <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
             <h2>Add Product</h2>
-            <form
-                class="*:flex *:flex-col *:w-full flex flex-col gap-2 items-center w-80 p-4 border border-black rounded-xl">
-                <div>
+            <form class="grid grid-cols-2 gap-2 items-center w-80 p-4 border border-black rounded-xl">
+                <div class="col-span-2">
                     <label for="Product Name">Product Name</label>
-                    <input type="text" name="name" placeholder="Type here..." class="border border-black p-1 rounded">
+                    <input type="text" name="nm_produk" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
                     <label for="Product Stock">Product Stock</label>
-                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded">
+                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
-                    <label for="Product Stock">Product Stock</label>
-                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded">
+                    <label for="Satuan">Satuan</label>
+                    <input type="number" name="satuan" placeholder="Type here..." class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
-                    <label for="Product Price">Product Price</label>
-                    <input type="number" name="price" placeholder="Type here..." class="border border-black p-1 rounded">
+                    <label for="Harga Jual">Harga Jual</label>
+                    <input type="number" name="harga" placeholder="Type here..." class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
+                    <label for="Harga Beli">Harga Beli</label>
+                    <input type="number" name="harga_beli" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
+                </div>
+                <div class="col-span-2">
                     <label for="Product Description">Product Description</label>
-                    <input type="text" name="description" placeholder="Type here..."
-                        class="border border-black p-1 rounded">
+                    <input type="text" name="deskripsi" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
                     <label for="Product Image">Product Image</label>
-                    <input type="file" name="image" class="border border-black p-1 rounded">
+                    <input type="file" name="gambar" class="border border-black p-1 rounded w-full">
                 </div>
-                <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded">
+                <div>
+                    <label for="Lead Time">Lead Time</label>
+                    <input type="text" name="lead_time" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
+                </div>
+                <div>
+                    <label for="Biaya Simpan">Biaya Simpan</label>
+                    <input type="text" name="b_simpan" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
+                </div>
+                <div>
+                    <label for="Biaya Pesan">Biaya Pesan</label>
+                    <input type="text" name="b_pesan" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
+                </div>
+                <div>
+                    <label for="Stok Cadangan">Stok Cadangan</label>
+                    <input type="text" name="stok_cadangan" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
+                </div>
+                <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded col-span-2 w-full">
                     Save Product
                 </button>
             </form>
@@ -122,34 +147,59 @@
     <dialog id="edit" class="absolute top-0 right-0 bottom-0 left-0">
         <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
             <h2>Edit Product</h2>
-            <form
-                class="*:flex *:flex-col *:w-full flex flex-col gap-2 items-center w-80 p-4 border border-black rounded-xl">
-                <div>
+            <form class="grid grid-cols-2 gap-2 items-center w-80 p-4 border border-black rounded-xl">
+                <div class="col-span-2">
                     <label for="Product Name">Product Name</label>
-                    <input type="text" name="name" placeholder="Type here..." class="border border-black p-1 rounded">
+                    <input type="text" name="nm_produk" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
                     <label for="Product Stock">Product Stock</label>
-                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded">
+                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
-                    <label for="Product Stock">Product Stock</label>
-                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded">
+                    <label for="Satuan">Satuan</label>
+                    <input type="number" name="satuan" placeholder="Type here..." class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
-                    <label for="Product Price">Product Price</label>
-                    <input type="number" name="price" placeholder="Type here..." class="border border-black p-1 rounded">
+                    <label for="Harga Jual">Harga Jual</label>
+                    <input type="number" name="harga" placeholder="Type here..." class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
+                    <label for="Harga Beli">Harga Beli</label>
+                    <input type="number" name="harga_beli" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
+                </div>
+                <div class="col-span-2">
                     <label for="Product Description">Product Description</label>
-                    <input type="text" name="description" placeholder="Type here..."
-                        class="border border-black p-1 rounded">
+                    <input type="text" name="deskripsi" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
                     <label for="Product Image">Product Image</label>
-                    <input type="file" name="image" class="border border-black p-1 rounded">
+                    <input type="file" name="gambar" class="border border-black p-1 rounded w-full">
                 </div>
-                <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded">
+                <div>
+                    <label for="Lead Time">Lead Time</label>
+                    <input type="text" name="lead_time" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
+                </div>
+                <div>
+                    <label for="Biaya Simpan">Biaya Simpan</label>
+                    <input type="text" name="b_simpan" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
+                </div>
+                <div>
+                    <label for="Biaya Pesan">Biaya Pesan</label>
+                    <input type="text" name="b_pesan" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
+                </div>
+                <div>
+                    <label for="Stok Cadangan">Stok Cadangan</label>
+                    <input type="text" name="stok_cadangan" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
+                </div>
+                <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded col-span-2 w-full">
                     Save Product
                 </button>
             </form>
