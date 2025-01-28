@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,12 +36,11 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         return view('pages.dashboard.maintenance.stock');
     })->name('dashboard.maintenance.stock');
 
-    Route::resource('/ongkir', OngkirController::class)
+    Route::resource('ongkir', OngkirController::class)
         ->only(['index', 'store', 'update', 'destroy']);
 
-    Route::get('/users', function () {
-        return view('pages.dashboard.maintenance.users');
-    })->name('dashboard.maintenance.users');
+    Route::resource('users', UserController::class)
+        ->only(['index', 'store', 'update', 'destroy']);
 
     Route::get('/proses-eoq', function () {
         return view('pages.dashboard.maintenance.proses_eoq');
