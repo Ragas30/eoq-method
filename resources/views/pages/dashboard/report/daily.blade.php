@@ -2,6 +2,8 @@
 
 @section('title', 'Report | Toko Bangunan YD')
 
+@section('heading', 'Daily Report')
+
 @section('content')
     <div>
         <label for="Date">Date</label>

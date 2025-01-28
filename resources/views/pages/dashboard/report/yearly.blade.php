@@ -2,6 +2,8 @@
 
 @section('title', 'Report | Toko Bangunan YD')
 
+@section('heading', 'Yearly Report')
+
 @section('content')
     <div>
         <label for="Date">Year</label>

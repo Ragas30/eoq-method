@@ -2,83 +2,77 @@
 
 @section('title', 'Maintenance | Toko Bangunan YD')
 
+@section('heading', 'Data Produk')
+
 @section('content')
-    <div class="bg-gray-200 p-4 flex justify-between">
-        <h1>Data Stock</h1>
-
-    </div>
-
-    <div class="mt-4">
-        <div class="flex justify-between">
-            <button class="bg-primary px-3 py-1 h-fit rounded text-white font-semibold" onclick="showAddModal()">Add
-                Product</button>
-            <div>
-                <label for="limit" class="mr-2">Tampilkan</label>
-                <select name="limit" id="limit" class="border border-gray-400 rounded-md px-2 py-1"
-                    onchange="updateTable()">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
-            </div>
+    <div class="flex justify-between">
+        <button class="bg-primary px-3 py-1 h-fit rounded text-white font-semibold" onclick="showAddModal()">Add
+            Product</button>
+        <div>
+            <label for="limit" class="mr-2">Tampilkan</label>
+            <select name="limit" id="limit" class="border border-gray-400 rounded-md px-2 py-1" onchange="updateTable()">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
         </div>
-        <table class="w-full table-auto mt-4">
-            <thead>
-                <tr class="bg-gray-100 text-left *:px-4 *:py-2">
-                    <th>No</th>
-                    <th>Product Name</th>
-                    <th>Stock</th>
-                    <th>Qty</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="productTable" class="*:*:px-4 *:*:py-2">
-                <tr>
-                    <td>1</td>
-                    <td>Product 1</td>
-                    <td>1000</td>
-                    <td>Pcs</td>
-                    <td>10.000</td>
-                    <td>
-                        <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
-                            onclick="openDetailModal()">
-                            Detail
-                        </button>
-                        <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
-                            onclick="showEditModal()">
-                            Edit
-                        </button>
-                        <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Product 2</td>
-                    <td>1000</td>
-                    <td>Pcs</td>
-                    <td>10.000</td>
-                    <td>
-                        <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
-                            onclick="openDetailModal()">
-                            Detail
-                        </button>
-                        <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
-                            onclick="showEditModal()">
-                            Edit
-                        </button>
-                        <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
+    <table class="w-full table-auto mt-4">
+        <thead>
+            <tr class="bg-gray-100 text-left *:px-4 *:py-2">
+                <th>No</th>
+                <th>Product Name</th>
+                <th>Stock</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="productTable" class="*:*:px-4 *:*:py-2">
+            <tr>
+                <td>1</td>
+                <td>Product 1</td>
+                <td>1000</td>
+                <td>Pcs</td>
+                <td>10.000</td>
+                <td>
+                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
+                        onclick="openDetailModal()">
+                        Detail
+                    </button>
+                    <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
+                        onclick="showEditModal()">
+                        Edit
+                    </button>
+                    <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Product 2</td>
+                <td>1000</td>
+                <td>Pcs</td>
+                <td>10.000</td>
+                <td>
+                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
+                        onclick="openDetailModal()">
+                        Detail
+                    </button>
+                    <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
+                        onclick="showEditModal()">
+                        Edit
+                    </button>
+                    <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
     {{-- Add Product Modal --}}
     <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0">
@@ -92,15 +86,18 @@
                 </div>
                 <div>
                     <label for="Product Stock">Product Stock</label>
-                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded w-full">
+                    <input type="number" name="stock" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
                     <label for="Satuan">Satuan</label>
-                    <input type="number" name="satuan" placeholder="Type here..." class="border border-black p-1 rounded w-full">
+                    <input type="number" name="satuan" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
                     <label for="Harga Jual">Harga Jual</label>
-                    <input type="number" name="harga" placeholder="Type here..." class="border border-black p-1 rounded w-full">
+                    <input type="number" name="harga" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
                     <label for="Harga Beli">Harga Beli</label>
@@ -136,7 +133,8 @@
                     <input type="text" name="stok_cadangan" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                 </div>
-                <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded col-span-2 w-full">
+                <button
+                    class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded col-span-2 w-full">
                     Save Product
                 </button>
             </form>
@@ -155,15 +153,18 @@
                 </div>
                 <div>
                     <label for="Product Stock">Product Stock</label>
-                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded w-full">
+                    <input type="number" name="stock" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
                     <label for="Satuan">Satuan</label>
-                    <input type="number" name="satuan" placeholder="Type here..." class="border border-black p-1 rounded w-full">
+                    <input type="number" name="satuan" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
                     <label for="Harga Jual">Harga Jual</label>
-                    <input type="number" name="harga" placeholder="Type here..." class="border border-black p-1 rounded w-full">
+                    <input type="number" name="harga" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
                     <label for="Harga Beli">Harga Beli</label>
@@ -199,7 +200,8 @@
                     <input type="text" name="stok_cadangan" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                 </div>
-                <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded col-span-2 w-full">
+                <button
+                    class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded col-span-2 w-full">
                     Save Product
                 </button>
             </form>
