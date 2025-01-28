@@ -14,8 +14,8 @@
         </li>
         <hr class="mb-2">
         <ul class="hidden flex-col gap-1 px-3" id="maintenance">
-            <a href="{{ route('dashboard.maintenance.supplier') }}">
-                <li class="{{ Route::is('dashboard.maintenance.supplier') ? $isRoute : $isNotRoute }}">
+            <a href="{{ route('supplier.index') }}">
+                <li class="{{ Route::is('supplier.index') ? $isRoute : $isNotRoute }}">
                     <i class="fa-solid fa-truck-field"></i>Supplier
                 </li>
             </a>

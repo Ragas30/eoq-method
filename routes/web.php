@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,9 +26,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         return view('pages.dashboard.home');
     })->name('dashboard.home');
 
-    Route::get('/supplier', function () {
-        return view('pages.dashboard.maintenance.supplier');
-    })->name('dashboard.maintenance.supplier');
+    Route::resource('supplier', SupplierController::class)
+        ->only(['index', 'store', 'update', 'destroy']);
 
     Route::resource('products', ProdukController::class);
 
@@ -36,7 +36,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     })->name('dashboard.maintenance.stock');
 
     Route::resource('/ongkir', OngkirController::class)
-    ->only(['index', 'show', 'store', 'update', 'destroy']);
+        ->only(['index', 'store', 'update', 'destroy']);
 
     Route::get('/users', function () {
         return view('pages.dashboard.maintenance.users');

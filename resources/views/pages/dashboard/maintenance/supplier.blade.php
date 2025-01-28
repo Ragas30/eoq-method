@@ -28,49 +28,38 @@
                 <tr class="bg-gray-100 text-left *:px-4 *:py-2">
                     <th class="px-4 py-2">No</th>
                     <th class="px-4 py-2">Nama Supplier</th>
+                    <th class="px-4 py-2">Email</th>
                     <th class="px-4 py-2">Alamat</th>
                     <th class="px-4 py-2">No Telepon</th>
                     <th class="px-4 py-2">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="border-b">
-                    <td class="px-4 py-2">1</td>
-                    <td class="px-4 py-2">Supplier A</td>
-                    <td class="px-4 py-2">Jakarta</td>
-                    <td class="px-4 py-2">08123456789</td>
-                    <td class="px-4 py-2">
-                        <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
-                            onclick="showEditModal()">
-                            Edit
-                        </button>
-                        <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="px-4 py-2">2</td>
-                    <td class="px-4 py-2">Supplier B</td>
-                    <td class="px-4 py-2">Bandung</td>
-                    <td class="px-4 py-2">08123456789</td>
-                    <td class="px-4 py-2">
-                        <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
-                            onclick="showEditModal()">
-                            Edit
-                        </button>
-                        <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
+                @foreach ($data as $supplier)
+                    <tr class="border-b">
+                        <td class="px-4 py-2">{{ $loop->iteration }}</td>
+                        <td class="px-4 py-2">{{ $supplier->nm_supplier }}</td>
+                        <td class="px-4 py-2">{{ $supplier->email }}</td>
+                        <td class="px-4 py-2">{{ $supplier->alamat }}</td>
+                        <td class="px-4 py-2">{{ $supplier->nohp }}</td>
+                        <td class="px-4 py-2">
+                            <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
+                                onclick="showEditModal()">
+                                Edit
+                            </button>
+                            <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
 
     {{-- Add Supplier Modal --}}
-    <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0">
-        <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
+    <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0 over rounded-xl shadow-sm">
+        <div class="flex flex-col items-center w-96 p-4 rounded-xl">
             <h2>Add Supplier</h2>
             <form
                 class="*:flex *:flex-col *:w-full flex flex-col gap-2 items-center w-80 p-4 border border-black rounded-xl">

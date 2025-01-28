@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Ongkir;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Supplier;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class OngkirSeeder extends Seeder
+class SupplierSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Ongkir::factory(20)->create();
+        Supplier::factory(20)->create();
     }
 }

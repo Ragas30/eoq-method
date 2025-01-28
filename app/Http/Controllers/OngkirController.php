@@ -63,7 +63,7 @@ class OngkirController extends Controller
     {
         $validated = $request->validate([
             'daerah' => 'required|string|max:255',
-            'tarif' => 'required|integer|min:1000', // misalnya tarif harus angka dan lebih dari 1000
+            'tarif' => 'required|integer|min:0', // misalnya tarif harus angka dan lebih dari 1000
         ]);
 
         // Memperbarui data pada model yang sudah ada
