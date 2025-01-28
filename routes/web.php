@@ -67,3 +67,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 Route::get('/product-menu', function () {
     return view('pages.user.product');
 })->name('product_menu');
+
+Route::get('/detail_product', function () {
+    return view('pages.user.detail_product');
+})->name('detail_product');
