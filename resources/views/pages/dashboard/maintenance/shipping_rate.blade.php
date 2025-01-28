@@ -110,7 +110,7 @@
 
             console.log(jsonData.id_tempat)
             // Menyesuaikan action form berdasarkan id_tempat
-            const formAction = `${jsonData.id_tempat}`;
+            const formAction = `ongkir/${jsonData.id_tempat}`;
 
             const form = document.querySelector("#edit_form");
             form.setAttribute("action", formAction);
