@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,9 +35,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         return view('pages.dashboard.maintenance.stock');
     })->name('dashboard.maintenance.stock');
 
-    Route::get('/shipping-rate', function () {
-        return view('pages.dashboard.maintenance.shipping_rate');
-    })->name('dashboard.maintenance.shipping_rate');
+    Route::resource('/ongkir', OngkirController::class)
+    ->only(['index', 'show', 'store', 'update', 'destroy']);
 
     Route::get('/users', function () {
         return view('pages.dashboard.maintenance.users');

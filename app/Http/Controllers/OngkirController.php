@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Ongkir;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class OngkirController extends Controller
 {
@@ -12,7 +14,8 @@ class OngkirController extends Controller
      */
     public function index()
     {
-        //
+        $data = Ongkir::paginate(10);
+        return view('pages.dashboard.maintenance.shipping_rate', compact('data'));
     }
 
     /**
@@ -58,7 +61,16 @@ class OngkirController extends Controller
      */
     public function update(Request $request, Ongkir $ongkir)
     {
-        //
+        $validated = $request->validate([
+            'daerah' => 'required|string|max:255',
+            'tarif' => 'required|integer|min:1000', // misalnya tarif harus angka dan lebih dari 1000
+        ]);
+
+        // Memperbarui data pada model yang sudah ada
+        $ongkir->update($validated);
+
+        // Mengarahkan kembali dengan pesan sukses
+        return redirect()->route('ongkir.index')->with('success', 'Data Ongkir berhasil diperbarui!');
     }
 
     /**
@@ -66,6 +78,8 @@ class OngkirController extends Controller
      */
     public function destroy(Ongkir $ongkir)
     {
-        //
+        $ongkir->delete();
+
+        return redirect()->route('ongkir.index')->with('success', 'Data ongkir berhasil dihapus!');
     }
 }
