@@ -31,60 +31,62 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($data as $supplier)
+            @foreach ($data as $index => $supplier)
                 <tr class="border-b">
-                    <td class="px-4 py-2">{{ $loop->iteration }}</td>
+                    <td class="px-4 py-2">{{ ($data->currentPage() - 1) * $data->perPage() + $loop->index + 1 }}</td>
                     <td class="px-4 py-2">{{ $supplier->nm_supplier }}</td>
                     <td class="px-4 py-2">{{ $supplier->email }}</td>
                     <td class="px-4 py-2">{{ $supplier->alamat }}</td>
                     <td class="px-4 py-2">{{ $supplier->nohp }}</td>
                     <td class="px-4 py-2">
                         <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
-                            onclick="showEditModal()">
+                            onclick="showEditModal(this)" data-json='{{ $supplier }}'>
                             Edit
                         </button>
-                        <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
-                            Delete
-                        </button>
+                        <form action="{{ route('supplier.destroy', $supplier->id_supplier) }}" method="POST"
+                            class="inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                class="ml-2 bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition"
+                                onclick="return confirm('Are you sure you want to delete this data?')">
+                                Hapus
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 
+    {{ $data->links() }}
+
     {{-- Add Supplier Modal --}}
     <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0 over rounded-xl shadow-sm">
         <div class="flex flex-col items-center w-96 p-4 rounded-xl">
             <h2>Add Supplier</h2>
-            <form
+            <form method="POST" action="{{ route('supplier.store') }}"
                 class="*:flex *:flex-col *:w-full flex flex-col gap-2 items-center w-80 p-4 border border-black rounded-xl">
+                @csrf
                 <div>
-                    <label for="Product Name">Product Name</label>
-                    <input type="text" name="name" placeholder="Type here..." class="border border-black p-1 rounded">
-                </div>
-                <div>
-                    <label for="Product Stock">Product Stock</label>
-                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded">
-                </div>
-                <div>
-                    <label for="Product Stock">Product Stock</label>
-                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded">
-                </div>
-                <div>
-                    <label for="Product Price">Product Price</label>
-                    <input type="number" name="price" placeholder="Type here..." class="border border-black p-1 rounded">
-                </div>
-                <div>
-                    <label for="Product Description">Product Description</label>
-                    <input type="text" name="description" placeholder="Type here..."
+                    <label for="Supplier Name">Supplier Name</label>
+                    <input type="text" name="nm_supplier" placeholder="Type here..."
                         class="border border-black p-1 rounded">
                 </div>
                 <div>
-                    <label for="Product Image">Product Image</label>
-                    <input type="file" name="image" class="border border-black p-1 rounded">
+                    <label for="Supplier Address">Supplier Address</label>
+                    <textarea name="alamat" placeholder="Type here..." class="border border-black p-1 rounded"></textarea>
+                </div>
+                <div>
+                    <label for="Supplier Email">Supplier Email</label>
+                    <input type="email" name="email" placeholder="Type here..." class="border border-black p-1 rounded">
+                </div>
+                <div>
+                    <label for="Supplier Phone Number">Supplier Phone Number</label>
+                    <input type="text" name="nohp" placeholder="Type here..." class="border border-black p-1 rounded">
                 </div>
                 <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded">
-                    Save Product
+                    Save Supplier
                 </button>
             </form>
         </div>
@@ -94,44 +96,58 @@
     <dialog id="edit" class="absolute top-0 right-0 bottom-0 left-0">
         <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
             <h2>Edit Supplier</h2>
-            <form
+            <form id="edit_form" method="POST"
                 class="*:flex *:flex-col *:w-full flex flex-col gap-2 items-center w-80 p-4 border border-black rounded-xl">
+                @csrf
+                @method('PUT')
                 <div>
-                    <label for="Product Name">Product Name</label>
-                    <input type="text" name="name" placeholder="Type here..." class="border border-black p-1 rounded">
-                </div>
-                <div>
-                    <label for="Product Stock">Product Stock</label>
-                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded">
-                </div>
-                <div>
-                    <label for="Product Stock">Product Stock</label>
-                    <input type="number" name="stock" placeholder="Type here..." class="border border-black p-1 rounded">
-                </div>
-                <div>
-                    <label for="Product Price">Product Price</label>
-                    <input type="number" name="price" placeholder="Type here..." class="border border-black p-1 rounded">
-                </div>
-                <div>
-                    <label for="Product Description">Product Description</label>
-                    <input type="text" name="description" placeholder="Type here..."
+                    <label for="Supplier Name">Supplier Name</label>
+                    <input id="nm_supplier" type="text" name="nm_supplier" placeholder="Type here..."
                         class="border border-black p-1 rounded">
                 </div>
                 <div>
-                    <label for="Product Image">Product Image</label>
-                    <input type="file" name="image" class="border border-black p-1 rounded">
+                    <label for="Supplier Address">Supplier Address</label>
+                    <textarea id="alamat" name="alamat" placeholder="Type here..." class="border border-black p-1 rounded"></textarea>
+                </div>
+                <div>
+                    <label for="Supplier Email">Supplier Email</label>
+                    <input id="email" type="email" name="email" placeholder="Type here..."
+                        class="border border-black p-1 rounded">
+                </div>
+                <div>
+                    <label for="Supplier Phone Number">Supplier Phone Number</label>
+                    <input id="nohp" type="text" name="nohp" placeholder="Type here..."
+                        class="border border-black p-1 rounded">
                 </div>
                 <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded">
-                    Save Product
+                    Save Supplier
                 </button>
             </form>
         </div>
     </dialog>
 
     <script>
-        function showEditModal() {
+        function showEditModal(btn) {
             const modal = document.querySelector("#edit");
             modal.showModal();
+
+            const jsonData = JSON.parse(btn.getAttribute("data-json"));
+            console.log(jsonData);
+
+            const nm_supplier = document.querySelector("#nm_supplier");
+            const alamat = document.querySelector("#alamat");
+            const email = document.querySelector("#email");
+            const nohp = document.querySelector("#nohp");
+
+            nm_supplier.value = jsonData.nm_supplier;
+            alamat.innerHTML = jsonData.alamat;
+            email.value = jsonData.email;
+            nohp.value = jsonData.nohp;
+
+            const formAction = `supplier/${jsonData.id_supplier}`;
+
+            const form = document.querySelector("#edit_form");
+            form.setAttribute("action", formAction);
         }
 
         function showAddModal() {
