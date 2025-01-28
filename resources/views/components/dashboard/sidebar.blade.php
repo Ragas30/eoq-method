@@ -39,7 +39,7 @@
                     <i class="fa-regular fa-paper-plane"></i>Shipping Rate
                 </li>
             </a>
-            <a href="{{ route('dashboard.maintenance.users') }}">
+            <a href="{{ route('users.index') }}">
                 <li class="{{ Route::is('dashboard.maintenance.users') ? $isRoute : $isNotRoute }}">
                     <i class="fa-solid fa-users"></i>Users
                 </li>
