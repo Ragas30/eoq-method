@@ -21,7 +21,7 @@
         <tbody>
             @foreach ($data as $index => $ongkir)
                 <tr>
-                    <td class="px-4 py-2 border">{{ $index + 1 }}</td>
+                    <td class="px-4 py-2 border">{{ ($data->currentPage() - 1) * $data->perPage() + $loop->index + 1 }}</td>
                     <td class="px-4 py-2 border">{{ $ongkir->daerah }}</td>
                     <td class="px-4 py-2 border">Rp. {{ number_format($ongkir->tarif, 0, ',', '.') }}</td>
                     <td class="px-4 py-2 border">
@@ -42,6 +42,8 @@
             @endforeach
         </tbody>
     </table>
+
+    {{ $data->links() }}
 
     {{-- Add Product Modal --}}
     <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0">
