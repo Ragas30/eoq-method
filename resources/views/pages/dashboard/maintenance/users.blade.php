@@ -99,6 +99,14 @@
                         required>
                 </div>
                 <div>
+                    <label for="username_add" class="block text-gray-700 font-semibold">Role</label>
+                    <select name="role" id="role" class="w-full p-2 mt-2 border rounded-lg">
+                        <option value="">Pilih Role</option>
+                        <option value="admin">Admin</option>
+                        <option value="pelanggan">Pelanggan</option>
+                    </select>
+                </div>
+                <div>
                     <label for="username_add" class="block text-gray-700 font-semibold">Username</label>
                     <input type="text" id="username_add" name="username"
                         class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -157,6 +165,12 @@
                     <input type="text" id="alamat_edit" name="alamat"
                         class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required>
+                </div>
+                <div>
+                    <label for="role_edit" class="block text-gray-700 font-semibold">Role</label>
+                    <input type="text" id="username_edit" name="username"
+                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        disabled>
                 </div>
                 <div>
                     <label for="username_edit" class="block text-gray-700 font-semibold">Username</label>
