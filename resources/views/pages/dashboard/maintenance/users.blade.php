@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="flex justify-between">
-        <button class="bg-primary px-3 py-1 h-fit rounded text-white font-semibold" onclick="showModal('add')">Add
+        <button class="bg-primary px-3 py-1 h-fit rounded text-white font-semibold" onclick="showAddModal()">Add
             User</button>
         <div>
             <label for="limit" class="mr-2">Tampilkan</label>
@@ -63,7 +63,7 @@
     </div>
 
     <!-- Add User Modal -->
-    <dialog id="addModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+    <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0 over rounded-xl shadow-sm">
         <div class="w-96 p-4 border border-black rounded-xl bg-white">
             <h2 class="text-lg font-bold mb-2">Add User</h2>
             <form method="POST" action="{{ route('users.store') }}" class="flex flex-col gap-2 w-full">
@@ -122,7 +122,7 @@
     </dialog>
 
     <!-- Edit User Modal -->
-    <dialog id="editModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+    <dialog id="edit" class="absolute top-0 right-0 bottom-0 left-0 rounded-xl shadow-sm">
         <div class="w-96 p-4 border border-black rounded-xl bg-white">
             <h2 class="text-lg font-bold mb-2">Edit User</h2>
             <form id="editForm" method="POST" class="flex flex-col gap-2 w-full">
@@ -183,16 +183,15 @@
 
     <script>
         function showAddModal() {
-            const modal = document.getElementById("addModal");
-            modal.classList.remove('hidden');
+            const modal = document.querySelector("#add");
             modal.showModal();
         }
 
         function showEditModal(btn) {
-            const user = JSON.parse(btn.getAttribute("data-json"));
-            const modal = document.getElementById("editModal");
-            modal.classList.remove('hidden');
+            const modal = document.getElementById("edit");
             modal.showModal();
+
+            const user = JSON.parse(btn.getAttribute("data-json"));
 
             document.getElementById("editForm").setAttribute("action", `/user/${user.id_user}`);
             document.getElementById("nama_lengkap_edit").value = user.nama_lengkap;

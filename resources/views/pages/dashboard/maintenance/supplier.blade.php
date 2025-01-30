@@ -62,7 +62,7 @@
     {{ $data->links() }}
 
     {{-- Add Supplier Modal --}}
-    <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0 over rounded-xl shadow-sm">
+    <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0 rounded-xl shadow-sm">
         <div class="flex flex-col items-center w-96 p-4 rounded-xl">
             <h2>Add Supplier</h2>
             <form method="POST" action="{{ route('supplier.store') }}"
