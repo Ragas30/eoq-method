@@ -25,8 +25,7 @@
         <thead>
             <tr class="bg-gray-100 text-left">
                 <th class="px-4 py-2">No</th>
-                <th class="px-4 py-2">Nama</th>
-                <th class="px-4 py-2">Email</th>
+                <th class="px-4 py-2">Username</th>
                 <th class="px-4 py-2">Role</th>
                 <th class="px-4 py-2">Aksi</th>
             </tr>
@@ -35,8 +34,7 @@
             @foreach ($data as $index => $user)
                 <tr class="border-b">
                     <td class="px-4 py-2">{{ ($data->currentPage() - 1) * $data->perPage() + $loop->index + 1 }}</td>
-                    <td class="px-4 py-2">{{ $user->nama_lengkap }}</td>
-                    <td class="px-4 py-2">{{ $user->email }}</td>
+                    <td class="px-4 py-2">{{ $user->username }}</td>
                     <td class="px-4 py-2">{{ $user->role }}</td>
                     <td class="px-4 py-2">
                         <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"

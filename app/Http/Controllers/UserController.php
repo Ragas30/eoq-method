@@ -63,7 +63,7 @@ class UserController extends Controller
     {
         $validated = $request->validate([
             'username' => 'required|string|max:10|unique:users,username,' . $user->id,
-            'password' => 'nullable|string|min:8', // Password opsional saat update
+            'password' => 'nullable|string|min:8',
             'role' => 'required|in:admin,pimpinan,pelanggan',
         ]);
 

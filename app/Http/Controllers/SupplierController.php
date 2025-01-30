@@ -65,7 +65,7 @@ class SupplierController extends Controller
         $validated = $request->validate([
             'nm_supplier' => 'required|max:100',
             'alamat' => 'required',
-            'email' => 'required|unique:supplier,email',
+            'email' => 'required|unique:supplier,email,' . $supplier->id_supplier . ',id_supplier',
             'nohp' => 'required|max:15',
         ]);
 
