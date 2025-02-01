@@ -8,19 +8,19 @@
             <div class="bg-primary text-white p-3 text-3xl rounded-xl">
                 <i class="fa-solid fa-truck-field"></i>
             </div>
-            <div>20 Supplier</div>
+            <div>{{ $supplier }} Supplier</div>
         </div>
         <div class="flex gap-2 items-center">
             <div class="bg-primary text-white p-3 text-3xl rounded-xl">
                 <i class="fa-solid fa-boxes-stacked"></i>
             </div>
-            <div>2340 Product</div>
+            <div>{{ $produk }} Product</div>
         </div>
         <div class="flex gap-2 items-center">
             <div class="bg-primary text-white p-3 text-3xl rounded-xl">
                 <i class="fa-solid fa-box"></i>
             </div>
-            <div>1.522.145 Stock</div>
+            <div>{{ $stok }} Stock</div>
         </div>
         <div class="flex gap-2 items-center">
             <div class="bg-primary text-white p-3 text-3xl rounded-xl">

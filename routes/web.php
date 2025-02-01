@@ -5,6 +5,8 @@ use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
+use App\Models\Produk;
+use App\Models\Supplier;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,13 +26,17 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 // Dashboard Menu
 Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::get('/', function () {
-        return view('pages.dashboard.home');
+        $supplier = Supplier::count();
+        $produk = Produk::count();
+        $stok = Produk::sum('stok');
+        return view('pages.dashboard.home', compact('supplier', 'produk', 'stok'));
     })->name('dashboard.home');
 
     Route::resource('supplier', SupplierController::class)
         ->only(['index', 'store', 'update', 'destroy']);
 
-    Route::resource('products', ProdukController::class);
+    Route::resource('products', ProdukController::class)
+        ->only(['index', 'store', 'update', 'destroy']);
 
     Route::get('/stock', function () {
         return view('pages.dashboard.maintenance.stock');

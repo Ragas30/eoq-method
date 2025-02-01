@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Produk extends Model
 {
+    use HasFactory;
+
     protected $table = "produk";
 
     protected $primaryKey = "kd_produk_id";
+
+    public $timestamps = false;
 
     protected $fillable = [
         'nm_produk',

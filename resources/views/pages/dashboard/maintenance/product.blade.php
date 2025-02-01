@@ -23,54 +23,48 @@
         <thead>
             <tr class="bg-gray-100 text-left *:px-4 *:py-2">
                 <th>No</th>
-                <th>Product Name</th>
-                <th>Stock</th>
-                <th>Qty</th>
-                <th>Price</th>
-                <th>Action</th>
+                <th>Kode Produk</th>
+                <th>Nama Produk</th>
+                <th>Stok</th>
+                <th>Satuan</th>
+                <th>Harga Jual</th>
+                <th>Harga Beli</th>
+                <th>Lead Time</th>
+                <th>Biaya Pesan</th>
+                <th>Biaya Simpan</th>
+                <th>Stok Cadangan</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody id="productTable" class="*:*:px-4 *:*:py-2">
-            <tr>
-                <td>1</td>
-                <td>Product 1</td>
-                <td>1000</td>
-                <td>Pcs</td>
-                <td>10.000</td>
-                <td>
-                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
-                        onclick="openDetailModal()">
-                        Detail
-                    </button>
-                    <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
-                        onclick="showEditModal()">
-                        Edit
-                    </button>
-                    <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
-                        Delete
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Product 2</td>
-                <td>1000</td>
-                <td>Pcs</td>
-                <td>10.000</td>
-                <td>
-                    <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
-                        onclick="openDetailModal()">
-                        Detail
-                    </button>
-                    <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
-                        onclick="showEditModal()">
-                        Edit
-                    </button>
-                    <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
-                        Delete
-                    </button>
-                </td>
-            </tr>
+            @foreach ($data as $prd)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $prd->kd_produk }}</td>
+                    <td>{{ $prd->nm_produk }}</td>
+                    <td>{{ $prd->stok }}</td>
+                    <td>{{ $prd->satuan }}</td>
+                    <td>Rp {{ number_format($prd->harga, 0, ',', '.') }}</td>
+                    <td>Rp {{ number_format($prd->harga_beli, 0, ',', '.') }}</td>
+                    <td>{{ $prd->lead_time }} hari</td>
+                    <td>Rp {{ number_format($prd->b_pesan, 0, ',', '.') }}</td>
+                    <td>Rp {{ number_format($prd->b_simpan, 0, ',', '.') }}</td>
+                    <td>{{ $prd->stok_cadangan }}</td>
+                    <td>
+                        <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
+                            onclick="openDetailModal()">
+                            Detail
+                        </button>
+                        <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
+                            onclick="showEditModal()">
+                            Edit
+                        </button>
+                        <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 
@@ -88,6 +82,7 @@
             <h2>Add Product</h2>
             <form method="POST" action="{{ route('products.create') }}"
                 class="grid grid-cols-2 gap-2 items-center w-80 p-4 border border-black rounded-xl">
+                @csrf
                 <div class="col-span-2">
                     <label for="Product Name">Product Name</label>
                     <input type="text" name="nm_produk" placeholder="Type here..."
