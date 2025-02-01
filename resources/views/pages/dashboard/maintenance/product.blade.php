@@ -56,7 +56,7 @@
                             Detail
                         </button>
                         <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
-                            onclick="showEditModal()">
+                            onclick="showEditModal(this)" data-json='{{ $prd }}'>
                             Edit
                         </button>
                         <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
@@ -184,10 +184,10 @@
 
     {{-- Edit Product Modal --}}
     <dialog id="edit" class="absolute top-0 right-0 bottom-0 left-0">
-        <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
+        <div class="flex flex-col items-center w-[900px] p-4 border border-black rounded-xl">
             <h2>Edit Product</h2>
             <form id="edit_form" method="POST"
-                class="grid grid-cols-2 gap-2 items-center w-80 p-4 border border-black rounded-xl">
+                class="grid grid-cols-2 gap-2 items-center p-4 border border-black rounded-xl">
                 @csrf
                 @method('PUT')
                 <div class="col-span-2">
@@ -279,26 +279,13 @@
         function showAddModal() {
             const modal = document.querySelector("#add");
             modal.showModal();
-
-            // UNCOMMENT CODE BELOW AFTER DATA DYNAMIC
-            // const jsonData = JSON.parse(btn.getAttribute("data-json"));
-
-            // document.querySelector("#detail_name").innerHTML = jsonData.nm_produk;
-            // document.querySelector("#detail_stock").innerHTML = jsonData.stock;
-            // document.querySelector("#detail_qty").innerHTML = jsonData.satuan;
-            // document.querySelector("#detail_price").innerHTML = jsonData.harga;
-            // document.querySelector("#detail_buy_price").innerHTML = jsonData.harga_beli;
-            // document.querySelector("#detail_description").innerHTML = jsonData.deskripsi;
-            // document.querySelector("#detail_lead_time").innerHTML = jsonData.lead_time;
-            // document.querySelector("#detail_b_pesan").innerHTML = jsonData.b_simpan;
-            // document.querySelector("#detail_b_simpan").innerHTML = jsonData.b_pesan;
-            // document.querySelector("#detail_stok_cadangan").innerHTML = jsonData.stock_cadangan;
         }
 
-        function showEditModal() {
+        function showEditModal(btn) {
             const modal = document.querySelector("#edit");
             modal.showModal();
 
+            // UNCOMMENT CODE BELOW AFTER DATA DYNAMIC
             const jsonData = JSON.parse(btn.getAttribute("data-json"));
 
             const nm_produk = document.querySelector("#nm_produk");
