@@ -71,3 +71,11 @@ Route::get('/product-menu', function () {
 Route::get('/detail_product', function () {
     return view('pages.user.detail_product');
 })->name('detail_product');
+
+Route::get('/cart', function () {
+    return view('pages.user.keranjang');
+})->name('cart');
+
+Route::get('/check-out', function () {
+    return view('pages.user.check_out');
+})->name('checl_out');
