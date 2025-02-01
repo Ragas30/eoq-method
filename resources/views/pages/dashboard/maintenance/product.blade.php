@@ -39,7 +39,7 @@
         <tbody id="productTable" class="*:*:px-4 *:*:py-2">
             @foreach ($data as $prd)
                 <tr>
-                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ ($data->currentPage() - 1) * $data->perPage() + $loop->index + 1 }}</td>
                     <td>{{ $prd->kd_produk }}</td>
                     <td>{{ $prd->nm_produk }}</td>
                     <td>{{ $prd->stok }}</td>
@@ -67,6 +67,7 @@
             @endforeach
         </tbody>
     </table>
+    {{ $data->links() }}
 
     {{-- IMPORTANT --}}
     {{-- USE THIS CODE FOR EDIT BUTTON AFTER PRODUCT SEEDER IS MADE (INSIDE LOOPING $products) --}}
@@ -77,65 +78,101 @@
     {{-- IMPORTANT --}}
 
     {{-- Add Product Modal --}}
-    <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0">
-        <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
+    <dialog @error('nm_produk')
+        {{ 'open' }}
+    @enderror id="add"
+        class="absolute top-0 right-0 bottom-0 left-0">
+        <div class="flex flex-col items-center p-4 border border-black rounded-xl w-[900px]">
             <h2>Add Product</h2>
-            <form method="POST" action="{{ route('products.create') }}"
-                class="grid grid-cols-2 gap-2 items-center w-80 p-4 border border-black rounded-xl">
+            <form method="POST" action="{{ route('products.store') }}"
+                class="grid grid-cols-2 items-start gap-2 p-4 border border-black rounded-xl">
                 @csrf
                 <div class="col-span-2">
                     <label for="Product Name">Product Name</label>
                     <input type="text" name="nm_produk" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
+                    @error('nm_produk')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div>
                     <label for="Product Stock">Product Stock</label>
                     <input type="number" name="stock" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
+                    @error('stock')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div>
                     <label for="Satuan">Satuan</label>
-                    <input type="number" name="satuan" placeholder="Type here..."
+                    <input type="text" name="satuan" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
+                    @error('satuan')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div>
                     <label for="Harga Jual">Harga Jual</label>
                     <input type="number" name="harga" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
+                    @error('harga')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div>
                     <label for="Harga Beli">Harga Beli</label>
                     <input type="number" name="harga_beli" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
+                    @error('harga_beli')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col-span-2">
                     <label for="Product Description">Product Description</label>
                     <input type="text" name="deskripsi" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
+                    @error('deskripsi')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div>
                     <label for="Product Image">Product Image</label>
                     <input type="file" name="gambar" class="border border-black p-1 rounded w-full">
+                    @error('gambar')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div>
                     <label for="Lead Time">Lead Time</label>
                     <input type="text" name="lead_time" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
+                    @error('lead_time')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div>
                     <label for="Biaya Simpan">Biaya Simpan</label>
                     <input type="text" name="b_simpan" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
+                    @error('b_simpan')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div>
                     <label for="Biaya Pesan">Biaya Pesan</label>
                     <input type="text" name="b_pesan" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
+                    @error('b_pesan')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div>
                     <label for="Stok Cadangan">Stok Cadangan</label>
                     <input type="text" name="stok_cadangan" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
+                    @error('stok_cadangan')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <button
                     class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded col-span-2 w-full">
@@ -165,7 +202,7 @@
                 </div>
                 <div>
                     <label for="Satuan">Satuan</label>
-                    <input type="number" id="satuan" name="satuan" placeholder="Type here..."
+                    <input type="text" id="satuan" name="satuan" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
