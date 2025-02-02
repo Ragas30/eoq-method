@@ -26,29 +26,19 @@
             </tr>
         </thead>
         <tbody id="productTable">
-            <tr>
-                <td class="px-4 py-2">1</td>
-                <td class="px-4 py-2">Produk A</td>
-                <td class="px-4 py-2">10</td>
-                <td class="px-4 py-2">pcs</td>
-                <td class="px-4 py-2">
-                    <a href=""
-                        class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition">Tambah
-                        Produk</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="px-4 py-2">2</td>
-                <td class="px-4 py-2">Produk B</td>
-                <td class="px-4 py-2">20</td>
-                <td class="px-4 py-2">pcs</td>
-                <td class="px-4 py-2">
-                    <a href=""
-                        class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition">Tambah
-                        Produk</a>
-                </td>
-            </tr>
+            @foreach ($data as $stk)
+                <tr>
+                    <td class="px-4 py-2">{{ $loop->iteration }}</td>
+                    <td class="px-4 py-2">{{ $stk->nm_produk }}</td>
+                    <td class="px-4 py-2">{{ $stk->stok }}</td>
+                    <td class="px-4 py-2">{{ $stk->satuan }}</td>
+                    <td class="px-4 py-2">
+                        <a href=""
+                            class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition">Tambah
+                            Produk</a>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 

@@ -24,8 +24,8 @@
                     <i class="fa-solid fa-boxes-stacked"></i>Product
                 </li>
             </a>
-            <a href="{{ route('dashboard.maintenance.stock') }}">
-                <li class="{{ Route::is('dashboard.maintenance.stock') ? $isRoute : $isNotRoute }}">
+            <a href="{{ route('stok.index') }}">
+                <li class="{{ Route::is('stok.index') ? $isRoute : $isNotRoute }}">
                     <i class="fa-solid fa-box"></i>Stock
                 </li>
             </a>

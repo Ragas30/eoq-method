@@ -23,7 +23,7 @@
                 <tr class="border-b">
                     <td class="px-4 py-2">{{ $loop->iteration }}</td>
                     <td class="px-4 py-2">{{ $trx->kd_pesanan }}</td>
-                    <td class="px-4 py-2"><img src="{{ $trx->bukti }}" alt="Bukti Bayar" class="h-10"></td>
+                    <td class="px-4 py-2"><a href="../{{ $trx->bukti }}" target="_blank" class="text-blue-500 hover:text-blue-600">Lihat Bukti</a></td>
                     <td class="px-4 py-2">{{ $trx->tgl_pesan }}</td>
                     <td class="px-4 py-2">{{ $trx->pelanggan->nm_lengkap }}</td>
                     <td class="px-4 py-2">Rp. {{ $trx->total }}</td>

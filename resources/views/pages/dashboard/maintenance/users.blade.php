@@ -35,7 +35,7 @@
                 <tr class="border-b">
                     <td class="px-4 py-2">{{ ($data->currentPage() - 1) * $data->perPage() + $loop->index + 1 }}</td>
                     <td class="px-4 py-2">{{ $user->username }}</td>
-                    <td class="px-4 py-2">{{ $user->role }}</td>
+                    <td class="px-4 py-2">{{ Str::upper($user->role) }}</td>
                     <td class="px-4 py-2">
                         <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
                             onclick="showEditModal(this)" data-json='{{ json_encode($user) }}'>

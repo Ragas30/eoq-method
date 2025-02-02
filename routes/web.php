@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\StokController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
@@ -39,9 +40,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::resource('products', ProdukController::class)
         ->only(['index', 'store', 'update', 'destroy']);
 
-    Route::get('/stock', function () {
-        return view('pages.dashboard.maintenance.stock');
-    })->name('dashboard.maintenance.stock');
+    Route::get('/stok', [StokController::class, 'index'])->name('stok.index');
 
     Route::resource('ongkir', OngkirController::class)
         ->only(['index', 'store', 'update', 'destroy']);
