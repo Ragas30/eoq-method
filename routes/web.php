@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 use App\Models\Produk;
 use App\Models\Supplier;
@@ -52,9 +53,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         return view('pages.dashboard.maintenance.proses_eoq');
     })->name('dashboard.maintenance.proses_eoq');
 
-    Route::get('/transactions', function () {
-        return view('pages.dashboard.maintenance.transactions');
-    })->name('dashboard.maintenance.transactions');
+    Route::resource('transactions', TransaksiController::class)
+        ->only(['index', 'store', 'update', 'destroy']);
 
     Route::get('/daily-report', function () {
         return view('pages.dashboard.report.daily');

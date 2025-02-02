@@ -44,8 +44,8 @@
                     <i class="fa-solid fa-users"></i>Users
                 </li>
             </a>
-            <a href="{{ route('dashboard.maintenance.transactions') }}">
-                <li class="{{ Route::is('dashboard.maintenance.transactions') ? $isRoute : $isNotRoute }}">
+            <a href="{{ route('transactions.index') }}">
+                <li class="{{ Route::is('transactions.index') ? $isRoute : $isNotRoute }}">
                     <i class="fa-solid fa-money-bill-transfer"></i>Transactions
                 </li>
             </a>

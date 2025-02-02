@@ -9,7 +9,7 @@
         <thead>
             <tr class="bg-gray-100 text-left">
                 <th class="px-4 py-2">No</th>
-                <th class="px-4 py-2">Invoice</th>
+                <th class="px-4 py-2">Kode Pesanan</th>
                 <th class="px-4 py-2">Bukti Bayar</th>
                 <th class="px-4 py-2">Tanggal</th>
                 <th class="px-4 py-2">Customer</th>
@@ -19,36 +19,23 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="border-b">
-                <td class="px-4 py-2">1</td>
-                <td class="px-4 py-2">INV-001</td>
-                <td class="px-4 py-2"><img src="bukti-bayar-1.jpg" alt="Bukti Bayar" class="h-10"></td>
-                <td class="px-4 py-2">2022-11-29</td>
-                <td class="px-4 py-2">Fajar</td>
-                <td class="px-4 py-2">Rp. 1.000.000</td>
-                <td class="px-4 py-2">Menunggu Bayar</td>
-                <td class="px-4 py-2">
-                    <a href=""
-                        class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition">Bayar</a>
-                    <a href=""
-                        class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">Batal</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="px-4 py-2">2</td>
-                <td class="px-4 py-2">INV-002</td>
-                <td class="px-4 py-2"><img src="bukti-bayar-2.jpg" alt="Bukti Bayar" class="h-10"></td>
-                <td class="px-4 py-2">2022-11-29</td>
-                <td class="px-4 py-2">Fajar</td>
-                <td class="px-4 py-2">Rp. 1.000.000</td>
-                <td class="px-4 py-2">Menunggu Bayar</td>
-                <td class="px-4 py-2">
-                    <a href=""
-                        class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition">Bayar</a>
-                    <a href=""
-                        class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">Batal</a>
-                </td>
-            </tr>
+            @foreach ($data as $trx)
+                <tr class="border-b">
+                    <td class="px-4 py-2">{{ $loop->iteration }}</td>
+                    <td class="px-4 py-2">{{ $trx->kd_pesanan }}</td>
+                    <td class="px-4 py-2"><img src="{{ $trx->bukti }}" alt="Bukti Bayar" class="h-10"></td>
+                    <td class="px-4 py-2">{{ $trx->tgl_pesan }}</td>
+                    <td class="px-4 py-2">{{ $trx->pelanggan->nm_lengkap }}</td>
+                    <td class="px-4 py-2">Rp. {{ $trx->total }}</td>
+                    <td class="px-4 py-2">{{ $trx->status }}</td>
+                    <td class="px-4 py-2">
+                        <a href=""
+                            class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition">Bayar</a>
+                        <a href=""
+                            class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">Batal</a>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection

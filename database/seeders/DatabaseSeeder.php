@@ -9,6 +9,7 @@ use Database\Seeders\UserSeeder;
 use Database\Seeders\OngkirSeeder;
 use Database\Seeders\ProdukSeeder;
 use Database\Seeders\SupplierSeeder;
+use Database\Seeders\TransaksiSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,9 +22,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
+            PelangganSeeder::class,
             OngkirSeeder::class,
             SupplierSeeder::class,
-            ProdukSeeder::class
+            ProdukSeeder::class,
+            TransaksiSeeder::class
         ]);
     }
 }
