@@ -42,7 +42,7 @@ class ProdukController extends Controller
             'lead_time' => 'required|numeric|min:0',
             'b_pesan' => 'required|numeric|min:0',
         ]);
-        
+
         $validated['b_simpan'] = 0.20 * $validated['harga_beli'];
 
         // Handle Upload Gambar
@@ -94,9 +94,9 @@ class ProdukController extends Controller
             'gambar' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'lead_time' => 'required|numeric|min:0',
             'b_pesan' => 'required|numeric|min:0',
-            'b_simpan' => 'required|numeric|min:0',
-            'stok_cadangan' => 'required|numeric|min:0',
         ]);
+
+        $validated['b_simpan'] = 0.20 * $validated['harga_beli'];
 
         // Jika ada gambar baru yang di-upload
         if ($request->hasFile('gambar')) {
