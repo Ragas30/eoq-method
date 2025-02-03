@@ -66,6 +66,10 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::get('/yearly-report', function () {
         return view('pages.dashboard.report.yearly');
     })->name('dashboard.report.yearly');
+
+    Route::get('/print/eoq', function () {
+        return view('pages.dashboard.print.eoq');
+    });
 });
 
 // Users Menu
@@ -86,5 +90,5 @@ Route::get('/check-out', function () {
 })->name('checl_out');
 
 Route::get('/order', function () {
-return view('pages.user.status_pesan');
+    return view('pages.user.status_pesan');
 })->name('order');
