@@ -11,11 +11,12 @@ class Produk extends Model
 
     protected $table = "produk";
 
-    protected $primaryKey = "kd_produk_id";
+    protected $primaryKey = "kd_produk";
 
     public $timestamps = false;
 
     protected $fillable = [
+        'kd_produk',
         'nm_produk',
         'stok',
         'satuan',
@@ -27,5 +28,9 @@ class Produk extends Model
         'b_pesan',
         'b_simpan',
         'stok_cadangan',
+    ];
+
+    protected $casts = [
+        'kd_produk' => 'string',
     ];
 }

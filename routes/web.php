@@ -86,5 +86,5 @@ Route::get('/check-out', function () {
 })->name('checl_out');
 
 Route::get('/order', function () {
-    return view('pages.user.status_pesan');
+return view('pages.user.status_pesan');
 })->name('order');

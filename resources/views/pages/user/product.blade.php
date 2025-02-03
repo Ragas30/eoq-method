@@ -24,37 +24,14 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <div class="bg-white p-4 rounded-lg shadow-xl">
-                    <img src="https://picsum.photos/200/300" alt="" class="w-full h-48 object-cover">
-                    <a href="{{ route('detail_product') }}" class="text-lg font-semibold mt-2">Nama Produk</a>
-                    <p class="text-gray-600">$ 999.999.999,99</p>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow-xl">
-                    <img src="https://picsum.photos/200/301" alt="" class="w-full h-48 object-cover">
-                    <a href="{{ route('detail_product') }}" class="text-lg font-semibold mt-2">Nama Produk</a>
-                    <p class="text-gray-600">$ 999.999.999,99</p>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow-xl">
-                    <img src="https://picsum.photos/200/302" alt="" class="w-full h-48 object-cover">
-                    <a href="{{ route('detail_product') }}" class="text-lg font-semibold mt-2">Nama Produk</a>
-                    <p class="text-gray-600">$ 999.999.999,99</p>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow-xl">
-                    <img src="https://picsum.photos/200/303" alt="" class="w-full h-48 object-cover">
-                    <a href="{{ route('detail_product') }}" class="text-lg font-semibold mt-2">Nama Produk</a>
-                    <p class="text-gray-600">$ 999.999.999,99</p>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow-xl">
-                    <img src="https://picsum.photos/200/304" alt="" class="w-full h-48 object-cover">
-                    <a href="{{ route('detail_product') }}" class="text-lg font-semibold mt-2">Nama Produk</a>
-                    <p class="text-gray-600">$ 999.999.999,99</p>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow-xl">
-                    <img src="https://picsum.photos/200/305" alt="" class="w-full h-48 object-cover">
-                    <a href="{{ route('detail_product') }}{{ route('detail_product') }}"
-                        class="text-lg font-semibold mt-2">Nama Produk</a>
-                    <p class="text-gray-600">$ 999.999.999,99</p>
-                </div>
+                @foreach ($produk as $item)
+                    <div class="bg-white p-4 rounded-lg shadow-xl">
+                        <img src="{{ asset('storage/' . $item->foto) }}" alt="" class="w-full h-48 object-cover">
+                        <a href="{{ route('detail_product', $item->id) }}"
+                            class="text-lg font-semibold mt-2">{{ $item->nm_produk }}</a>
+                        <p class="text-gray-600">Rp. {{ number_format($item->harga, 0, ',', '.') }}</p>
+                    </div>
+                @endforeach
             </div>
         </div>
     </main>

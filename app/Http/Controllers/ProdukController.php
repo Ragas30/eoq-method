@@ -27,16 +27,18 @@ class ProdukController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'kd_produk' => 'required|string|max:10|unique:produk,kd_produk',
             'nm_produk' => 'required|string|max:255',
             'stok' => 'required|integer|min:0',
             'satuan' => 'required|string|max:50',
             'harga' => 'required|integer|min:0',
             'harga_beli' => 'required|integer|min:0',
             'deskripsi' => 'nullable|string|max:1000',
-            'gambar' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'lead_time' => 'required|numeric|min:0',
             'b_pesan' => 'required|numeric|min:0',
             'b_simpan' => 'required|numeric|min:0',
@@ -46,10 +48,13 @@ class ProdukController extends Controller
         // Handle Upload Gambar
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
-            $extension = $gambar->getClientOriginalExtension();  // Ambil ekstensi file
-            $namaGambar = time() . '_' . uniqid() . '.' . $extension;  // Tambahkan uniqid() untuk lebih unik
-            $gambar->move(public_path('uploads/produk'), $namaGambar);
-            $validated['gambar'] = 'uploads/produk/' . $namaGambar;
+            $namaGambar = time() . '_' . uniqid() . '.' . $gambar->getClientOriginalExtension();
+
+            // Simpan ke folder public/produk
+            $gambar->move(public_path('produk'), $namaGambar);
+
+            // Simpan path ke database
+            $validated['gambar'] = 'produk/' . $namaGambar;
         } else {
             $validated['gambar'] = null;
         }
@@ -59,6 +64,7 @@ class ProdukController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Data produk berhasil ditambahkan');
     }
+
 
     /**
      * Display the specified resource.

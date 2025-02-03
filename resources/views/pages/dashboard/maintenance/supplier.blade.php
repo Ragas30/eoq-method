@@ -72,18 +72,30 @@
                     <label for="Supplier Name">Supplier Name</label>
                     <input type="text" name="nm_supplier" placeholder="Type here..."
                         class="border border-black p-1 rounded">
+                    @error('nm_supplier')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="Supplier Address">Supplier Address</label>
                     <textarea name="alamat" placeholder="Type here..." class="border border-black p-1 rounded"></textarea>
+                    @error('alamat')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="Supplier Email">Supplier Email</label>
                     <input type="email" name="email" placeholder="Type here..." class="border border-black p-1 rounded">
+                    @error('email')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="Supplier Phone Number">Supplier Phone Number</label>
                     <input type="text" name="nohp" placeholder="Type here..." class="border border-black p-1 rounded">
+                    @error('nohp')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded">
                     Save Supplier
@@ -104,20 +116,32 @@
                     <label for="Supplier Name">Supplier Name</label>
                     <input id="nm_supplier" type="text" name="nm_supplier" placeholder="Type here..."
                         class="border border-black p-1 rounded">
+                    @error('nm_supplier')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="Supplier Address">Supplier Address</label>
                     <textarea id="alamat" name="alamat" placeholder="Type here..." class="border border-black p-1 rounded"></textarea>
+                    @error('alamat')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="Supplier Email">Supplier Email</label>
                     <input id="email" type="email" name="email" placeholder="Type here..."
                         class="border border-black p-1 rounded">
+                    @error('email')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="Supplier Phone Number">Supplier Phone Number</label>
                     <input id="nohp" type="text" name="nohp" placeholder="Type here..."
                         class="border border-black p-1 rounded">
+                    @error('nohp')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded">
                     Save Supplier
@@ -154,6 +178,9 @@
             const modal = document.querySelector("#add");
             modal.showModal();
         }
+
+        {{ $errors->any() ? 'showAddModal()' : '' }}
+        {{ $errors->any() ? 'showEditModal()' : '' }}
     </script>
 
     <script>

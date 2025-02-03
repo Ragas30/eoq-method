@@ -21,36 +21,37 @@
     </div>
     <table class="w-full table-auto mt-4">
         <thead>
-            <tr class="bg-gray-100 text-left *:px-4 *:py-2">
-                <th>No</th>
-                <th>Kode Produk</th>
-                <th>Nama Produk</th>
-                <th>Stok</th>
-                <th>Satuan</th>
-                <th>Harga Jual</th>
-                <th>Harga Beli</th>
-                <th>Lead Time</th>
-                <th>Biaya Pesan</th>
-                <th>Biaya Simpan</th>
-                <th>Stok Cadangan</th>
-                <th>Aksi</th>
+            <tr class="bg-gray-100 text-left">
+                <th class="px-4 py-2">No</th>
+                <th class="px-4 py-2">Kode Produk</th>
+                <th class="px-4 py-2">Nama Produk</th>
+                <th class="px-4 py-2">Gambar</th>
+                <th class="px-4 py-2">Stok</th>
+                <th class="px-4 py-2">Harga Jual</th>
+                <th class="px-4 py-2">Harga Beli</th>
+                <th class="px-4 py-2">Lead Time</th>
+                <th class="px-4 py-2">Biaya Pesan</th>
+                <th class="px-4 py-2">Biaya Simpan</th>
+                {{-- <th class="px-4 py-2">Stok Cadangan</th> --}}
+                <th class="px-4 py-2">Aksi</th>
             </tr>
         </thead>
-        <tbody id="productTable" class="*:*:px-4 *:*:py-2">
+        <tbody id="productTable">
             @foreach ($data as $prd)
                 <tr>
-                    <td>{{ ($data->currentPage() - 1) * $data->perPage() + $loop->index + 1 }}</td>
-                    <td>{{ $prd->kd_produk }}</td>
-                    <td>{{ $prd->nm_produk }}</td>
-                    <td>{{ $prd->stok }}</td>
-                    <td>{{ $prd->satuan }}</td>
-                    <td>Rp {{ number_format($prd->harga, 0, ',', '.') }}</td>
-                    <td>Rp {{ number_format($prd->harga_beli, 0, ',', '.') }}</td>
-                    <td>{{ $prd->lead_time }} hari</td>
-                    <td>Rp {{ number_format($prd->b_pesan, 0, ',', '.') }}</td>
-                    <td>Rp {{ number_format($prd->b_simpan, 0, ',', '.') }}</td>
-                    <td>{{ $prd->stok_cadangan }}</td>
-                    <td>
+                    <td class="px-4 py-2">{{ ($data->currentPage() - 1) * $data->perPage() + $loop->index + 1 }}</td>
+                    <td class="px-4 py-2">{{ $prd->kd_produk }}</td>
+                    <td class="px-4 py-2">{{ $prd->nm_produk }}</td>
+                    <td class="px-4 py-2"><img src="../{{ $prd->gambar }}" alt="" class="w-20 h-20 object-cover">
+                    </td>
+                    <td class="px-4 py-2">{{ $prd->stok }} {{ $prd->satuan }}</td>
+                    <td class="px-4 py-2">Rp {{ number_format($prd->harga, 0, ',', '.') }}</td>
+                    <td class="px-4 py-2">Rp {{ number_format($prd->harga_beli, 0, ',', '.') }}</td>
+                    <td class="px-4 py-2">{{ $prd->lead_time }} hari</td>
+                    <td class="px-4 py-2">Rp {{ number_format($prd->b_pesan, 0, ',', '.') }}</td>
+                    <td class="px-4 py-2">Rp {{ number_format($prd->b_simpan, 0, ',', '.') }}</td>
+                    {{-- <td class="px-4 py-2">{{ $prd->stok_cadangan }}</td> --}}
+                    <td class="px-4 py-2">
                         <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
                             onclick="openDetailModal()">
                             Detail
@@ -78,17 +79,22 @@
     {{-- IMPORTANT --}}
 
     {{-- Add Product Modal --}}
-    <dialog @error('nm_produk')
-        {{ 'open' }}
-    @enderror id="add"
-        class="absolute top-0 right-0 bottom-0 left-0">
+    <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0">
         <div class="flex flex-col items-center p-4 border border-black rounded-xl w-[900px]">
             <h2>Add Product</h2>
-            <form method="POST" action="{{ route('products.store') }}"
+            <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data"
                 class="grid grid-cols-2 items-start gap-2 p-4 border border-black rounded-xl">
                 @csrf
                 <div class="col-span-2">
-                    <label for="Product Name">Product Name</label>
+                    <label for="nm_produk">Kode Produk</label>
+                    <input type="text" name="kd_produk" placeholder="Type here..."
+                        class="border border-black p-1 rounded w-full">
+                    @error('kd_produk')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="col-span-2">
+                    <label for="nm_produk">Product Name</label>
                     <input type="text" name="nm_produk" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                     @error('nm_produk')
@@ -96,15 +102,15 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="Product Stock">Product Stock</label>
-                    <input type="number" name="stock" placeholder="Type here..."
+                    <label for="stok">Product Stock</label>
+                    <input type="number" name="stok" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
-                    @error('stock')
+                    @error('stok')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="Satuan">Satuan</label>
+                    <label for="satuan">Satuan</label>
                     <input type="text" name="satuan" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                     @error('satuan')
@@ -112,7 +118,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="Harga Jual">Harga Jual</label>
+                    <label for="harga">Harga Jual</label>
                     <input type="number" name="harga" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                     @error('harga')
@@ -120,7 +126,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="Harga Beli">Harga Beli</label>
+                    <label for="harga_beli">Harga Beli</label>
                     <input type="number" name="harga_beli" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                     @error('harga_beli')
@@ -128,7 +134,7 @@
                     @enderror
                 </div>
                 <div class="col-span-2">
-                    <label for="Product Description">Product Description</label>
+                    <label for="deskripsi">Product Description</label>
                     <input type="text" name="deskripsi" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                     @error('deskripsi')
@@ -136,14 +142,14 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="Product Image">Product Image</label>
+                    <label for="gambar">Product Image</label>
                     <input type="file" name="gambar" class="border border-black p-1 rounded w-full">
                     @error('gambar')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="Lead Time">Lead Time</label>
+                    <label for="lead_time">Lead Time</label>
                     <input type="text" name="lead_time" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                     @error('lead_time')
@@ -151,7 +157,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="Biaya Simpan">Biaya Simpan</label>
+                    <label for="b_simpan">Biaya Simpan</label>
                     <input type="text" name="b_simpan" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                     @error('b_simpan')
@@ -159,7 +165,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="Biaya Pesan">Biaya Pesan</label>
+                    <label for="b_pesan">Biaya Pesan</label>
                     <input type="text" name="b_pesan" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                     @error('b_pesan')
@@ -167,7 +173,7 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="Stok Cadangan">Stok Cadangan</label>
+                    <label for="stok_cadangan">Stok Cadangan</label>
                     <input type="text" name="stok_cadangan" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                     @error('stok_cadangan')
@@ -181,6 +187,7 @@
             </form>
         </div>
     </dialog>
+
 
     {{-- Edit Product Modal --}}
     <dialog id="edit" class="absolute top-0 right-0 bottom-0 left-0">
@@ -363,6 +370,9 @@
                 }
             }
         }
+
+        {{ $errors->any() ? 'showAddModal()' : '' }}
+        // {{ $errors->any() ? 'showEditModal()' : '' }}
 
         document.addEventListener('DOMContentLoaded', function() {
             updateTable();

@@ -47,18 +47,24 @@
 
     {{-- Add Product Modal --}}
     <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0">
-        <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
-            <h2>Create kasujhgdauik</h2>
+        <div class="flex flex-col items-start w-96 p-4 border border-black rounded-xl">
+            <h2>Create Shipping Rate</h2>
             <form method="POST" action="{{ route('ongkir.store') }}"
                 class="*:flex *:flex-col *:w-full flex flex-col gap-2 items-center w-80 p-4 border border-black rounded-xl">
                 @csrf
                 <div>
                     <label for="Daerah">Daerah</label>
                     <input type="text" name="daerah" placeholder="Type here..." class="border border-black p-1 rounded">
+                    @error('daerah')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="Tarif">Tarif</label>
                     <input type="text" name="tarif" placeholder="Type here..." class="border border-black p-1 rounded">
+                    @error('tarif')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded">
                     Save Product
@@ -70,7 +76,7 @@
     {{-- Edit Product Modal --}}
     <dialog id="edit" class="absolute top-0 right-0 bottom-0 left-0">
         <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
-            <h2>Edit kasujhgdauik</h2>
+            <h2>Edit Shipping Rate</h2>
             <form id="edit_form" method="POST"
                 class="*:flex *:flex-col *:w-full flex flex-col gap-2 items-center w-80 p-4 border border-black rounded-xl">
                 @csrf
@@ -117,6 +123,9 @@
             const form = document.querySelector("#edit_form");
             form.setAttribute("action", formAction);
         }
+
+        {{ $errors->any() ? 'showAddModal()' : '' }}
+        {{ $errors->any() ? 'showEditModal()' : '' }}
     </script>
 
 @endsection
