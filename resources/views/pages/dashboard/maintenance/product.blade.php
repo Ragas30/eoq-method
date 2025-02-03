@@ -44,7 +44,7 @@
                     {{-- <td class="px-4 py-2">{{ $prd->stok_cadangan }}</td> --}}
                     <td class="px-4 py-2">
                         <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
-                            onclick="openDetailModal()">
+                            onclick="openDetailModal(this)" data-json='{{ $prd }}'>
                             Detail
                         </button>
                         <button class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition"
@@ -268,23 +268,50 @@
     {{-- Detail Product Modal --}}
     <dialog id="detail" class="absolute top-0 right-0 bottom-0 left-0">
         <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
-            <img src="../{{ $p->gambar }}" alt="Gambar Produk" class="h-48 w-48">
-            <span id="detail_name" class="font-semibold">{{ $p->nm_produk }}</span>
-            <span id="detail_stock">Stok {{ $p->stok }} {{ $p->satuan }}</span>
-            <span id="detail_price">Harga Rp. {{ number_format($p->harga, 0, ',', '.') }}</span>
-            <span id="detail_buy_price">Harga Beli Rp. {{ number_format($p->harga_beli, 0, ',', '.') }}</span>
-            <p id="detail_deskriction" class="mt-2">{{ $p->deskripsi }}</p>
-            <span id="detail_lead_time">Lead Time {{ $p->lead_time }} hari</span>
-            <span id="detail_b_pesan">Biaya Pemesanan Rp. {{ number_format($p->b_pesan, 0, ',', '.') }}</span>
-            <span id="detail_b_simpan">Biaya Simpan Rp. {{ number_format($p->b_simpan, 0, ',', '.') }}</span>
-            <span id="detail_stok_cadangan">Stok Cadangan {{ $p->stok_cadangan }}</span>
+            <img id="detail_gambar" alt="Gambar Produk" class="h-48 w-48">
+            <span id="detail_name" class="font-semibold"></span>
+            <span id="detail_stock"></span>
+            <span id="detail_satuan"></span>
+            <span id="detail_price"></span>
+            <span id="detail_buy_price"></span>
+            <p id="detail_description" class="mt-2"></p>
+            <span id="detail_lead_time"></span>
+            <span id="detail_b_pesan"></span>
+            <span id="detail_b_simpan"></span>
+            <span id="detail_stok_cadangan"></span>
         </div>
     </dialog>
 
     <script>
-        function openDetailModal() {
+        function openDetailModal(btn) {
             const modal = document.querySelector("#detail");
             modal.showModal();
+
+            const jsonData = JSON.parse(btn.getAttribute("data-json"));
+
+            const detail_gambar = document.querySelector("#detail_gambar");
+            const detail_name = document.querySelector("#detail_name");
+            const detail_stock = document.querySelector("#detail_stock");
+            const detail_satuan = document.querySelector("#detail_satuan");
+            const detail_price = document.querySelector("#detail_price");
+            const detail_buy_price = document.querySelector("#detail_buy_price");
+            const detail_description = document.querySelector("#detail_description");
+            const detail_lead_time = document.querySelector("#detail_lead_time");
+            const detail_b_pesan = document.querySelector("#detail_b_pesan");
+            const detail_b_simpan = document.querySelector("#detail_b_simpan");
+            const detail_stok_cadangan = document.querySelector("#detail_stok_cadangan");
+
+            detail_gambar.src = `../${jsonData.gambar}`;
+            detail_name.innerHTML = jsonData.nm_produk;
+            detail_stock.innerHTML = jsonData.stok;
+            detail_satuan.innerHTML = jsonData.satuan;
+            detail_price.innerHTML = jsonData.harga;
+            detail_buy_price.innerHTML = jsonData.harga_beli;
+            detail_description.innerHTML = jsonData.deskripsi;
+            detail_lead_time.innerHTML = jsonData.lead_time;
+            detail_b_pesan.innerHTML = jsonData.b_pesan;
+            detail_b_simpan.innerHTML = jsonData.b_simpan;
+            detail_stok_cadangan.innerHTML = jsonData.stok_cadangan;
         }
 
         function showAddModal() {
