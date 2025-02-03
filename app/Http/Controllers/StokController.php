@@ -19,6 +19,6 @@ class StokController extends Controller
         $data->stok += $request->stok;
         $data->save();
 
-        return redirect()->route('stock.index')->with('success', 'Stok berhasil diupdate');
+        return redirect()->route('stok.index')->with('success', 'Stok berhasil diupdate');
     }
 }

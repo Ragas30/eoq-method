@@ -33,9 +33,9 @@
                     <td class="px-4 py-2">{{ $stk->stok }}</td>
                     <td class="px-4 py-2">{{ $stk->satuan }}</td>
                     <td class="px-4 py-2">
-                        <button data-id="{{ $stk->id_produk }}" onclick="openDialog(this)"
+                        <button data-id="{{ $stk->kd_produk }}" onclick="openDialog(this)"
                             class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition">Tambah
-                            Produk</button>
+                            Stok</button>
                     </td>
                 </tr>
             @endforeach
@@ -48,12 +48,12 @@
                 class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
                 <div>
                     <h1 class="text-2xl font-bold mb-4">Tambah Stok</h1>
-                    <form method="POST" action="">
+                    <form method="POST" id="add_form">
                         @csrf
                         @method('PUT')
                         <div class="mb-4">
-                            <label for="stock" class="block font-medium text-gray-700">Stok</label>
-                            <input type="number" id="stock" name="stock"
+                            <label for="stok" class="block font-medium text-gray-700">Stok</label>
+                            <input type="number" id="stok" name="stok"
                                 class="w-full border border-gray-400 rounded-md px-2 py-1">
                         </div>
                         <div class="flex items-center justify-end">
@@ -76,11 +76,11 @@
             var dialog = document.querySelector('#add');
             dialog.showModal();
 
-            const id = btn.getAttribute('id');
+            const id = btn.getAttribute('data-id');
 
             const formAction = `stok/${id}`;
 
-            document.querySelector('#add').setAttribute('action', formAction);
+            document.querySelector('#add_form').setAttribute('action', formAction);
         }
 
         function closeDialog(id) {

@@ -25,13 +25,9 @@
                 <th class="px-4 py-2">No</th>
                 <th class="px-4 py-2">Kode Produk</th>
                 <th class="px-4 py-2">Nama Produk</th>
-                <th class="px-4 py-2">Gambar</th>
                 <th class="px-4 py-2">Stok</th>
                 <th class="px-4 py-2">Harga Jual</th>
                 <th class="px-4 py-2">Harga Beli</th>
-                <th class="px-4 py-2">Lead Time</th>
-                <th class="px-4 py-2">Biaya Pesan</th>
-                <th class="px-4 py-2">Biaya Simpan</th>
                 {{-- <th class="px-4 py-2">Stok Cadangan</th> --}}
                 <th class="px-4 py-2">Aksi</th>
             </tr>
@@ -42,14 +38,9 @@
                     <td class="px-4 py-2">{{ ($data->currentPage() - 1) * $data->perPage() + $loop->index + 1 }}</td>
                     <td class="px-4 py-2">{{ $prd->kd_produk }}</td>
                     <td class="px-4 py-2">{{ $prd->nm_produk }}</td>
-                    <td class="px-4 py-2"><img src="../{{ $prd->gambar }}" alt="" class="w-20 h-20 object-cover">
-                    </td>
                     <td class="px-4 py-2">{{ $prd->stok }} {{ $prd->satuan }}</td>
                     <td class="px-4 py-2">Rp {{ number_format($prd->harga, 0, ',', '.') }}</td>
                     <td class="px-4 py-2">Rp {{ number_format($prd->harga_beli, 0, ',', '.') }}</td>
-                    <td class="px-4 py-2">{{ $prd->lead_time }} hari</td>
-                    <td class="px-4 py-2">Rp {{ number_format($prd->b_pesan, 0, ',', '.') }}</td>
-                    <td class="px-4 py-2">Rp {{ number_format($prd->b_simpan, 0, ',', '.') }}</td>
                     {{-- <td class="px-4 py-2">{{ $prd->stok_cadangan }}</td> --}}
                     <td class="px-4 py-2">
                         <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
