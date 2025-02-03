@@ -233,8 +233,9 @@
                     </div>
                     <div class="col-span-2">
                         <label for="deskripsi">Deskripsi Produk</label>
-                        <textarea name="deskripsi" placeholder="Masukkan deskripsi produk" value="{{ $p->deskripsi }}"
+                        <textarea name="deskripsi" placeholder="Masukkan deskripsi produk"
                             class="border border-black p-1 rounded w-full resize-none h-72" required>
+                            {{ $p->deskripsi }}
                         </textarea>
                         @error('deskripsi')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -276,8 +277,7 @@
     {{-- Detail Product Modal --}}
     <dialog id="detail" class="absolute top-0 right-0 bottom-0 left-0">
         <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
-            <img src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
-                alt="Gambar Produk" class="h-48 w-48">
+            <img src="../{{ $p->gambar }}" alt="Gambar Produk" class="h-48 w-48">
             <span id="detail_name" class="font-semibold">{{ $p->nm_produk }}</span>
             <span id="detail_stock">Stok {{ $p->stok }} {{ $p->satuan }}</span>
             <span id="detail_price">Harga Rp. {{ number_format($p->harga, 0, ',', '.') }}</span>
