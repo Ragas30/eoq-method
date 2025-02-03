@@ -87,96 +87,81 @@
                 @csrf
                 <div class="col-span-2">
                     <label for="nm_produk">Kode Produk</label>
-                    <input type="text" name="kd_produk" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <input type="text" name="kd_produk" placeholder="Masukkan kode produk"
+                        class="border border-black p-1 rounded w-full" required>
                     @error('kd_produk')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="col-span-2">
-                    <label for="nm_produk">Product Name</label>
-                    <input type="text" name="nm_produk" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <label for="nm_produk">Nama Produk</label>
+                    <input type="text" name="nm_produk" placeholder="Masukkan nama produk"
+                        class="border border-black p-1 rounded w-full" required>
                     @error('nm_produk')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="stok">Product Stock</label>
-                    <input type="number" name="stok" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <label for="stok">Stok Produk</label>
+                    <input type="number" name="stok" placeholder="Masukkan stok produk"
+                        class="border border-black p-1 rounded w-full" required>
                     @error('stok')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
                     <label for="satuan">Satuan</label>
-                    <input type="text" name="satuan" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <input type="text" name="satuan" placeholder="Masukkan satuan produk"
+                        class="border border-black p-1 rounded w-full" required>
                     @error('satuan')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
                     <label for="harga">Harga Jual</label>
-                    <input type="number" name="harga" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <input type="number" name="harga" placeholder="Masukkan harga jual"
+                        class="border border-black p-1 rounded w-full" required>
                     @error('harga')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
                     <label for="harga_beli">Harga Beli</label>
-                    <input type="number" name="harga_beli" placeholder="Type here..."
+                    <input type="number" name="harga_beli" placeholder="Masukkan harga beli per satuan"
                         class="border border-black p-1 rounded w-full">
                     @error('harga_beli')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="col-span-2">
-                    <label for="deskripsi">Product Description</label>
-                    <input type="text" name="deskripsi" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <label for="deskripsi">Deskripsi Produk</label>
+                    <textarea name="deskripsi" placeholder="Masukkan deskripsi produk"
+                        class="border border-black p-1 rounded w-full resize-none h-72" required>
+                    </textarea>
                     @error('deskripsi')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="gambar">Product Image</label>
-                    <input type="file" name="gambar" class="border border-black p-1 rounded w-full">
+                    <label for="gambar">Gambar Produk</label>
+                    <input type="file" name="gambar" class="border border-black p-1 rounded w-full" required>
                     @error('gambar')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
                     <label for="lead_time">Lead Time</label>
-                    <input type="text" name="lead_time" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <input type="number" name="lead_time" placeholder="Masukkan lead time"
+                        class="border border-black p-1 rounded w-full" required>
                     @error('lead_time')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="b_simpan">Biaya Simpan</label>
-                    <input type="text" name="b_simpan" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
-                    @error('b_simpan')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="b_pesan">Biaya Pesan</label>
-                    <input type="text" name="b_pesan" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <label for="b_pesan">Biaya Pemesanan</label>
+                    <input type="number" name="b_pesan" placeholder="Masukkan lead time"
+                        class="border border-black p-1 rounded w-full" required>
                     @error('b_pesan')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="stok_cadangan">Stok Cadangan</label>
-                    <input type="text" name="stok_cadangan" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
-                    @error('stok_cadangan')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
@@ -193,94 +178,87 @@
     <dialog id="edit" class="absolute top-0 right-0 bottom-0 left-0">
         <div class="flex flex-col items-center w-[900px] p-4 border border-black rounded-xl">
             <h2>Edit Product</h2>
-            <form id="edit_form" method="POST"
+            <form id="edit_form" method="POST" enctype="multipart/form-data"
                 class="grid grid-cols-2 items-start gap-2 p-4 border border-black rounded-xl">
                 @csrf
                 @method('PUT')
                 <div class="col-span-2">
-                    <label for="Product Name">Product Name</label>
-                    <input type="text" name="nm_produk" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <label for="nm_produk">Kode Produk</label>
+                    <input type="text" name="kd_produk" placeholder="Masukkan kode produk"
+                        class="border border-black p-1 rounded w-full" required>
+                    @error('kd_produk')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="col-span-2">
+                    <label for="nm_produk">Nama Produk</label>
+                    <input type="text" name="nm_produk" placeholder="Masukkan nama produk"
+                        class="border border-black p-1 rounded w-full" required>
                     @error('nm_produk')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="Product Stock">Product Stock</label>
-                    <input type="number" name="stock" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
-                    @error('stock')
+                    <label for="stok">Stok Produk</label>
+                    <input type="number" name="stok" placeholder="Masukkan stok produk"
+                        class="border border-black p-1 rounded w-full" required>
+                    @error('stok')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="Satuan">Satuan</label>
-                    <input type="text" name="satuan" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <label for="satuan">Satuan</label>
+                    <input type="text" name="satuan" placeholder="Masukkan satuan produk"
+                        class="border border-black p-1 rounded w-full" required>
                     @error('satuan')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="Harga Jual">Harga Jual</label>
-                    <input type="number" name="harga" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <label for="harga">Harga Jual</label>
+                    <input type="number" name="harga" placeholder="Masukkan harga jual"
+                        class="border border-black p-1 rounded w-full" required>
                     @error('harga')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="Harga Beli">Harga Beli</label>
-                    <input type="number" name="harga_beli" placeholder="Type here..."
+                    <label for="harga_beli">Harga Beli</label>
+                    <input type="number" name="harga_beli" placeholder="Masukkan harga beli per satuan"
                         class="border border-black p-1 rounded w-full">
                     @error('harga_beli')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="col-span-2">
-                    <label for="Product Description">Product Description</label>
-                    <input type="text" name="deskripsi" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <label for="deskripsi">Deskripsi Produk</label>
+                    <textarea name="deskripsi" placeholder="Masukkan deskripsi produk"
+                        class="border border-black p-1 rounded w-full resize-none h-72" required>
+                    </textarea>
                     @error('deskripsi')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="Product Image">Product Image</label>
-                    <input type="file" name="gambar" class="border border-black p-1 rounded w-full">
+                    <label for="gambar">Gambar Produk</label>
+                    <input type="file" name="gambar" class="border border-black p-1 rounded w-full" required>
                     @error('gambar')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="Lead Time">Lead Time</label>
-                    <input type="text" name="lead_time" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <label for="lead_time">Lead Time</label>
+                    <input type="number" name="lead_time" placeholder="Masukkan lead time"
+                        class="border border-black p-1 rounded w-full" required>
                     @error('lead_time')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <div>
-                    <label for="Biaya Simpan">Biaya Simpan</label>
-                    <input type="text" name="b_simpan" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
-                    @error('b_simpan')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="Biaya Pesan">Biaya Pesan</label>
-                    <input type="text" name="b_pesan" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
+                    <label for="b_pesan">Biaya Pemesanan</label>
+                    <input type="number" name="b_pesan" placeholder="Masukkan lead time"
+                        class="border border-black p-1 rounded w-full" required>
                     @error('b_pesan')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="Stok Cadangan">Stok Cadangan</label>
-                    <input type="text" name="stok_cadangan" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
-                    @error('stok_cadangan')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
@@ -296,7 +274,7 @@
     <dialog id="detail" class="absolute top-0 right-0 bottom-0 left-0">
         <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
             <img src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
-                alt="Product Image" class="h-48 w-48">
+                alt="Gambar Produk" class="h-48 w-48">
             <span id="detail_name">Product 1</span>
             <span id="detail_stock">Stok 1</span>
             <span id="detail_qty">Pcs</span>
@@ -335,9 +313,9 @@
             const harga_beli = document.querySelector("#harga_beli");
             const deskripsi = document.querySelector("#deskripsi");
             const lead_time = document.querySelector("#lead_time");
-            const b_simpan = document.querySelector("#b_simpan");
+            // const b_simpan = document.querySelector("#b_simpan");
             const b_pesan = document.querySelector("#b_pesan");
-            const stock_cadangan = document.querySelector("#stock_cadangan");
+            // const stock_cadangan = document.querySelector("#stock_cadangan");
 
             nm_produk.value = jsonData.nm_produk;
             stock.value = jsonData.stock;
@@ -346,9 +324,9 @@
             harga_beli.value = jsonData.harga_beli;
             deskripsi.value = jsonData.deskripsi;
             lead_time.value = jsonData.lead_time;
-            b_simpan.value = jsonData.b_simpan;
+            // b_simpan.value = jsonData.b_simpan;
             b_pesan.value = jsonData.b_pesan;
-            stock_cadangan.value = jsonData.stock_cadangan;
+            // stock_cadangan.value = jsonData.stock_cadangan;
 
             const formAction = `products/${jsonData.kd_product}`;
 

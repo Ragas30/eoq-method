@@ -23,7 +23,7 @@ return new class extends Migration
             $table->double('lead_time');
             $table->double('b_pesan');
             $table->double('b_simpan');
-            $table->double('stok_cadangan');
+            $table->double('stok_cadangan')->nullable()->default(0);
         });
     }
 

@@ -20,8 +20,8 @@ class Produk extends Model
         'nm_produk',
         'stok',
         'satuan',
-        'harga',
-        'harga_beli',
+        'harga', // Harga jual ke konsumen
+        'harga_beli', // Harga beli per satuan
         'deskripsi',
         'gambar',
         'lead_time',

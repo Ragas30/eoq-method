@@ -38,26 +38,22 @@ class ProdukController extends Controller
             'harga' => 'required|integer|min:0',
             'harga_beli' => 'required|integer|min:0',
             'deskripsi' => 'nullable|string|max:1000',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'lead_time' => 'required|numeric|min:0',
             'b_pesan' => 'required|numeric|min:0',
-            'b_simpan' => 'required|numeric|min:0',
-            'stok_cadangan' => 'required|numeric|min:0',
         ]);
+        
+        $validated['b_simpan'] = 0.20 * $validated['harga_beli'];
 
         // Handle Upload Gambar
-        if ($request->hasFile('gambar')) {
-            $gambar = $request->file('gambar');
-            $namaGambar = time() . '_' . uniqid() . '.' . $gambar->getClientOriginalExtension();
+        $gambar = $request->file('gambar');
+        $namaGambar = time() . '_' . uniqid() . '.' . $gambar->getClientOriginalExtension();
 
-            // Simpan ke folder public/produk
-            $gambar->move(public_path('produk'), $namaGambar);
+        // Simpan ke folder public/produk
+        $gambar->move(public_path('uploads/produk'), $namaGambar);
 
-            // Simpan path ke database
-            $validated['gambar'] = 'produk/' . $namaGambar;
-        } else {
-            $validated['gambar'] = null;
-        }
+        // Simpan path ke database
+        $validated['gambar'] = 'uploads/produk/' . $namaGambar;
 
         // Simpan Data ke Database
         Produk::create($validated);
