@@ -182,90 +182,93 @@
                 class="grid grid-cols-2 items-start gap-2 p-4 border border-black rounded-xl">
                 @csrf
                 @method('PUT')
-                <div class="col-span-2">
-                    <label for="nm_produk">Kode Produk</label>
-                    <input type="text" name="kd_produk" placeholder="Masukkan kode produk"
-                        class="border border-black p-1 rounded w-full" required>
-                    @error('kd_produk')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-span-2">
-                    <label for="nm_produk">Nama Produk</label>
-                    <input type="text" name="nm_produk" placeholder="Masukkan nama produk"
-                        class="border border-black p-1 rounded w-full" required>
-                    @error('nm_produk')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="stok">Stok Produk</label>
-                    <input type="number" name="stok" placeholder="Masukkan stok produk"
-                        class="border border-black p-1 rounded w-full" required>
-                    @error('stok')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="satuan">Satuan</label>
-                    <input type="text" name="satuan" placeholder="Masukkan satuan produk"
-                        class="border border-black p-1 rounded w-full" required>
-                    @error('satuan')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="harga">Harga Jual</label>
-                    <input type="number" name="harga" placeholder="Masukkan harga jual"
-                        class="border border-black p-1 rounded w-full" required>
-                    @error('harga')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="harga_beli">Harga Beli</label>
-                    <input type="number" name="harga_beli" placeholder="Masukkan harga beli per satuan"
-                        class="border border-black p-1 rounded w-full">
-                    @error('harga_beli')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="col-span-2">
-                    <label for="deskripsi">Deskripsi Produk</label>
-                    <textarea name="deskripsi" placeholder="Masukkan deskripsi produk"
-                        class="border border-black p-1 rounded w-full resize-none h-72" required>
-                    </textarea>
-                    @error('deskripsi')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="gambar">Gambar Produk</label>
-                    <input type="file" name="gambar" class="border border-black p-1 rounded w-full" required>
-                    @error('gambar')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="lead_time">Lead Time</label>
-                    <input type="number" name="lead_time" placeholder="Masukkan lead time"
-                        class="border border-black p-1 rounded w-full" required>
-                    @error('lead_time')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label for="b_pesan">Biaya Pemesanan</label>
-                    <input type="number" name="b_pesan" placeholder="Masukkan lead time"
-                        class="border border-black p-1 rounded w-full" required>
-                    @error('b_pesan')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <button
-                    class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded col-span-2 w-full">
-                    Save Product
-                </button>
+                @foreach ($data as $p)
+                    <div class="col-span-2">
+                        <label for="nm_produk">Kode Produk</label>
+                        <input type="text" name="kd_produk" value="{{ $p->kd_produk }}"
+                            placeholder="Masukkan kode produk" class="border border-black p-1 rounded w-full" required>
+                        @error('kd_produk')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-span-2">
+                        <label for="nm_produk">Nama Produk</label>
+                        <input type="text" name="nm_produk" value="{{ $p->nm_produk }}"
+                            placeholder="Masukkan nama produk" class="border border-black p-1 rounded w-full" required>
+                        @error('nm_produk')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="stok">Stok Produk</label>
+                        <input type="number" name="stok" value="{{ $p->stok }}"
+                            placeholder="Masukkan stok produk" class="border border-black p-1 rounded w-full" required>
+                        @error('stok')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="satuan">Satuan</label>
+                        <input type="text" name="satuan" value="{{ $p->satuan }}"
+                            placeholder="Masukkan satuan produk" class="border border-black p-1 rounded w-full" required>
+                        @error('satuan')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="harga">Harga Jual</label>
+                        <input type="number" name="harga" value="{{ $p->harga }}"
+                            placeholder="Masukkan harga jual" class="border border-black p-1 rounded w-full" required>
+                        @error('harga')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="harga_beli">Harga Beli</label>
+                        <input type="number" name="harga_beli" value="{{ $p->harga_beli }}"
+                            placeholder="Masukkan harga beli per satuan" class="border border-black p-1 rounded w-full">
+                        @error('harga_beli')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-span-2">
+                        <label for="deskripsi">Deskripsi Produk</label>
+                        <textarea name="deskripsi" placeholder="Masukkan deskripsi produk" value="{{ $p->deskripsi }}"
+                            class="border border-black p-1 rounded w-full resize-none h-72" required>
+                        </textarea>
+                        @error('deskripsi')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="gambar">Gambar Produk</label>
+                        <input type="file" name="gambar" value="{{ $p->gambar }}"
+                            class="border border-black p-1 rounded w-full" required>
+                        @error('gambar')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="lead_time">Lead Time</label>
+                        <input type="number" name="lead_time" value="{{ $p->lead_time }}"
+                            placeholder="Masukkan lead time" class="border border-black p-1 rounded w-full" required>
+                        @error('lead_time')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="b_pesan">Biaya Pemesanan</label>
+                        <input type="number" name="b_pesan" value="{{ $p->b_pesan }}"
+                            placeholder="Masukkan lead time" class="border border-black p-1 rounded w-full" required>
+                        @error('b_pesan')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <button
+                        class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded col-span-2 w-full">
+                        Save Product
+                    </button>
+                @endforeach
             </form>
         </div>
     </dialog>
@@ -275,16 +278,15 @@
         <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
             <img src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
                 alt="Gambar Produk" class="h-48 w-48">
-            <span id="detail_name">Product 1</span>
-            <span id="detail_stock">Stok 1</span>
-            <span id="detail_qty">Pcs</span>
-            <span id="detail_price">10.000</span>
-            <span id="detail_buy_price">10.000</span>
-            <span id="detail_description">Description</span>
-            <span id="detail_lead_time">Lead Time</span>
-            <span id="detail_b_pesan">B Pesan</span>
-            <span id="detail_b_simpan">B Simpan</span>
-            <span id="detail_stok_cadangan">Stok Cadangan</span>
+            <span id="detail_name" class="font-semibold">{{ $p->nm_produk }}</span>
+            <span id="detail_stock">Stok {{ $p->stok }} {{ $p->satuan }}</span>
+            <span id="detail_price">Harga Rp. {{ number_format($p->harga, 0, ',', '.') }}</span>
+            <span id="detail_buy_price">Harga Beli Rp. {{ number_format($p->harga_beli, 0, ',', '.') }}</span>
+            <p id="detail_deskriction" class="mt-2">{{ $p->deskripsi }}</p>
+            <span id="detail_lead_time">Lead Time {{ $p->lead_time }} hari</span>
+            <span id="detail_b_pesan">Biaya Pemesanan Rp. {{ number_format($p->b_pesan, 0, ',', '.') }}</span>
+            <span id="detail_b_simpan">Biaya Simpan Rp. {{ number_format($p->b_simpan, 0, ',', '.') }}</span>
+            <span id="detail_stok_cadangan">Stok Cadangan {{ $p->stok_cadangan }}</span>
         </div>
     </dialog>
 
@@ -333,9 +335,7 @@
             const form = document.querySelector('#edit_form');
             form.setAttribute("action", formAction);
         }
-    </script>
 
-    <script>
         function updateTable() {
             var limit = document.getElementById('limit').value;
             var table = document.getElementById('productTable');
