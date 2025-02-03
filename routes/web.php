@@ -41,6 +41,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         ->only(['index', 'store', 'update', 'destroy']);
 
     Route::get('/stok', [StokController::class, 'index'])->name('stok.index');
+    Route::put('/stok/{kd_produk}', [StokController::class, 'update'])->name('stok.update');
 
     Route::resource('ongkir', OngkirController::class)
         ->only(['index', 'store', 'update', 'destroy']);

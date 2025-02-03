@@ -47,10 +47,10 @@
             <div
                 class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
                 <div>
-                    <h1 class="text-2xl font-bold mb-4">Tambah Produk</h1>
-                    <form method="POST">
+                    <h1 class="text-2xl font-bold mb-4">Tambah Stok</h1>
+                    <form method="POST" action="">
                         @csrf
-                        @method('POST')
+                        @method('PUT')
                         <div class="mb-4">
                             <label for="stock" class="block font-medium text-gray-700">Stok</label>
                             <input type="number" id="stock" name="stock"
