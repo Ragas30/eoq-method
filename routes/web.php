@@ -91,7 +91,7 @@ Route::get('/cart', function () {
 
 Route::get('/check-out', function () {
     return view('pages.user.check_out');
-})->name('checl_out');
+})->name('check_out');
 
 Route::get('/order', function () {
     return view('pages.user.status_pesan');
