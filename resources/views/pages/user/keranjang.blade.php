@@ -49,7 +49,8 @@
             @endif
 
             <div class="flex justify-end mt-4">
-                <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Checkout</button>
+                <a href="{{ route('check_out') }}"
+                    class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Checkout</a>
             </div>
         </div>
     </main>
