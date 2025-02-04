@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\StokController;
@@ -85,9 +86,8 @@ Route::get('/detail_product/{kd_produk}', function ($kd_produk) {
     return view('pages.user.detail_product', compact('produk'));
 })->name('detail_product');
 
-Route::get('/cart', function () {
-    return view('pages.user.keranjang');
-})->name('cart');
+Route::get('/cart', [KeranjangController::class, 'index'])->name('cart');
+Route::post('/cart/{kd_produk}', [KeranjangController::class, 'store'])->name('cart.store');
 
 Route::get('/check-out', function () {
     return view('pages.user.check_out');

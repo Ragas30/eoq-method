@@ -60,7 +60,11 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
-            return redirect()->route('dashboard.home');
+            if (Auth::user()->role === 'pelanggan') {
+                return redirect()->route('home');
+            } else {
+                return redirect()->route('dashboard.home');
+            }
         }
 
         return back()->withErrors([

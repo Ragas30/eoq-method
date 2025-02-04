@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Keranjang;
 use App\Models\Transaksi;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pelanggan extends Model
 {
@@ -26,11 +27,18 @@ class Pelanggan extends Model
         'alamat',
     ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
 
-    public function transaksi() {
+    public function transaksi()
+    {
         return $this->hasMany(Transaksi::class, 'id_pelanggan', 'id_pelanggan');
+    }
+
+    public function keranjang()
+    {
+        return $this->hasMany(Keranjang::class, 'id_pelanggan', 'id_pelanggan');
     }
 }

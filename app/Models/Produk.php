@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Keranjang;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Produk extends Model
 {
@@ -37,4 +38,9 @@ class Produk extends Model
     protected $casts = [
         'kd_produk' => 'string',
     ];
+
+    public function keranjang()
+    {
+        return $this->hasMany(Keranjang::class, 'kd_produk', 'kd_produk');
+    }
 }

@@ -13,22 +13,25 @@
                     </div>
                 </div>
                 <div class="mx-16">
-                    <h2 class="text-4xl font-bold text-gray-800">{{$produk->nm_produk}}</h2>
-                    <p class="text-2xl text-red-500 mt-2 font-semibold">{{$produk->harga}}</p>
+                    <h2 class="text-4xl font-bold text-gray-800">{{ $produk->nm_produk }}</h2>
+                    <p class="text-2xl text-red-500 mt-2 font-semibold">{{ $produk->harga }}</p>
                     <p class="mt-4 text-gray-600 leading-relaxed">
-                        {{$produk->deskripsi}}
+                        {{ $produk->deskripsi }}
                     </p>
                     <div class="flex flex-col gap-4 mt-6">
-                        <button
-                            class="flex-1 bg-blue-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md flex items-center justify-center gap-2">
-                            {{-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        <form action="{{ route('cart.store', ['kd_produk' => $produk->kd_produk]) }}" method="POST">
+                            @csrf
+                            <button type="submit"
+                                class="flex-1 bg-blue-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md flex items-center justify-center gap-2">
+                                {{-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L4 3m0 0H3" />
                             </svg> --}}
-                            <i class="fa-solid fa-cart-shopping"></i>
-                            Add to Cart
-                        </button>
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                Add to Cart
+                            </button>
+                        </form>
                         <button
                             class="flex-1 bg-green-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-green-700 transition shadow-md flex items-center justify-center gap-2">
                             {{-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"

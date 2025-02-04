@@ -25,7 +25,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 @foreach ($produk as $item)
                     <div class="bg-white p-4 rounded-lg shadow-xl">
-                        <img src="{{ asset('storage/' . $item->foto) }}" alt="" class="w-full h-48 object-cover">
+                        <img src="{{ $item->gambar }}" alt="" class="w-full h-48 object-cover">
                         <a href="{{ route('detail_product', $item->kd_produk) }}"
                             class="text-lg font-semibold mt-2">{{ $item->nm_produk }}</a>
                         <p class="text-gray-600">Rp. {{ number_format($item->harga, 0, ',', '.') }}</p>
