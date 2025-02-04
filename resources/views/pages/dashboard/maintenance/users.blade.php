@@ -67,54 +67,25 @@
             <form method="POST" action="{{ route('users.store') }}" class="flex flex-col gap-2 w-full">
                 @csrf
                 <div>
-                    <label for="nama_lengkap_add" class="block text-gray-700 font-semibold">Nama Lengkap</label>
-                    <input type="text" id="nama_lengkap_add" name="nama_lengkap"
+                    <label for="Username" class="block text-gray-700 font-semibold">Username</label>
+                    <input type="text" name="username"
                         class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required>
                 </div>
                 <div>
-                    <label for="email_add" class="block text-gray-700 font-semibold">Alamat Email</label>
-                    <input type="email" id="email_add" name="email"
+                    <label for="Password" class="block text-gray-700 font-semibold">Password</label>
+                    <input type="password" name="password"
                         class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required>
                 </div>
                 <div>
-                    <label for="jenis_kelamin_add" class="block text-gray-700 font-semibold">Jenis Kelamin</label>
-                    <input type="text" id="jenis_kelamin_add" name="jenis_kelamin"
-                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
-                </div>
-                <div>
-                    <label for="no_telfon_add" class="block text-gray-700 font-semibold">No Telfon</label>
-                    <input type="text" id="no_telfon_add" name="no_telfon"
-                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
-                </div>
-                <div>
-                    <label for="alamat_add" class="block text-gray-700 font-semibold">Alamat</label>
-                    <input type="text" id="alamat_add" name="alamat"
-                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
-                </div>
-                <div>
-                    <label for="username_add" class="block text-gray-700 font-semibold">Role</label>
-                    <select name="role" id="role" class="w-full p-2 mt-2 border rounded-lg">
-                        <option value="">Pilih Role</option>
+                    <label for="Role" class="block text-gray-700 font-semibold">Role</label>
+                    <select name="role"
+                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option value="admin">Admin</option>
+                        <option value="pimpinan">Pimpinan</option>
                         <option value="pelanggan">Pelanggan</option>
                     </select>
-                </div>
-                <div>
-                    <label for="username_add" class="block text-gray-700 font-semibold">Username</label>
-                    <input type="text" id="username_add" name="username"
-                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
-                </div>
-                <div>
-                    <label for="password_add" class="block text-gray-700 font-semibold">Password</label>
-                    <input type="text" id="password_add" name="password"
-                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
                 </div>
                 <button type="submit" class="bg-green-600 text-white py-2 mt-4 rounded-lg hover:bg-green-700 transition">
                     Save User
@@ -135,52 +106,25 @@
                 @csrf
                 @method('PUT')
                 <div>
-                    <label for="nama_lengkap_edit" class="block text-gray-700 font-semibold">Nama Lengkap</label>
-                    <input type="text" id="nama_lengkap_edit" name="nama_lengkap"
+                    <label for="Username" class="block text-gray-700 font-semibold">Username</label>
+                    <input id="username_edit" type="text" name="username"
                         class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required>
                 </div>
                 <div>
-                    <label for="email_edit" class="block text-gray-700 font-semibold">Alamat Email</label>
-                    <input type="email" id="email_edit" name="email"
+                    <label for="Password" class="block text-gray-700 font-semibold">Password</label>
+                    <input id="password_edit" type="password" name="password"
                         class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required>
                 </div>
                 <div>
-                    <label for="jenis_kelamin_edit" class="block text-gray-700 font-semibold">Jenis Kelamin</label>
-                    <input type="text" id="jenis_kelamin_edit" name="jenis_kelamin"
-                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
-                </div>
-                <div>
-                    <label for="no_telfon_edit" class="block text-gray-700 font-semibold">No Telfon</label>
-                    <input type="text" id="no_telfon_edit" name="no_telfon"
-                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
-                </div>
-                <div>
-                    <label for="alamat_edit" class="block text-gray-700 font-semibold">Alamat</label>
-                    <input type="text" id="alamat_edit" name="alamat"
-                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
-                </div>
-                <div>
-                    <label for="role_edit" class="block text-gray-700 font-semibold">Role</label>
-                    <input type="text" id="username_edit" name="username"
-                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        disabled>
-                </div>
-                <div>
-                    <label for="username_edit" class="block text-gray-700 font-semibold">Username</label>
-                    <input type="text" id="username_edit" name="username"
-                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
-                </div>
-                <div>
-                    <label for="password_edit" class="block text-gray-700 font-semibold">Password</label>
-                    <input type="text" id="password_edit" name="password"
-                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required>
+                    <label for="Role" class="block text-gray-700 font-semibold">Role</label>
+                    <select id="role_edit" name="role"
+                        class="w-full p-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="admin">Admin</option>
+                        <option value="pimpinan">Pimpinan</option>
+                        <option value="pelanggan">Pelanggan</option>
+                    </select>
                 </div>
                 <button type="submit" class="bg-green-600 text-white py-2 mt-4 rounded-lg hover:bg-green-700 transition">
                     Save User
@@ -204,15 +148,12 @@
             modal.showModal();
 
             const user = JSON.parse(btn.getAttribute("data-json"));
+            console.log(user);
 
-            document.getElementById("editForm").setAttribute("action", `/user/${user.id_user}`);
-            document.getElementById("nama_lengkap_edit").value = user.nama_lengkap;
-            document.getElementById("email_edit").value = user.email;
-            document.getElementById("jenis_kelamin_edit").value = user.jenis_kelamin;
-            document.getElementById("no_telfon_edit").value = user.no_telfon;
-            document.getElementById("alamat_edit").value = user.alamat;
+            document.getElementById("editForm").setAttribute("action", `user/${user.id}`);
             document.getElementById("username_edit").value = user.username;
             document.getElementById("password_edit").value = user.password;
+            document.getElementById("role_edit").value = user.role;
         }
 
         function closeAddModal() {
