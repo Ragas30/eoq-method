@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\ProdukController;
@@ -86,14 +87,14 @@ Route::get('/detail_product/{kd_produk}', function ($kd_produk) {
     return view('pages.user.detail_product', compact('produk'));
 })->name('detail_product');
 
-Route::get('/cart', [KeranjangController::class, 'index'])->name('cart');
-Route::post('/cart/{kd_produk}', [KeranjangController::class, 'store'])->name('cart.store');
-Route::delete('/cart/{kd_produk}', [KeranjangController::class, 'destroy'])->name('cart.destroy');
+Route::middleware('auth')->group(function () {
+    Route::get('/cart', [KeranjangController::class, 'index'])->name('cart');
+    Route::post('/cart/{kd_produk}', [KeranjangController::class, 'store'])->name('cart.store');
+    Route::delete('/cart/{kd_produk}', [KeranjangController::class, 'destroy'])->name('cart.destroy');
 
-Route::get('/check-out', function () {
-    return view('pages.user.check_out');
-})->name('check_out');
+    Route::get('/check-out', [CheckoutController::class, 'index'])->name('check_out');
 
-Route::get('/order', function () {
-    return view('pages.user.status_pesan');
-})->name('order');
+    Route::get('/order', function () {
+        return view('pages.user.status_pesan');
+    })->name('order');
+});
