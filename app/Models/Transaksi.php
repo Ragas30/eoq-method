@@ -4,8 +4,9 @@ namespace App\Models;
 
 use App\Models\Ongkir;
 use App\Models\Pelanggan;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\UraianTransaksi;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transaksi extends Model
 {
@@ -36,6 +37,11 @@ class Transaksi extends Model
     {
         return $this->belongsTo(Ongkir::class, 'id_tempat', 'id_tempat');
     }
+
+    public function uraianTransaksi()
+{
+    return $this->hasMany(UraianTransaksi::class, 'id_transaksi');
+}
 
     protected static function boot()
     {

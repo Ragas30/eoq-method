@@ -28,7 +28,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 // Dashboard Menu
-Route::prefix('dashboard')->middleware('auth')->group(function () {
+Route::prefix('dashboard')->middleware(['auth', 'role:admin,pimpinan'])->group(function () {
     Route::get('/', function () {
         $supplier = Supplier::count();
         $produk = Produk::count();

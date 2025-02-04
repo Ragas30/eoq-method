@@ -16,7 +16,7 @@ class CheckRoleMiddleware
     public function handle(Request $request, Closure $next, string ...$roles): Response
     {
         if (!in_array($request->user()->role, $roles)) {
-            return redirect()->back();
+            return redirect('/');
         }
 
         return $next($request);
