@@ -169,7 +169,7 @@
     <dialog id="edit" class="absolute top-0 right-0 bottom-0 left-0">
         <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
             <h2>Edit Product</h2>
-            <form id="edit_form" method="POST"
+            <form id="edit_form" method="POST" enctype="multipart/form-data"
                 class="grid grid-cols-2 gap-2 items-center w-80 p-4 border border-black rounded-xl">
                 @csrf
                 @method('PUT')
@@ -213,18 +213,8 @@
                         class="border border-black p-1 rounded w-full">
                 </div>
                 <div>
-                    <label for="Biaya Simpan">Biaya Simpan</label>
-                    <input type="text" id="b_simpan" name="b_simpan" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
-                </div>
-                <div>
-                    <label for="Biaya Pesan">Biaya Pesan</label>
+                    <label for="Biaya Pesan">Biaya Pemesanan</label>
                     <input type="text" id="b_pesan" name="b_pesan" placeholder="Type here..."
-                        class="border border-black p-1 rounded w-full">
-                </div>
-                <div>
-                    <label for="Stok Cadangan">Stok Cadangan</label>
-                    <input type="text" id="stok_cadangan" name="stok_cadangan" placeholder="Type here..."
                         class="border border-black p-1 rounded w-full">
                 </div>
                 <button
@@ -268,8 +258,8 @@
             const detail_description = document.querySelector("#detail_description");
             const detail_lead_time = document.querySelector("#detail_lead_time");
             const detail_b_pesan = document.querySelector("#detail_b_pesan");
-            const detail_b_simpan = document.querySelector("#detail_b_simpan");
-            const detail_stok_cadangan = document.querySelector("#detail_stok_cadangan");
+            // const detail_b_simpan = document.querySelector("#detail_b_simpan");
+            // const detail_stok_cadangan = document.querySelector("#detail_stok_cadangan");
 
             detail_gambar.src = `../${jsonData.gambar}`;
             detail_name.innerHTML = jsonData.nm_produk;
@@ -280,8 +270,8 @@
             detail_description.innerHTML = jsonData.deskripsi;
             detail_lead_time.innerHTML = jsonData.lead_time;
             detail_b_pesan.innerHTML = jsonData.b_pesan;
-            detail_b_simpan.innerHTML = jsonData.b_simpan;
-            detail_stok_cadangan.innerHTML = jsonData.stok_cadangan;
+            // detail_b_simpan.innerHTML = jsonData.b_simpan;
+            // detail_stok_cadangan.innerHTML = jsonData.stok_cadangan;
         }
 
         function showAddModal() {
@@ -303,9 +293,9 @@
             const harga_beli = document.querySelector("#harga_beli");
             const deskripsi = document.querySelector("#deskripsi");
             const lead_time = document.querySelector("#lead_time");
-            const b_simpan = document.querySelector("#b_simpan");
+            // const b_simpan = document.querySelector("#b_simpan");
             const b_pesan = document.querySelector("#b_pesan");
-            const stock_cadangan = document.querySelector("#stok_cadangan");
+            // const stock_cadangan = document.querySelector("#stok_cadangan");
 
             nm_produk.value = jsonData.nm_produk;
             stock.value = jsonData.stok;
@@ -314,9 +304,9 @@
             harga_beli.value = jsonData.harga_beli;
             deskripsi.value = jsonData.deskripsi;
             lead_time.value = jsonData.lead_time;
-            b_simpan.value = jsonData.b_pesan;
+            // b_simpan.value = jsonData.b_pesan;
             b_pesan.value = jsonData.b_pesan;
-            stock_cadangan.value = jsonData.stok_cadangan;
+            // stock_cadangan.value = jsonData.stok_cadangan;
 
             const formAction = `products/${jsonData.kd_produk}`;
             console.log(jsonData)

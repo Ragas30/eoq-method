@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Produk;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Route::bind('product', function($value) {
+            return Produk::where('kd_produk', $value)->firstOrFail();
+        });
     }
 }

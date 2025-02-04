@@ -30,6 +30,8 @@ class Produk extends Model
         'stok_cadangan',
     ];
 
+    protected $keyType = 'string';
+
     protected $casts = [
         'kd_produk' => 'string',
     ];
