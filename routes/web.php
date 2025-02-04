@@ -80,8 +80,9 @@ Route::get('/product-menu', function () {
     return view('pages.user.product', compact('produk'));
 })->name('product_menu');
 
-Route::get('/detail_product', function () {
-    return view('pages.user.detail_product');
+Route::get('/detail_product/{kd_produk}', function ($kd_produk) {
+    $produk = Produk::findOrFail($kd_produk);
+    return view('pages.user.detail_product', compact('produk'));
 })->name('detail_product');
 
 Route::get('/cart', function () {
