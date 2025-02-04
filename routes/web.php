@@ -12,7 +12,8 @@ use App\Models\Supplier;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('pages.user.index');
+    $produk = Produk::take(12)->get();
+    return view('pages.user.index', compact('produk'));
 })->name('home');
 
 // Login
@@ -75,7 +76,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 
 // Users Menu
 Route::get('/product-menu', function () {
-    return view('pages.user.product');
+    $produk = Produk::all();
+    return view('pages.user.product', compact('produk'));
 })->name('product_menu');
 
 Route::get('/detail_product', function () {
