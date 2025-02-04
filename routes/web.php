@@ -88,6 +88,7 @@ Route::get('/detail_product/{kd_produk}', function ($kd_produk) {
 
 Route::get('/cart', [KeranjangController::class, 'index'])->name('cart');
 Route::post('/cart/{kd_produk}', [KeranjangController::class, 'store'])->name('cart.store');
+Route::delete('/cart/{kd_produk}', [KeranjangController::class, 'destroy'])->name('cart.destroy');
 
 Route::get('/check-out', function () {
     return view('pages.user.check_out');

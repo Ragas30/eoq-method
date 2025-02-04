@@ -33,14 +33,14 @@
                                     Rp{{ number_format($item->harga * $item->jumlah, 0, ',', '.') }}
                                 </td>
                                 <td class="py-2 px-4 border">
-                                    {{-- <form action="{{ route('keranjang.destroy', $item->id_keranjang) }}" method="POST">
+                                    <form action="{{ route('cart.destroy', $item->kd_produk) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
                                             class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
                                             Hapus
                                         </button>
-                                    </form> --}}
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
