@@ -93,6 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/cart/{kd_produk}', [KeranjangController::class, 'destroy'])->name('cart.destroy');
 
     Route::get('/check-out', [CheckoutController::class, 'index'])->name('check_out');
+    Route::post('/check-out', [CheckoutController::class, 'process'])->name('check_out_post');
 
     Route::get('/order', function () {
         return view('pages.user.status_pesan');
