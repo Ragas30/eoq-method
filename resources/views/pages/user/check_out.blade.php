@@ -5,7 +5,8 @@
 @section('content')
     <main class="min-h-screen mt-12 p-8 bg-gray-100 flex flex-col gap-8 *:mx-96">
         <h2 class="text-3xl font-extrabold text-gray-800 mb-6">Checkout</h2>
-        <form action="{{ route('check_out_post') }}" method="POST" class="space-y-6 bg-white p-6 rounded-lg shadow-lg" enctype="multipart/form-data">
+        <form action="{{ route('check_out_post') }}" method="POST" class="space-y-6 bg-white p-6 rounded-lg shadow-lg"
+            enctype="multipart/form-data">
             @csrf
             <div>
                 <label for="ongkir" class="block text-lg font-semibold text-gray-700">Ongkir</label>
@@ -14,7 +15,8 @@
                     required>
                     <option disabled selected>Pilih Tujuan</option>
                     @foreach ($ongkir as $ong)
-                        <option value="{{ $ong->id_tempat }}">{{ $ong->daerah }} (Rp. {{ $ong->tarif }})</option>
+                        <option value="{{ $ong->id_tempat }}" data-tarif="{{ $ong->tarif }}">{{ $ong->daerah }} (Rp.
+                            {{ $ong->tarif }})</option>
                     @endforeach
                 </select>
                 <input type="file" name="bukti" id="bukti"
@@ -78,7 +80,7 @@
     <script>
         function updateOngkir(slc) {
             const ongkir = document.getElementById('ongkir');
-            ongkir.textContent = slc.value;
+            ongkir.textContent = slc.data-tarif;
 
             const total = document.getElementById('total');
             total.textContent = parseFloat(total.dataset.ongkir) + parseFloat(slc.value);

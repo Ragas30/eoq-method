@@ -13,6 +13,15 @@ class PelangganSeeder extends Seeder
      */
     public function run(): void
     {
-        Pelanggan::factory(10)->create();
+        Pelanggan::factory(5)->create();
+
+        Pelanggan::create([
+            'id_user' => 3,
+            'nm_lengkap' => 'Akun Pelanggan',
+            'email' => 'pelanggan@gmail.com',
+            'jk' => 'Laki-laki',
+            'telp' => '0812345678',
+            'alamat' => 'Jakarta',
+        ]);
     }
 }
