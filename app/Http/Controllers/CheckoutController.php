@@ -14,7 +14,7 @@ class CheckoutController extends Controller
     public function index(Request $request)
     {
         $ongkir = Ongkir::all();
-        $keranjangItems = Keranjang::with('produk')->where('id_pelanggan', $request->user()->id)->get();
+        $keranjangItems = Keranjang::with('produk')->where('id_pelanggan', $request->user()->pelanggan->id_pelanggan)->get();
         return view('pages.user.check_out', compact('ongkir', 'keranjangItems'));
     }
 

@@ -37,16 +37,75 @@
                     <option value="cash_on_delivery">Bayar di Tempat</option>
                 </select>
             </div>
+            <div>
+                <label for="ongkir" class="block text-lg font-semibold text-gray-700">Ongkir</label>
+                <select onchange="updateOngkir(this)" name="ongkir" id="ongkirSelect"
+                    class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-blue-500 focus:border-blue-500"
+                    required>
+                    @foreach ($ongkir as $ong)
+                        <option value="{{ $ong->tarif }}">{{ $ong->daerah }} (Rp. {{ $ong->tarif }})</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="flex justify-end">
                 <button id="placeOrderButton" type="submit"
                     class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-md">Place
                     Order</button>
+            </div>
+            <div class="p-4 pt-2 rounded-xl bg-slate-500 border">
+                <h2 class="mb-1 text-xl font-bold text-white">List Keranjang</h2>
+                <div class="flex gap-2">
+                    <div class="flex-grow flex flex-col gap-3">
+                        @foreach ($keranjangItems as $item)
+                            <div class="border bg-slate-200 px-2 py-1 rounded-xl">
+                                <p>{{ $item->produk->nm_produk }} - {{ $item->qty }} x </p>
+                                <p>Jumlah : {{ $item->jumlah }} x Rp. {{ $item->harga }} = Rp.
+                                    {{ $item->jumlah * $item->harga }}</p>
+                            </div>
+                        @endforeach
+                        @empty($keranjangItems)
+                            <p>Keranjang Kosong</p>
+                        @endempty
+                    </div>
+                    <div class="bg-slate-200 min-w-48 rounded-xl p-2 flex flex-col justify-between">
+                        <p class="font-semibold">Total Belanjaan</p>
+                        <div>
+                            @php
+                                $total = 0;
+                            @endphp
+                            @foreach ($keranjangItems as $item)
+                                <p class="flex justify-between">
+                                    <span>Rp. </span>
+                                    <span>{{ $item->jumlah * $item->harga }}</span>
+                                </p>
+                                @php
+                                    $total += $item->jumlah * $item->harga;
+                                @endphp
+                            @endforeach
+                        </div>
+                        <div class="*:flex *:justify-between">
+                            <p>
+                                <span class="font-semibold">Ongkir</span>
+                                <span class="font-semibold">Rp. <span id="ongkir">?</span></span>
+                            </p>
+                            <p>
+                                <span class="font-semibold">Total</span>
+                                <span class="font-semibold">Rp. {{ $total }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        function updateOngkir(slc) {
+            const ongkir = document.getElementById('ongkir');
+            ongkir.textContent = slc.value;
+        }
+
         document.getElementById('placeOrderButton').addEventListener('click', function() {
             Swal.fire({
                 title: 'Success Checkout!',
