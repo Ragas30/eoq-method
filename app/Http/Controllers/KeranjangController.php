@@ -10,7 +10,7 @@ class KeranjangController extends Controller
 {
     public function index(Request $request)
     {
-        $id_pelanggan = $request->user()->id;
+        $id_pelanggan = $request->user()->pelanggan->id_pelanggan;
         $keranjangItems = Keranjang::with('produk')
             ->where('id_pelanggan', $id_pelanggan)
             ->get();
@@ -20,7 +20,7 @@ class KeranjangController extends Controller
 
     public function store(Request $request, string $kd_produk)
     {
-        $id_pelanggan = $request->user()->id;
+        $id_pelanggan = $request->user()->pelanggan->id_pelanggan;
         $produk = Produk::where('kd_produk', $kd_produk)->first();
 
         $keranjangItem = Keranjang::where('id_pelanggan', $id_pelanggan)
