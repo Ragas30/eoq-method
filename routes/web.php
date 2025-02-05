@@ -11,6 +11,9 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 use App\Models\Produk;
 use App\Models\Supplier;
+use App\Models\Transaksi;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -96,6 +99,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/check-out', [CheckoutController::class, 'process'])->name('check_out_post');
 
     Route::get('/order', function () {
-        return view('pages.user.status_pesan');
+        $order = Transaksi::where('id_pelanggan', Auth::user()->pelanggan->id_pelanggan)->get();
+        return view('pages.user.status_pesan', compact('order'));
     })->name('order');
 });

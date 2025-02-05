@@ -18,6 +18,7 @@ class Transaksi extends Model
 
     public $timestamps = false;
 
+
     protected $fillable = [
         'id_pelanggan',
         'id_tempat',

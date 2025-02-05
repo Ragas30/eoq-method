@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class UraianTransaksi extends Model
 {
     protected $table = 'uraian_transaksi';
+
+    public $timestamps = false;
+    
     protected $fillable = [
         'id_transaksi',
         'kd_produk',

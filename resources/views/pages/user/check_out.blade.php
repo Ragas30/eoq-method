@@ -5,47 +5,20 @@
 @section('content')
     <main class="min-h-screen mt-12 p-8 bg-gray-100 flex flex-col gap-8 *:mx-96">
         <h2 class="text-3xl font-extrabold text-gray-800 mb-6">Checkout</h2>
-        <form action="" method="POST" class="space-y-6 bg-white p-6 rounded-lg shadow-lg">
+        <form action="{{ route('check_out_post') }}" method="POST" class="space-y-6 bg-white p-6 rounded-lg shadow-lg" enctype="multipart/form-data">
             @csrf
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label for="name" class="block text-lg font-semibold text-gray-700">Nama Lengkap</label>
-                    <input type="text" name="name" id="name"
-                        class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-blue-500 focus:border-blue-500"
-                        required>
-                </div>
-                <div>
-                    <label for="email" class="block text-lg font-semibold text-gray-700">Email</label>
-                    <input type="email" name="email" id="email"
-                        class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-blue-500 focus:border-blue-500"
-                        required>
-                </div>
-            </div>
-            <div>
-                <label for="address" class="block text-lg font-semibold text-gray-700">Alamat Pengiriman</label>
-                <textarea name="address" id="address"
-                    class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-blue-500 focus:border-blue-500"
-                    rows="4" required></textarea>
-            </div>
-            <div>
-                <label for="payment-method" class="block text-lg font-semibold text-gray-700">Metode Pembayaran</label>
-                <select name="payment_method" id="payment-method"
-                    class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-blue-500 focus:border-blue-500"
-                    required>
-                    <option value="credit_card">Kartu Kredit</option>
-                    <option value="bank_transfer">Transfer Bank</option>
-                    <option value="cash_on_delivery">Bayar di Tempat</option>
-                </select>
-            </div>
             <div>
                 <label for="ongkir" class="block text-lg font-semibold text-gray-700">Ongkir</label>
-                <select onchange="updateOngkir(this)" name="ongkir" id="ongkirSelect"
+                <select onchange="updateOngkir(this)" name="id_tempat" id="ongkirSelect"
                     class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-blue-500 focus:border-blue-500"
                     required>
+                    <option disabled selected>Pilih Tujuan</option>
                     @foreach ($ongkir as $ong)
-                        <option value="{{ $ong->tarif }}">{{ $ong->daerah }} (Rp. {{ $ong->tarif }})</option>
+                        <option value="{{ $ong->id_tempat }}">{{ $ong->daerah }} (Rp. {{ $ong->tarif }})</option>
                     @endforeach
                 </select>
+                <input type="file" name="bukti" id="bukti"
+                    class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-blue-500 focus:border-blue-500">
             </div>
             <div class="flex justify-end">
                 <button id="placeOrderButton" type="submit"
@@ -86,11 +59,13 @@
                         <div class="*:flex *:justify-between">
                             <p>
                                 <span class="font-semibold">Ongkir</span>
-                                <span class="font-semibold">Rp. <span id="ongkir">?</span></span>
+                                <span class="font-semibold">Rp. <span id="ongkir">-</span></span>
                             </p>
                             <p>
                                 <span class="font-semibold">Total</span>
-                                <span class="font-semibold">Rp. {{ $total }}</span>
+                                <span class="font-semibold">Rp.
+                                    <span id="total" data-ongkir="{{ $total }}">{{ $total }}</span>
+                                </span>
                             </p>
                         </div>
                     </div>
@@ -104,19 +79,22 @@
         function updateOngkir(slc) {
             const ongkir = document.getElementById('ongkir');
             ongkir.textContent = slc.value;
+
+            const total = document.getElementById('total');
+            total.textContent = parseFloat(total.dataset.ongkir) + parseFloat(slc.value);
         }
 
-        document.getElementById('placeOrderButton').addEventListener('click', function() {
-            Swal.fire({
-                title: 'Success Checkout!',
-                text: 'Produk Berhasil di Check Out',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('addToCartForm').submit();
-                }
-            });
-        });
+        // document.getElementById('placeOrderButton').addEventListener('click', function() {
+        //     Swal.fire({
+        //         title: 'Success Checkout!',
+        //         text: 'Produk Berhasil di Check Out',
+        //         icon: 'success',
+        //         confirmButtonText: 'OK'
+        //     }).then((result) => {
+        //         if (result.isConfirmed) {
+        //             document.getElementById('addToCartForm').submit();
+        //         }
+        //     });
+        // });
     </script>
 @endsection

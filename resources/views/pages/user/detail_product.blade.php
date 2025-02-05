@@ -49,16 +49,20 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.getElementById('addToCartButton').addEventListener('click', function() {
-            Swal.fire({
-                title: 'Added to Cart!',
-                text: 'Produk Berhasil di masukan ke keranjang',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('addToCartForm').submit();
-                }
-            });
+            @if (Auth::check())
+                Swal.fire({
+                    title: 'Added to Cart!',
+                    text: 'Produk Berhasil di masukan ke keranjang',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('addToCartForm').submit();
+                    }
+                });
+            @else
+                window.location.href = "{{ route('login') }}";
+            @endif
         });
     </script>
 @endsection
