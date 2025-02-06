@@ -3,7 +3,7 @@
 @section('title', 'Detail Product')
 
 @section('content')
-    <main class="min-h-screen mt-12 p-8 bg-gray-100 flex flex-col gap-8 *:mx-96">
+    <main class="min-h-screen mt-12 p-8 bg-gray-100 flex flex-col gap-8 2xl:*:mx-96">
         <div class="flex flex-col justify-center bg-white p-4 items-center shadow-lg rounded-lg">
             <div class="flex *:w-full">
                 <div class="relative">
@@ -14,7 +14,8 @@
                 </div>
                 <div class="mx-16">
                     <h2 class="text-4xl font-bold text-gray-800">{{ $produk->nm_produk }}</h2>
-                    <p class="text-2xl text-red-500 mt-2 font-semibold">Rp. {{ number_format($produk->harga, 0, ',', '.') }}</p>
+                    <p class="text-2xl text-red-500 mt-2 font-semibold">Rp. {{ number_format($produk->harga, 0, ',', '.') }}
+                    </p>
                     <p class="mt-4 text-gray-600 leading-relaxed">
                         {{ $produk->deskripsi }}
                     </p>
