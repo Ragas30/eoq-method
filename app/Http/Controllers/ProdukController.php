@@ -127,6 +127,11 @@ class ProdukController extends Controller
      */
     public function destroy(Produk $produk)
     {
+        $path = public_path($produk->gambar);
+        if (file_exists($path) && is_file($path)) {
+            unlink($path);
+        }
+
         $produk->delete();
         return redirect()->route('products.index')->with('success', 'Data produk berhasil dihapus');
     }

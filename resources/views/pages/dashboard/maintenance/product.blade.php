@@ -51,9 +51,14 @@
                             onclick="showEditModal(this)" data-json='{{ $prd }}'>
                             Edit
                         </button>
-                        <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
-                            Delete
-                        </button>
+                        <form action="{{ route('products.destroy', $prd->kd_produk) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition">
+                                Delete
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
