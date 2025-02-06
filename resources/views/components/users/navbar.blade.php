@@ -1,6 +1,6 @@
-<nav class="bg-white shadow-lg border-b border-gray-300 fixed top-0 left-0 right-0 z-50 sm:px-6 lg:px-8">
+<nav class="bg-primary shadow-lg fixed top-0 left-0 right-0 z-50 sm:px-6 lg:px-8">
     <div class="container mx-auto px-4 py-2 flex justify-between items-center">
-        <a href="{{ route('home') }}" class="text-2xl font-bold text-gray-800">Logo</a>
+        <a href="{{ route('home') }}" class="text-2xl font-bold text-white">Toko Bangunan ONE</a>
         <button class="bg-transparent border-none focus:outline-none sm:hidden" id="toggle-menu">
             <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -10,14 +10,14 @@
         </button>
         <ul class="hidden sm:flex sm:flex-row sm:items-center sm:w-auto sm:space-x-8 gap-2" id="menu">
             <li><a href="{{ route('home') }}"
-                    class="block py-2 px-3 text-gray-700 hover:bg-gray-100 sm:hover:bg-transparent sm:border-0 sm:hover:text-blue-700 sm:p-0 dark:text-gray-400 sm:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 sm:dark:hover:bg-transparent rounded-lg">Home</a>
+                    class="block py-2 px-3 text-white hover:underline rounded-lg">Home</a>
             </li>
             <li><a href="{{ route('product_menu') }}"
-                    class="block py-2 px-3 text-gray-700 hover:bg-gray-100 sm:hover:bg-transparent sm:border-0 sm:hover:text-blue-700 sm:p-0 dark:text-gray-400 sm:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 sm:dark:hover:bg-transparent rounded-lg">Product</a>
+                    class="block py-2 px-3 text-white hover:underline rounded-lg">Product</a>
             </li>
             <li class="relative">
                 <button
-                    class="flex items-center justify-between w-full py-2 px-3 text-gray-700 hover:bg-gray-100 sm:hover:bg-transparent sm:border-0 sm:hover:text-blue-700 sm:p-0 dark:text-gray-400 sm:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 sm:dark:hover:bg-transparent rounded-lg"
+                    class="flex items-center justify-between w-full py-2 px-3 text-white hover:underline rounded-lg"
                     id="dropdown-more-button" aria-expanded="false">
                     More
                     <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor"
@@ -45,7 +45,7 @@
                     <form action="{{ route('logout') }}" method="POST" class="inline">
                         @csrf
                         <button type="submit"
-                            class="block py-2 px-3 text-gray-700 hover:bg-gray-100 sm:hover:bg-transparent sm:border-0 sm:hover:text-blue-700 sm:p-0 dark:text-gray-400 sm:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 sm:dark:hover:bg-transparent rounded-lg">
+                            class="block py-2 px-3 text-white hover:underline rounded-lg">
                             Logout
                         </button>
                     </form>
@@ -53,7 +53,7 @@
             @else
                 <li>
                     <a href="{{ route('login') }}"
-                        class="block py-2 px-3 text-gray-700 hover:bg-gray-100 sm:hover:bg-transparent sm:border-0 sm:hover:text-blue-700 sm:p-0 dark:text-gray-400 sm:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 sm:dark:hover:bg-transparent rounded-lg">
+                        class="block py-2 px-3 text-white hover:underline rounded-lg">
                         Login
                     </a>
                 </li>

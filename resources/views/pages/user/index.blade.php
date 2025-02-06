@@ -2,7 +2,7 @@
 @section('title', 'home')
 @section('content')
     <main class=" min-h-screen *:px-48">
-        <section class="flex justify-between mt-12 py-16 gap-8 *:w-full bg-secondary">
+        <section class="flex justify-between mt-12 py-16 gap-8 *:w-full bg-white">
             <div class="px-8">
                 <div
                     class="rounded-full overflow-hidden aspect-square h-96 flex justify-center items-center shadow-xl shadow-white/20">
@@ -17,9 +17,15 @@
                 <button class="bg-primary text-white rounded-xl py-3">Get Started</button>
             </div>
         </section>
-        <section class="mt-8">
+        <section class="py-8 bg-primary/10">
+            <div class="flex gap-2">
+                <input type="text" class="w-full border-2 border-gray-300 p-3 rounded-lg" placeholder="Cari Produk">
+                <button class="px-6 py-2 bg-primary rounded w-fit text-white font-semibold">Cari Produk</button>
+            </div>
+        </section>
+        <section class="bg-primary/60 py-10">
             <div class="flex justify-between items-center">
-                <h2 class="text-3xl font-semibold">Produk Kami</h2>
+                <h2 class="text-3xl font-semibold mb-8 text-white">Produk Kami</h2>
                 <a href="{{ route('product_menu') }}" class="text-primary">Lihat Semua</a>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -33,11 +39,6 @@
                 @endforeach
             </div>
         </section>
-        <section class="py-8">
-            <div class="flex gap-2">
-                <input type="text" class="w-full border-2 border-gray-300 p-3 rounded-lg" placeholder="Cari Produk">
-                <button class="px-6 py-2 bg-primary rounded w-fit text-white font-semibold">Cari Produk</button>
-            </div>
-        </section>
+
     </main>
 @endsection

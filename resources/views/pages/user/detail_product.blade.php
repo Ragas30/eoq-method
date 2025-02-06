@@ -4,17 +4,17 @@
 
 @section('content')
     <main class="min-h-screen mt-12 p-8 bg-gray-100 flex flex-col gap-8 *:mx-96">
-        <div class="flex flex-col justify-center">
+        <div class="flex flex-col justify-center bg-white p-4 items-center shadow-lg rounded-lg">
             <div class="flex *:w-full">
                 <div class="relative">
-                    <img src="https://picsum.photos/800/400" alt="Product Image" class="w-full h-80 object-cover">
+                    <img src="../{{ $produk->gambar }}" alt="Product Image" class="w-full h-80 object-cover">
                     <div class="absolute top-4 left-4 bg-red-500 text-white text-sm px-3 py-1 rounded-full shadow-lg">
                         Best Seller
                     </div>
                 </div>
                 <div class="mx-16">
                     <h2 class="text-4xl font-bold text-gray-800">{{ $produk->nm_produk }}</h2>
-                    <p class="text-2xl text-red-500 mt-2 font-semibold">{{ $produk->harga }}</p>
+                    <p class="text-2xl text-red-500 mt-2 font-semibold">Rp. {{ number_format($produk->harga, 0, ',', '.') }}</p>
                     <p class="mt-4 text-gray-600 leading-relaxed">
                         {{ $produk->deskripsi }}
                     </p>
@@ -31,19 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-8">
-                <h3 class="text-2xl font-semibold text-gray-800 border-b pb-2">Product Features</h3>
-                <ul class="mt-4 space-y-2 grid grid-cols-2">
-                    <li class="flex items-center text-gray-700"><span class="text-green-500 mr-2">✔</span> Lorem ipsum dolor
-                        sit amet, consectetur adipiscing elit.</li>
-                    <li class="flex items-center text-gray-700"><span class="text-green-500 mr-2">✔</span> Nullam vehicula,
-                        nisl at bibendum ultricies.</li>
-                    <li class="flex items-center text-gray-700"><span class="text-green-500 mr-2">✔</span> Proin
-                        pellentesque eget neque eu egestas.</li>
-                </ul>
-            </div>
         </div>
-        <h2 class="text-3xl font-semibold">Produk Lainnya</h2>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
