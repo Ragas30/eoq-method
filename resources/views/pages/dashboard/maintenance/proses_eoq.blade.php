@@ -50,55 +50,46 @@
         </table>
     </div>
 
-    <dialog id="add" class="absolute top-0 right-0 bottom-0 left-0">
-        <div class="flex flex-col items-start w-96 p-4 border border-black rounded-xl">
-            <h2>Create Shipping Rate</h2>
-            <form method="POST"
-                class="*:flex *:flex-col *:w-full flex flex-col gap-2 items-center w-80 p-4 border border-black rounded-xl">
-                @csrf
+    <dialog id="add" class="absolute top-0 w-3/4 right-0 bottom-0 left-0">
+        <div class="flex flex-col items-start p-4 border border-black rounded-xl">
+            <h2 class="mb-6 font-semibold">Perhitungan Economic Order Quantity</h2>
+            <form action="#" method="POST" class="flex gap-8 w-full *:w-full *:grid *:grid-cols-2 *:gap-x-1 *:gap-y-2">
                 <div>
-                    <label for="Kode EOQ">Kode EOQ</label>
-                    <input type="text" name="kode_eoq" placeholder="Type here..."
-                        class="border border-black p-1 rounded">
-                    @error('kode_eoq')
-                        <p class="text-red-500">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div>
-                    <label for="Nama Barang">Nama Barang</label>
-                    <input type="text" name="nm_barang" placeholder="Type here..."
-                        class="border border-black p-1 rounded">
-                    @error('nm_barang')
-                        <p class="text-red-500">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div>
-                    <label for="Jumlah Hari Kerja">Jumlah Hari Kerja</label>
-                    <input type="text" name="jlh_hr_kerja" placeholder="Type here..."
-                        class="border border-black p-1 rounded">
-                    @error('jlh_hr_kerja')
-                        <p class="text-red-500">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div>
+                    <label for="Kode Produk">Kode Produk</label>
+                    <input class="px-1 border border-black rounded" type="text" name="kode_produk"
+                        placeholder="Type here...">
+                    <label for="Nama Produk">Nama Produk</label>
+                    <input class="px-1 border border-black rounded" type="text" name="nama_produk"
+                        placeholder="Type here...">
+                    <label for="Harga Produk">Harga Produk</label>
+                    <input class="px-1 border border-black rounded" type="text" name="harga_produk"
+                        placeholder="Type here...">
                     <label for="Lead Time">Lead Time</label>
-                    <input type="text" name="lead_time" placeholder="Type here..."
-                        class="border border-black p-1 rounded">
-                    @error('lead_time')
-                        <p class="text-red-500">{{ $message }}</p>
-                    @enderror
+                    <input class="px-1 border border-black rounded" type="text" name="lead_time"
+                        placeholder="Type here...">
+                    <label for="Maksimal Terjual">Maksimal Terjual</label>
+                    <input class="px-1 border border-black rounded" type="text" name="max_terjual"
+                        placeholder="Type here...">
+                    <label for="Rata-Rata Terjual">Rata-Rata Terjual</label>
+                    <input class="px-1 border border-black rounded" type="text" name="avg_terjual"
+                        placeholder="Type here...">
                 </div>
                 <div>
-                    <label for="Biaya Penyimpanan">Biaya Penyimpanan</label>
-                    <input type="text" name="biaya_penyimpanan" placeholder="Type here..."
-                        class="border border-black p-1 rounded">
-                    @error('biaya_penyimpanan')
-                        <p class="text-red-500">{{ $message }}</p>
-                    @enderror
+                    <label for="Jumlah Kebutuhan">Jumlah Kebutuhan</label>
+                    <input class="px-1 border border-black rounded" type="text" disabled name="jumlah_kebutuhan"
+                        placeholder="This input is disabled">
+                    <label for="Biaya Pesanan">Biaya Pesanan</label>
+                    <input class="px-1 border border-black rounded" type="text" disabled name="biaya_pesanan"
+                        placeholder="This input is disabled">
+                    <label for="Biaya Simpanan">Biaya Simpanan</label>
+                    <input class="px-1 border border-black rounded" type="text" disabled name="biaya_simpanan"
+                        placeholder="This input is disabled">
+                    <label for="EOQ">EOQ</label>
+                    <input class="px-1 border border-black rounded" type="text" disabled name="eoq"
+                        placeholder="This input is disabled">
+                    <button type="button" onclick="closeAddModal()" class="bg-accent1 text-primary rounded">Batal</button>
+                    <button class="bg-primary text-white rounded">Hitung & Simpan</button>
                 </div>
-                <button class="bg-green-600 text-white font-semibold text-center items-center py-1 rounded">
-                    Save EOQ
-                </button>
             </form>
         </div>
     </dialog>
@@ -107,6 +98,11 @@
         function showAddModal() {
             const modal = document.querySelector("#add");
             modal.showModal();
+        }
+
+        function closeAddModal() {
+            const modal = document.querySelector("#add");
+            modal.close();
         }
     </script>
 
