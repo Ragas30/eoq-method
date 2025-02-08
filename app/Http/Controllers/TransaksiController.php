@@ -79,9 +79,28 @@ class TransaksiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Transaksi $transaksi)
+    public function update(Transaksi $transaksi)
     {
-        //
+        if ($transaksi->status !== 'success') {
+            // Update status transaksi
+            $transaksi->status = 'success';
+            $transaksi->save();
+
+            // Ambil semua produk dalam transaksi
+            foreach ($transaksi->uraianTransaksi as $uraian) {
+                $produk = $uraian->produk;
+
+                if ($produk) {
+                    // Kurangi stok sesuai qty
+                    $produk->stok -= $uraian->qty;
+                    $produk->save();
+                }
+            }
+
+            return redirect()->route('transactions.index')->with('success', 'Transaksi berhasil dikonfirmasi dan stok diperbarui!');
+        }
+
+        return redirect()->route('transactions.index')->with('info', 'Transaksi sudah dikonfirmasi sebelumnya.');
     }
 
     /**
@@ -89,6 +108,8 @@ class TransaksiController extends Controller
      */
     public function destroy(Transaksi $transaksi)
     {
-        //
+        $transaksi->update(['status' => 'canceled']);
+
+        return redirect()->route('transactions.index')->with('success', 'Transaksi berhasil dibatalkan!');
     }
 }

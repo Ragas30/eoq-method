@@ -43,4 +43,9 @@ class Produk extends Model
     {
         return $this->hasMany(Keranjang::class, 'kd_produk', 'kd_produk');
     }
+
+    public function uraianTransaksi()
+    {
+        return $this->hasMany(UraianTransaksi::class, 'kd_produk', 'kd_produk');
+    }
 }

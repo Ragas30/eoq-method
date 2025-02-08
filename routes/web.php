@@ -76,7 +76,11 @@ Route::prefix('dashboard')->middleware(['auth', 'role:admin,pimpinan'])->group(f
 
     Route::get('/print/eoq', function () {
         return view('pages.dashboard.print.eoq');
-    });
+    })->name('dashboard.print.eoq');
+
+    Route::get('/print/{kd_pesanan}/nota-pesanan', function () {
+        return view('pages.dashboard.print.nota_pesanan');
+    })->name('dashboard.print.nota_pesanan');
 });
 
 // Users Menu
