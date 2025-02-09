@@ -74,6 +74,6 @@ class CheckoutController extends Controller
             Keranjang::where('id_pelanggan', $id_pelanggan)->delete();
         });
 
-        return redirect()->route('checkout.success')->with('success', 'Checkout berhasil! Pesanan Anda sedang diproses.');
+        return redirect()->route('home')->with('success', 'Checkout berhasil! Pesanan Anda sedang diproses.');
     }
 }
