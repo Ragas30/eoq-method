@@ -2,58 +2,14 @@
 
 @section('title', 'Maintenance | Toko Bangunan YD')
 
-@section('heading', 'Proses EOQ')
+@section('heading', 'Persediaan Economic Order Quantity')
 
 @section('content')
-    <div class="flex justify-between items-center">
-        <div class="item-start">
-            <button onclick="showAddModal()"
-                class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition">Proses EOQ</button>
-        </div>
-        <div>
-            <label for="limit" class="mr-2">Tampilkan</label>
-            <select name="limit" id="limit" class="border border-gray-400 rounded-md px-2 py-1" onchange="updateTable()">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="flex justify-center items-center">
-        <table class="w-full table-auto mt-4">
-            <thead class="text-center">
-                <tr class="bg-gray-100">
-                    <th class="px-4 py-2">No</th>
-                    <th class="px-4 py-2">Nama Produk</th>
-                    <th class="px-4 py-2">Stok</th>
-                    <th class="px-4 py-2">Satuan</th>
-                    <th class="px-4 py-2">Aksi</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-                <tr>
-                    <td>1</td>
-                    <td>Produk 1</td>
-                    <td>100</td>
-                    <td>Unit</td>
-                    <td>
-                        <a href=""><i class="fas fa-edit"></i></a>
-                        <a href="#" onclick="deleteProduct(1)"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-
-    <dialog id="add" class="absolute top-0 w-3/4 right-0 bottom-0 left-0">
-        <div class="flex flex-col items-start p-4 border border-black rounded-xl">
-            <h2 class="mb-6 font-semibold">Perhitungan Economic Order Quantity</h2>
-            <form action="#" method="POST" class="flex gap-8 w-full *:w-full *:grid *:grid-cols-2 *:gap-x-1 *:gap-y-2">
+    <div class="flex border p-4">
+        <div class="w-full">
+            <h2 class="font-semibold">Hitung Persediaan EOQ</h2>
+            <form action="#" method="POST"
+                class="flex justify-between gap-8 w-full *:w-full *:grid *:grid-cols-2 *:gap-x-1 *:gap-y-2">
                 <div>
                     <label for="Kode Produk">Kode Produk</label>
                     <input class="px-1 border border-black rounded" type="text" name="kode_produk"
@@ -92,19 +48,60 @@
                 </div>
             </form>
         </div>
-    </dialog>
+    </div>
 
-    <script>
-        function showAddModal() {
-            const modal = document.querySelector("#add");
-            modal.showModal();
-        }
-
-        function closeAddModal() {
-            const modal = document.querySelector("#add");
-            modal.close();
-        }
-    </script>
-
-
+    <div class="p-4 mt-4 border">
+        <h2>Persediaan EOQ</h2>
+        <table class="w-full table-auto mt-4">
+            <thead class="text-center">
+                <tr class="bg-gray-100">
+                    <th class="px-4 py-2">No</th>
+                    <th class="px-4 py-2">Tanggal</th>
+                    <th class="px-4 py-2">Kode Produk</th>
+                    <th class="px-4 py-2">Nama Produk</th>
+                    <th class="px-4 py-2">Biaya Pesan</th>
+                    <th class="px-4 py-2">Biaya Simpan</th>
+                    <th class="px-4 py-2">Stok Cadangan</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                <tr>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                </tr>
+                <tr>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                </tr>
+                <tr>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                </tr>
+                <tr>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                    <td>Dummy</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 @endsection
