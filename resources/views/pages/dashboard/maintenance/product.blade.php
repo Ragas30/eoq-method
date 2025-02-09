@@ -232,18 +232,50 @@
 
     {{-- Detail Product Modal --}}
     <dialog id="detail" class="absolute top-0 right-0 bottom-0 left-0">
-        <div class="flex flex-col items-center w-96 p-4 border border-black rounded-xl">
-            <img id="detail_gambar" alt="Gambar Produk" class="h-48 w-48">
-            <span id="detail_name" class="font-semibold"></span>
-            <span id="detail_stock"></span>
-            <span id="detail_satuan"></span>
-            <span id="detail_price"></span>
-            <span id="detail_buy_price"></span>
-            <p id="detail_description" class="mt-2"></p>
-            <span id="detail_lead_time"></span>
-            <span id="detail_b_pesan"></span>
-            <span id="detail_b_simpan"></span>
-            <span id="detail_stok_cadangan"></span>
+        <div class="flex flex-col items-center w-[500px] p-4 pt-0 border border-black rounded-xl">
+            <img id="detail_gambar" src="https://placehold.co/600x400" alt="Gambar Produk" class="h-48 w-48">
+            <span id="detail_name" class="font-bold text-2xl">Nama Barang</span>
+            <div class="w-full">
+                <label for="Jumlah Stok">Jumlah Stok</label>
+                <div class="text-lg font-semibold">
+                    <span id="detail_stock">10</span>
+                    <span id="detail_satuan">Pcs</span>
+                </div>
+            </div>
+            <div class="flex justify-between w-full">
+                <div>
+                    <i class="fa-solid fa-dollar-sign text-green-700"></i>
+                    <span id="detail_price">Rp. 12.500</span>
+                </div>
+                <div>
+                    <i class="fa-solid fa-dollar-sign text-red-700"></i>
+                    <span id="detail_buy_price">Rp. 10.000</span>
+                </div>
+            </div>
+            <div class="w-full">
+                <label for="Deskripsi Produk">Deskripsi Produk</label>
+                <hr>
+                <p id="detail_description" class="mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Facilis fugiat laborum sed.</p>
+            </div>
+            <div class="flex justify-between *:w-24 gap-2">
+                <div class="flex flex-col bg-primary rounded-xl p-2 text-white text-center">
+                    <span>Lead Time</span>
+                    <span id="detail_lead_time">10 Jam</span>
+                </div>
+                <div class="flex flex-col bg-primary rounded-xl p-2 text-white text-center">
+                    <span>B Pesan</span>
+                    <span id="detail_b_pesan">10.000</span>
+                </div>
+                <div class="flex flex-col bg-primary rounded-xl p-2 text-white text-center">
+                    <span>B Simpan</span>
+                    <span id="detail_stok_cadangan">10.000</span>
+                </div>
+                <div class="flex flex-col bg-primary rounded-xl p-2 text-white text-center">
+                    <span>B Stok</span>
+                    <span id="detail_stok_cadangan">230</span>
+                </div>
+            </div>
         </div>
     </dialog>
 
