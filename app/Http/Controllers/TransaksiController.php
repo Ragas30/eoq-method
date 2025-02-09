@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use App\Models\UraianTransaksi;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -109,6 +110,7 @@ class TransaksiController extends Controller
     public function destroy(Transaksi $transaksi)
     {
         $transaksi->update(['status' => 'canceled']);
+        UraianTransaksi::where('id_transaksi', $transaksi->id_transaksi)->delete();
 
         return redirect()->route('transactions.index')->with('success', 'Transaksi berhasil dibatalkan!');
     }

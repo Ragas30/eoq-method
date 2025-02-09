@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\EoqController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\ProdukController;
@@ -55,9 +56,11 @@ Route::prefix('dashboard')->middleware(['auth', 'role:admin,pimpinan'])->group(f
     Route::resource('users', UserController::class)
         ->only(['index', 'store', 'update', 'destroy']);
 
-    Route::get('/proses-eoq', function () {
-        return view('pages.dashboard.maintenance.proses_eoq');
-    })->name('dashboard.maintenance.proses_eoq');
+    // Route::get('/proses-eoq', function () {
+    //     return view('pages.dashboard.maintenance.proses_eoq');
+    // })->name('dashboard.maintenance.proses_eoq');
+
+    Route::get("/proses-eoq",[EoqController::class, 'index'])->name('dashboard.maintenance.proses_eoq');
 
     Route::resource('transactions', TransaksiController::class)
         ->only(['index', 'store', 'update', 'destroy']);
@@ -81,6 +84,8 @@ Route::prefix('dashboard')->middleware(['auth', 'role:admin,pimpinan'])->group(f
     Route::get('/print/{kd_pesanan}/nota-pesanan', function () {
         return view('pages.dashboard.print.nota_pesanan');
     })->name('dashboard.print.nota_pesanan');
+
+
 });
 
 // Users Menu
