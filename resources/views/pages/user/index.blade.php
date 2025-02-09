@@ -1,6 +1,18 @@
 @extends('components.users.header')
 @section('title', 'home')
 @section('content')
+    @if (session('success'))
+        <script>
+            window.onload = function() {
+                Swal.fire({
+                    title: 'Pesanan Dibuat!',
+                    text: 'Pesanan kamu telah disubmit',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+        </script>
+    @endif
     <main class=" min-h-screen *:px-48">
         <section class="flex justify-between mt-12 py-16 gap-8 *:w-full bg-white">
             <div class="px-8">
@@ -41,4 +53,6 @@
         </section>
 
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 @endsection
