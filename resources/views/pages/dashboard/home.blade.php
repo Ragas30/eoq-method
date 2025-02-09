@@ -26,7 +26,7 @@
             <div class="bg-primary text-white p-3 text-3xl rounded-xl">
                 <i class="fa-solid fa-money-bill-transfer"></i>
             </div>
-            <div>100.000+ Transactions</div>
+            <div>{{ $transaksi }} Transactions</div>
         </div>
     </div>
 @endsection

@@ -38,7 +38,8 @@ Route::prefix('dashboard')->middleware(['auth', 'role:admin,pimpinan'])->group(f
         $supplier = Supplier::count();
         $produk = Produk::count();
         $stok = Produk::sum('stok');
-        return view('pages.dashboard.home', compact('supplier', 'produk', 'stok'));
+        $transaksi = Transaksi::count();
+        return view('pages.dashboard.home', compact('supplier', 'produk', 'stok', 'transaksi'));
     })->name('dashboard.home');
 
     Route::resource('supplier', SupplierController::class)
@@ -60,7 +61,7 @@ Route::prefix('dashboard')->middleware(['auth', 'role:admin,pimpinan'])->group(f
     //     return view('pages.dashboard.maintenance.proses_eoq');
     // })->name('dashboard.maintenance.proses_eoq');
 
-    Route::get("/proses-eoq",[EoqController::class, 'index'])->name('dashboard.maintenance.proses_eoq');
+    Route::get("/proses-eoq", [EoqController::class, 'index'])->name('dashboard.maintenance.proses_eoq');
 
     Route::resource('transactions', TransaksiController::class)
         ->only(['index', 'store', 'update', 'destroy']);
@@ -84,8 +85,6 @@ Route::prefix('dashboard')->middleware(['auth', 'role:admin,pimpinan'])->group(f
     Route::get('/print/{kd_pesanan}/nota-pesanan', function () {
         return view('pages.dashboard.print.nota_pesanan');
     })->name('dashboard.print.nota_pesanan');
-
-
 });
 
 // Users Menu
