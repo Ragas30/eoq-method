@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\EoqController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\StokController;
@@ -66,17 +67,11 @@ Route::prefix('dashboard')->middleware(['auth', 'role:admin,pimpinan'])->group(f
     Route::resource('transactions', TransaksiController::class)
         ->only(['index', 'store', 'update', 'destroy']);
 
-    Route::get('/daily-report', function () {
-        return view('pages.dashboard.report.daily');
-    })->name('dashboard.report.daily');
+    Route::get('/daily-report', [LaporanController::class, 'daily'])->name('dashboard.report.daily');
 
-    Route::get('/monthly-report', function () {
-        return view('pages.dashboard.report.monthly');
-    })->name('dashboard.report.monthly');
+    Route::get('/monthly-report', [LaporanController::class, 'monthly'])->name('dashboard.report.monthly');
 
-    Route::get('/yearly-report', function () {
-        return view('pages.dashboard.report.yearly');
-    })->name('dashboard.report.yearly');
+    Route::get('/yearly-report', [LaporanController::class, 'yearly'])->name('dashboard.report.yearly');
 
     Route::get('/print/eoq', function () {
         return view('pages.dashboard.print.eoq');
