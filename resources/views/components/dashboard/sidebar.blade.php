@@ -1,5 +1,5 @@
 <aside class="bg-primary p-4 pr-6 flex flex-col justify-between gap-6 text-slate-50">
-    <span class="font-bold text-2xl">Toko Bangunan YD</span>
+    <span class="font-bold text-2xl">TOKO BANGUNAN ONE</span>
     <ul class="flex-grow">
         <a href="{{ route('dashboard.home') }}">
             <li class="{{ Route::is('dashboard.home') ? $isRoute : $isNotRoute }}">

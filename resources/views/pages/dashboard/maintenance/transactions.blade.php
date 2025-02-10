@@ -1,6 +1,6 @@
 @extends('layout.layout_dashboard')
 
-@section('title', 'Maintenance | Toko Bangunan YD')
+@section('title', 'Maintenance | TOKO BANGUNAN ONE')
 
 @section('heading', 'Transaksi')
 
@@ -61,7 +61,8 @@
                                 Batal
                             </button>
                         </form>
-                        <a href="{{ route('dashboard.print.nota_pesanan', $trx->kd_pesanan) }}" target="_blank" class="bg-orange-500 text-white px-3 py-1.5 rounded-md hover:bg-orange-600 transition">Cetak</a>
+                        <a href="{{ route('dashboard.print.nota_pesanan', $trx->kd_pesanan) }}" target="_blank"
+                            class="bg-orange-500 text-white px-3 py-1.5 rounded-md hover:bg-orange-600 transition">Cetak</a>
                     </td>
                 </tr>
             @endforeach

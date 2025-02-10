@@ -23,9 +23,8 @@
                 </div>
             </div>
             <div class="flex flex-col justify-center gap-10">
-                <h1 class="text-5xl font-semibold">Aplikasi EOQ</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim aliquam minima dolorum. Ipsa reprehenderit
-                    perspiciatis atque voluptate consequuntur, minus provident?</p>
+                <h1 class="text-5xl font-semibold">TOKO BANGUNAN ONE</h1>
+                <p>Jl. Raya Bandar Buat No.Kel, Bandar Buat, Kec. Lubuk Kilangan, Kota Padang,</p>
                 <button class="bg-primary text-white rounded-xl py-3">Get Started</button>
             </div>
         </section>

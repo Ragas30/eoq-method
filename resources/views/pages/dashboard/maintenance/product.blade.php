@@ -1,6 +1,6 @@
 @extends('layout.layout_dashboard')
 
-@section('title', 'Maintenance | Toko Bangunan YD')
+@section('title', 'Maintenance | TOKO BANGUNAN ONE')
 
 @section('heading', 'Data Produk')
 

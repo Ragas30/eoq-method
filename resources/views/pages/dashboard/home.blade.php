@@ -1,6 +1,6 @@
 @extends('layout.layout_dashboard')
 
-@section('title', 'Dashboard | Toko Bangunan YD')
+@section('title', 'Dashboard | TOKO BANGUNAN ONE')
 
 @section('content')
     <div class="flex gap-6">
