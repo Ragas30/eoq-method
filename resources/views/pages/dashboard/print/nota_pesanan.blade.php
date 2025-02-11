@@ -24,11 +24,20 @@
                 <td class="border-l border-r border-l-black border-r-black">Total Belanja</td>
                 <td class="border-l border-r border-l-black border-r-black">Status</td>
             </thead>
-            <tbody class="*:*:border *:*:border-black">
-                <tr>
-                    {{-- To do --}}
-                </tr>
-            </tbody>
+            @foreach ($fakturs as $faktur)
+                <tbody class="*:*:border *:*:border-black">
+                    <tr>
+                        <td class="border-l border-r border-l-black border-r-black">{{ $faktur->kd_pesanan }}</td>
+                        <td></td>
+                        {{-- <td class="border-l border-r border-l-black border-r-black">{{ $faktur->pemesan->nm_pemesan }} --}}
+                        </td>
+                        <td class="border-l border-r border-l-black border-r-black">{{ $faktur->created_at }}</td>
+                        <td class="border-l border-r border-l-black border-r-black">
+                            Rp{{ number_format($faktur->total_belanja, 0, ',', '.') }}</td>
+                        <td class="border-l border-r border-l-black border-r-black">{{ $faktur->status }}</td>
+                    </tr>
+                </tbody>
+            @endforeach
         </table>
     </div>
 </body>

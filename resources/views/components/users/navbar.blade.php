@@ -9,15 +9,15 @@
             </svg>
         </button>
         <ul class="hidden sm:flex sm:flex-row sm:items-center sm:w-auto sm:space-x-8 gap-2" id="menu">
-            <li><a href="{{ route('home') }}"
-                    class="block py-2 px-3 text-white hover:underline rounded-lg">Home</a>
+            <li><a href="{{ route('home') }}" class="block py-2 px-3 text-white hover:underline rounded-lg">Home</a>
+            </li>
+            <li><a href="{{ route('about') }}" class="block py-2 px-3 text-white hover:underline rounded-lg">About</a>
             </li>
             <li><a href="{{ route('product_menu') }}"
                     class="block py-2 px-3 text-white hover:underline rounded-lg">Product</a>
             </li>
             <li class="relative">
-                <button
-                    class="flex items-center justify-between w-full py-2 px-3 text-white hover:underline rounded-lg"
+                <button class="flex items-center justify-between w-full py-2 px-3 text-white hover:underline rounded-lg"
                     id="dropdown-more-button" aria-expanded="false">
                     More
                     <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor"
@@ -44,16 +44,14 @@
                 <li>
                     <form action="{{ route('logout') }}" method="POST" class="inline">
                         @csrf
-                        <button type="submit"
-                            class="block py-2 px-3 text-white hover:underline rounded-lg">
+                        <button type="submit" class="block py-2 px-3 text-white hover:underline rounded-lg">
                             Logout
                         </button>
                     </form>
                 </li>
             @else
                 <li>
-                    <a href="{{ route('login') }}"
-                        class="block py-2 px-3 text-white hover:underline rounded-lg">
+                    <a href="{{ route('login') }}" class="block py-2 px-3 text-white hover:underline rounded-lg">
                         Login
                     </a>
                 </li>

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\EoqController;
+use App\Http\Controllers\FakturController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\OngkirController;
@@ -22,6 +24,8 @@ Route::get('/', function () {
     $produk = Produk::take(12)->get();
     return view('pages.user.index', compact('produk'));
 })->name('home');
+
+Route::get('/about',[AboutController::class, 'index'])->name('about');
 
 // Login
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
@@ -77,9 +81,11 @@ Route::prefix('dashboard')->middleware(['auth', 'role:admin,pimpinan'])->group(f
         return view('pages.dashboard.print.eoq');
     })->name('dashboard.print.eoq');
 
-    Route::get('/print/{kd_pesanan}/nota-pesanan', function () {
-        return view('pages.dashboard.print.nota_pesanan');
-    })->name('dashboard.print.nota_pesanan');
+    // Route::get('/print/{kd_pesanan}/nota-pesanan', function () {
+    //     return view('pages.dashboard.print.nota_pesanan');
+    // })->name('dashboard.print.nota_pesanan');
+
+    Route::get('/print/{kd_pesanan}/nota-pesanan', [FakturController::class, 'index'])->name('dashboard.print.nota_pesanan');
 });
 
 // Users Menu
