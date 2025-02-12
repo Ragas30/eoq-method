@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Pemesanan;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Supplier extends Model
 {
@@ -21,4 +22,9 @@ class Supplier extends Model
         'email',
         'nohp',
     ];
+
+    public function pemesanan()
+    {
+        return $this->hasMany(Pemesanan::class, 'id_supplier', 'id_supplier');
+    }
 }

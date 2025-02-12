@@ -17,7 +17,6 @@ use App\Models\Produk;
 use App\Models\Supplier;
 use App\Models\Transaksi;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -85,7 +84,10 @@ Route::prefix('dashboard')->middleware(['auth', 'role:admin,pimpinan'])->group(f
     //     return view('pages.dashboard.print.nota_pesanan');
     // })->name('dashboard.print.nota_pesanan');
 
-    Route::get('/print/{kd_pesanan}/nota-pesanan', [FakturController::class, 'index'])->name('dashboard.print.nota_pesanan');
+    Route::get('/print/{id_transaksi}/nota-pesanan', [FakturController::class, 'index'])->name('dashboard.print.nota_pesanan');
+
+    Route::get('/print/{id_pesan}/faktur-barang-masuk/{kd_produk}', [FakturController::class, 'pemesanan'])
+    ->name('dashboard.print.faktur-barang-masuk');
 });
 
 // Users Menu

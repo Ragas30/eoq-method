@@ -53,7 +53,15 @@
                         @method('PUT')
                         <div class="mb-4">
                             <label for="stok" class="block font-medium text-gray-700">Stok</label>
-                            <input type="number" id="stok" name="stok"
+                            <select name="id_supplier" id="" class="w-full border border-gray-400 rounded-md px-2 py-1">
+                            @foreach ($supplier as $sup)
+                                <option value="{{ $sup->id_supplier }}">{{ $sup->nm_supplier }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="stok" class="block font-medium text-gray-700">Jumlah Beli</label>
+                            <input type="number" id="stok" name="jml_beli"
                                 class="w-full border border-gray-400 rounded-md px-2 py-1">
                         </div>
                         <div class="flex items-center justify-end">

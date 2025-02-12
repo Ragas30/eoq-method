@@ -61,7 +61,7 @@
                                 Batal
                             </button>
                         </form>
-                        <a href="{{ route('dashboard.print.nota_pesanan', $trx->kd_pesanan) }}" target="_blank"
+                        <a href="{{ route('dashboard.print.nota_pesanan', $trx->id_transaksi) }}" target="_blank"
                             class="bg-orange-500 text-white px-3 py-1.5 rounded-md hover:bg-orange-600 transition">Cetak</a>
                     </td>
                 </tr>
