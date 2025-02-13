@@ -38,7 +38,13 @@
                     <td class="px-4 py-2">{{ ($data->currentPage() - 1) * $data->perPage() + $loop->index + 1 }}</td>
                     <td class="px-4 py-2">{{ $prd->kd_produk }}</td>
                     <td class="px-4 py-2">{{ $prd->nm_produk }}</td>
-                    <td class="px-4 py-2">{{ $prd->stok }} {{ $prd->satuan }}</td>
+                    <td class="px-4 py-2">
+                        @if ($prd->stok == 0)
+                            <span class="text-red-500 font-semibold">Stok Habis</span>
+                        @else
+                            {{ $prd->stok }} {{ $prd->satuan }}
+                        @endif
+                    </td>
                     <td class="px-4 py-2">Rp {{ number_format($prd->harga, 0, ',', '.') }}</td>
                     <td class="px-4 py-2">Rp {{ number_format($prd->harga_beli, 0, ',', '.') }}</td>
                     {{-- <td class="px-4 py-2">{{ $prd->stok_cadangan }}</td> --}}
