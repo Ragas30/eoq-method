@@ -1,22 +1,36 @@
 <x-dashboard.header></x-dashboard.header>
 
 <body class="text-center p-6">
-    <h1 class="mx-auto text-2xl font-semibold">Data Transaksi</h1>
+    <h1 class="mx-auto text-2xl font-semibold">Toko Bangunan ONE</h1>
+    <span>Jl. Raya Bandar Buat No.Kel, Bandar Buat, Kec. Lubuk Kilangan, Kota Padang No 54</span>
     <div class="p-4 border border-black">
-        <div class="flex *:w-full text-start *:flex *:flex-col ">
-            <div>
-                <span>{{ $pemesanan->supplier->nm_supplier }}</span>
-                <span>{{ $pemesanan->supplier->alamat }}</span>
-                <span>{{ $pemesanan->supplier->nohp }}</span>
+        <div class="flexj ustify-center items-center">
+            <h1 class="font-bold">NOTA PRODUK</h1>
+        </div>
+        <div class="flex flex-col justify-start items-start">
+            <div class="item-start">
+                <span>No Nota: </span>
+                <span class="uppercase">{{ Str::random(8) }}</span>
+            </div>
+            <div clas>
+                <span>Tanggal :</span>
+                <span> {{ date('d-m-Y') }}</span>
             </div>
             <div>
-                <span>Toko Bangunan ONE</span>
-                <span>Jl. Raya Bandar Buat No.Kel, Bandar Buat, Kec. Lubuk Kilangan, Kota Padang No 54</span>
-                <span>Padang</span>
+                <span>Kode Produk :</span>
+                <span>{{ $produk->kd_produk }}</span>
+            </div>
+            <div>
+                <span>Nama Produk :</span> <span>{{ $produk->nm_produk }}</span>
+            </div>
+            <div>
+                <span>Jumlah Pesanan:</span>
+                <span>{{ $pemesanan->jml_beli }}</span>
             </div>
         </div>
-        <h2 class="mt-16 font-semibold text-xl">NOTA PESANAN</h2>
-        <table class="w-full">
+
+
+        {{-- <table class="w-full">
             <thead class="*:border *:border-black">
                 <td class="border-l border-r border-l-black border-r-black">Nama Supplier</td>
                 <td class="border-l border-r border-l-black border-r-black">Produk</td>
@@ -39,12 +53,12 @@
                         Rp{{ number_format($pemesanan->total_beli, 0, ',', '.') }}</td>
                 </tr>
             </tbody>
-        </table>
+        </table> --}}
     </div>
 
-    <script>
+    {{-- <script>
         window.onload = function() {
             window.print();
         }
-    </script>
+    </script> --}}
 </body>

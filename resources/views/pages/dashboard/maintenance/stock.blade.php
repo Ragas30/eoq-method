@@ -22,6 +22,7 @@
                 <th class="px-4 py-2">Nama Produk</th>
                 <th class="px-4 py-2">Stok</th>
                 <th class="px-4 py-2">Satuan</th>
+                <th class="px-4 py-2">Keterangan</th>
                 <th class="px-4 py-2">Aksi</th>
             </tr>
         </thead>
@@ -32,6 +33,13 @@
                     <td class="px-4 py-2">{{ $stk->nm_produk }}</td>
                     <td class="px-4 py-2">{{ $stk->stok }}</td>
                     <td class="px-4 py-2">{{ $stk->satuan }}</td>
+                    <td class="px-4 py-2">
+                        @if ($stk->stok == 0)
+                            <span class="text-red-500 font-semibold">Stok Habis Silahkan Di Tambah</span>
+                        @else
+                            <span class="text-green-500 font-semibold">Stok Masih Ada</span>
+                        @endif
+                    </td>
                     <td class="px-4 py-2">
                         <button data-id="{{ $stk->kd_produk }}" onclick="openDialog(this)"
                             class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition">Tambah
@@ -53,10 +61,11 @@
                         @method('PUT')
                         <div class="mb-4">
                             <label for="stok" class="block font-medium text-gray-700">Stok</label>
-                            <select name="id_supplier" id="" class="w-full border border-gray-400 rounded-md px-2 py-1">
-                            @foreach ($supplier as $sup)
-                                <option value="{{ $sup->id_supplier }}">{{ $sup->nm_supplier }}</option>
-                            @endforeach
+                            <select name="id_supplier" id=""
+                                class="w-full border border-gray-400 rounded-md px-2 py-1">
+                                @foreach ($supplier as $sup)
+                                    <option value="{{ $sup->id_supplier }}">{{ $sup->nm_supplier }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-4">

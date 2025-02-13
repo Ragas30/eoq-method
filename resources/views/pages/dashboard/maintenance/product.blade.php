@@ -28,6 +28,7 @@
                 <th class="px-4 py-2">Stok</th>
                 <th class="px-4 py-2">Harga Jual</th>
                 <th class="px-4 py-2">Harga Beli</th>
+                <th class="px-4 py-2">Keterangan</th>
                 {{-- <th class="px-4 py-2">Stok Cadangan</th> --}}
                 <th class="px-4 py-2">Aksi</th>
             </tr>
@@ -39,14 +40,17 @@
                     <td class="px-4 py-2">{{ $prd->kd_produk }}</td>
                     <td class="px-4 py-2">{{ $prd->nm_produk }}</td>
                     <td class="px-4 py-2">
-                        @if ($prd->stok == 0)
-                            <span class="text-red-500 font-semibold">Stok Habis</span>
-                        @else
-                            {{ $prd->stok }} {{ $prd->satuan }}
-                        @endif
+                        {{ $prd->stok }}
                     </td>
                     <td class="px-4 py-2">Rp {{ number_format($prd->harga, 0, ',', '.') }}</td>
                     <td class="px-4 py-2">Rp {{ number_format($prd->harga_beli, 0, ',', '.') }}</td>
+                    <td class="px-4 py-2">
+                        @if ($prd->stok == 0)
+                            <span class="text-red-500 font-semibold">Stok Habis</span>
+                        @else
+                            <span class="text-green-500 font-semibold">Stok Masih Ada</span>
+                        @endif
+                    </td>
                     {{-- <td class="px-4 py-2">{{ $prd->stok_cadangan }}</td> --}}
                     <td class="px-4 py-2">
                         <button class="bg-yellow-500 text-white px-3 py-1 rounded-md hover:bg-yellow-600 transition"
