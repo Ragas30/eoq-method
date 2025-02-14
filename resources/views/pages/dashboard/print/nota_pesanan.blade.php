@@ -3,23 +3,23 @@
 <body class="text-center p-6">
     <h1 class="mx-auto text-2xl font-semibold">Toko Bangunan ONE</h1>
     <span>Jl. Raya Bandar Buat No.Kel, Bandar Buat, Kec. Lubuk Kilangan, Kota Padang No 54</span>
-    <div class="p-4 border-t border-t-black font-serif">
+    <div class="p-4 border-t border-t-black ">
         <div class="flex justify-between">
             <div class="flex flex-col justify-start mt-6 items-start">
                 <div class="item-start">
                     <span class="font-bold">Rincian Pengiriman</span>
                 </div>
                 <div clas>
-                    <span>Rio Pernanda</span>
+                    <span>{{ $trx->pelanggan->nm_lengkap }}</span>
                 </div>
                 <div>
-                    <span>Padang</span>
+                    <span>{{ $trx->pelanggan->alamat }}</span>
                 </div>
                 <div>
-                    <span>riopernanda@gmail.com</span>
+                    <span>{{ $trx->pelanggan->email }}</span>
                 </div>
                 <div>
-                    <span>Telp : 0812345678</span>
+                    <span>Telp : {{ $trx->pelanggan->telp }}</span>
                 </div>
             </div>
             <div class="flex flex-col justify-start mt-6 items-start">
@@ -28,7 +28,7 @@
                 </div>
                 <div clas>
                     <span>No. Trans :</span>
-                    <span>{{ $kd_pesanan }}</span>
+                    <span>{{ $trx->kd_pesanan }}</span>
                 </div>
                 <div>
                     <span>Tanggal :</span>
@@ -36,7 +36,7 @@
                 </div>
                 <div>
                     <span>Status Pesanan :</span>
-                    <span>Belum Bayar</span>
+                    <span class="uppercase">{{ $trx->status }}</span>
                 </div>
             </div>
         </div>
@@ -139,3 +139,9 @@
         </div>
     </div>
 </body>
+
+<script>
+    window.onload = function() {
+        window.print()
+    }
+</script>
