@@ -24,6 +24,9 @@
                 <div>
                     <span>Nama Produk :</span> <span>{{ $produk->nm_produk }}</span>
                 </div>
+                <div>
+                    <span>Jumlah Produk :</span> <span>{{ $pemesanan->jml_beli }} {{ $produk->satuan }}</span>
+                </div>
             </div>
 
 
