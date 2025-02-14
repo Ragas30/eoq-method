@@ -41,7 +41,7 @@
                         @endif
                     </td>
                     <td class="px-4 py-2">
-                        <button data-id="{{ $stk->kd_produk }}" onclick="openDialog(this)"
+                        <button data-id="{{ $stk->kd_produk }}" onclick="openDialog(this)" target="_blank"
                             class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition">Tambah
                             Stok</button>
                     </td>
