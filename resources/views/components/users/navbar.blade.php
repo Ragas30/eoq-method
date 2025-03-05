@@ -16,7 +16,15 @@
             <li><a href="{{ route('product_menu') }}"
                     class="block py-2 px-3 text-white hover:underline rounded-lg">Product</a>
             </li>
-            <li class="relative">
+            <li>
+                <a href="{{ route('cart') }}"
+                    class="block py-2 px-3 text-white hover:underline rounded-lg">Keranjang</a>
+            </li>
+            <li>
+                <a href="{{ route('order') }}" class="block py-2 px-3 text-white hover:underline rounded-lg">Riwayat
+                    Pesanan</a>
+            </li>
+            {{-- <li class="relative">
                 <button class="flex items-center justify-between w-full py-2 px-3 text-white hover:underline rounded-lg"
                     id="dropdown-more-button" aria-expanded="false">
                     More
@@ -28,18 +36,10 @@
                 <div class="hidden absolute left-0 mt-2 w-44 bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700"
                     id="dropdown-more">
                     <ul class="py-1 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdown-more-button">
-                        <li>
-                            <a href="{{ route('cart') }}"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">Keranjang</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('order') }}"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white">Status
-                                Pesanan</a>
-                        </li>
+                        
                     </ul>
                 </div>
-            </li>
+            </li> --}}
             @auth
                 <li>
                     <form action="{{ route('logout') }}" method="POST" class="inline">

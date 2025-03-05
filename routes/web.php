@@ -9,6 +9,7 @@ use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\produkMasukController;
 use App\Http\Controllers\StokController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TransaksiController;
@@ -88,6 +89,8 @@ Route::prefix('dashboard')->middleware(['auth', 'role:admin,pimpinan'])->group(f
 
     Route::get('/print/{id_pesan}/faktur-barang-masuk/{kd_produk}', [FakturController::class, 'pemesanan'])
     ->name('dashboard.print.faktur-barang-masuk');
+
+    Route::get('/produk-masuk', [produkMasukController::class, 'index'])->name('produk_masuk');
 });
 
 // Users Menu

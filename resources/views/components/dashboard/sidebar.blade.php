@@ -6,50 +6,57 @@
                 <i class="fa-solid fa-gauge"></i>Dashboard
             </li>
         </a>
-        <li class="mt-5">
+        {{-- <li class="mt-5">
             <button class="w-full flex justify-between" onclick="openMenu('maintenance')">
                 <span>Maintenance</span>
                 <i class="fa-solid fa-caret-down"></i>
             </button>
-        </li>
-        <hr class="mb-2">
-        <ul class="hidden flex-col gap-1 px-3" id="maintenance">
-            <a href="{{ route('supplier.index') }}">
-                <li class="{{ Route::is('supplier.index') ? $isRoute : $isNotRoute }}">
-                    <i class="fa-solid fa-truck-field"></i>Supplier
-                </li>
-            </a>
-            <a href="{{ route('products.index') }}">
-                <li class="{{ Route::is('products.index') ? $isRoute : $isNotRoute }}">
-                    <i class="fa-solid fa-boxes-stacked"></i>Product
-                </li>
-            </a>
-            <a href="{{ route('stok.index') }}">
-                <li class="{{ Route::is('stok.index') ? $isRoute : $isNotRoute }}">
-                    <i class="fa-solid fa-box"></i>Stock
-                </li>
-            </a>
-            <a href="{{ route('dashboard.maintenance.proses_eoq') }}">
-                <li class="{{ Route::is('dashboard.maintenance.proses_eoq') ? $isRoute : $isNotRoute }}">
-                    <i class="fa fa-spinner"></i>Proses Eoq
-                </li>
-            </a>
-            <a href="{{ route('ongkir.index') }}">
-                <li class="{{ Route::is('ongkir.index') ? $isRoute : $isNotRoute }}">
-                    <i class="fa-regular fa-paper-plane"></i>Shipping Rate
-                </li>
-            </a>
-            <a href="{{ route('users.index') }}">
-                <li class="{{ Route::is('dashboard.maintenance.users') ? $isRoute : $isNotRoute }}">
-                    <i class="fa-solid fa-users"></i>Users
-                </li>
-            </a>
-            <a href="{{ route('transactions.index') }}">
-                <li class="{{ Route::is('transactions.index') ? $isRoute : $isNotRoute }}">
-                    <i class="fa-solid fa-money-bill-transfer"></i>Transactions
-                </li>
-            </a>
-        </ul>
+        </li> --}}
+        <a href="{{ route('supplier.index') }}">
+            <li class="{{ Route::is('supplier.index') ? $isRoute : $isNotRoute }}">
+                <i class="fa-solid fa-truck-field"></i>Kelola Supplier
+            </li>
+        </a>
+        <a href="{{ route('products.index') }}">
+            <li class="{{ Route::is('products.index') ? $isRoute : $isNotRoute }}">
+                <i class="fa-solid fa-boxes-stacked"></i>Kelola Product
+            </li>
+        </a>
+        <a href="{{ route('stok.index') }}">
+            <li class="{{ Route::is('stok.index') ? $isRoute : $isNotRoute }}">
+                <i class="fa-solid fa-box"></i>Kelola Stock Product
+            </li>
+        </a>
+        <a href="{{ route('dashboard.maintenance.proses_eoq') }}">
+            <li class="{{ Route::is('dashboard.maintenance.proses_eoq') ? $isRoute : $isNotRoute }}">
+                <i class="fa fa-spinner"></i>Proses Eoq
+            </li>
+        </a>
+        <a href="{{ route('ongkir.index') }}">
+            <li class="{{ Route::is('ongkir.index') ? $isRoute : $isNotRoute }}">
+                <i class="fa-regular fa-paper-plane"></i>Kelola Tarif Kirim
+            </li>
+        </a>
+        <a href="{{ route('users.index') }}">
+            <li class="{{ Route::is('dashboard.maintenance.users') ? $isRoute : $isNotRoute }}">
+                <i class="fa-solid fa-users"></i>Kelola Users
+            </li>
+        </a>
+        <a href="{{ route('produk_masuk') }}">
+            <li class="{{ Route::is('produk_masuk') ? $isRoute : $isNotRoute }}">
+                <i class="fa-solid fa-inbox"></i>Kelola Produk Masuk
+            </li>
+        </a>
+        <a href="{{ route('transactions.index') }}">
+            <li class="{{ Route::is('transactions.index') ? $isRoute : $isNotRoute }}">
+                <i class="fa-solid fa-money-bill-transfer"></i>Transactions
+            </li>
+        </a>
+        <a href="{{ route('transactions.index') }}">
+            <li class="{{ Route::is('transactions.index') ? $isRoute : $isNotRoute }}">
+                <i class="fa-solid fa-file-alt"></i>Kelola Laporan Stok EOQ
+            </li>
+        </a>
         <li class="mt-5">
             <button class="w-full flex justify-between" onclick="openMenu('report')">
                 <span>Report</span>
@@ -73,6 +80,7 @@
                     <i class="fa-solid fa-calendar-days"></i>Yearly
                 </li>
             </a>
+
         </ul>
     </ul>
     <form action="{{ route('logout') }}" method="POST" class="inline">
@@ -84,20 +92,14 @@
 </aside>
 
 <script>
-    function openMenu(title) {
-        const maintenance = document.querySelector('#maintenance');
-        const report = document.querySelector('#report');
+    let isOpen = false;
 
-        if (title == 'maintenance') {
-            maintenance.classList.remove('hidden');
-            maintenance.classList.add('flex');
-            report.classList.remove('flex');
-            report.classList.add('hidden');
-        } else if (title == 'report') {
-            maintenance.classList.remove('flex');
-            maintenance.classList.add('hidden');
-            report.classList.remove('hidden');
-            report.classList.add('flex');
+    function openMenu(title) {
+        const report = document.querySelector('#report');
+        if (title == 'report') {
+            report.classList.toggle('hidden');
+            report.classList.toggle('flex');
+            isOpen = !isOpen;
         }
     }
 </script>

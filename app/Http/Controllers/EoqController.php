@@ -29,10 +29,10 @@ class EoqController extends Controller
 
             // Hitung Safety Stock (diasumsikan dengan metode standar deviasi permintaan)
             $leadTime = $produk->lead_time; // Ambil lead time dari tabel produk
-            $avgDemand = $D / 12; // Asumsi rata-rata permintaan per bulan
+            $avgDemand = $D / 7; // Asumsi rata-rata permintaan per bulan
 
             $safetyStock = round(1.65 * sqrt($leadTime) * $avgDemand); // 1.65 untuk tingkat kepercayaan 95%
-        
+
             // Simpan hasil ke array untuk ditampilkan di view
             $eoqResults[] = [
                 'kode_produk' => $produk->kd_produk,
