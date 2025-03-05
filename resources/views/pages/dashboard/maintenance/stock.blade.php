@@ -20,7 +20,8 @@
             <tr class="bg-gray-100 text-left">
                 <th class="px-4 py-2">No</th>
                 <th class="px-4 py-2">Nama Produk</th>
-                <th class="px-4 py-2">Stok</th>
+                <th class="px-4 py-2">Stok EOQ</th>
+                <th class="px-4 py-2">ROP</th>
                 <th class="px-4 py-2">Satuan</th>
                 <th class="px-4 py-2">Keterangan</th>
                 <th class="px-4 py-2">Aksi</th>
@@ -31,7 +32,8 @@
                 <tr>
                     <td class="px-4 py-2">{{ $loop->iteration }}</td>
                     <td class="px-4 py-2">{{ $stk->nm_produk }}</td>
-                    <td class="px-4 py-2">{{ $stk->stok }}</td>
+                    <td class="px-4 py-2">{{ $stk->eoq }}</td>
+                    <td class="px-4 py-2">{{ $stk->rop }}</td>
                     <td class="px-4 py-2">{{ $stk->satuan }}</td>
                     <td class="px-4 py-2">
                         @if ($stk->stok == 0)
