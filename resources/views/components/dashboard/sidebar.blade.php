@@ -42,21 +42,21 @@
                 <i class="fa-solid fa-users"></i>Kelola Users
             </li>
         </a>
-        <a href="{{ route('produk_masuk') }}">
+        {{-- <a href="{{ route('produk_masuk') }}">
             <li class="{{ Route::is('produk_masuk') ? $isRoute : $isNotRoute }}">
                 <i class="fa-solid fa-inbox"></i>Kelola Produk Masuk
             </li>
-        </a>
+        </a> --}}
         <a href="{{ route('transactions.index') }}">
             <li class="{{ Route::is('transactions.index') ? $isRoute : $isNotRoute }}">
                 <i class="fa-solid fa-money-bill-transfer"></i>Transactions
             </li>
         </a>
-        <a href="{{ route('transactions.index') }}">
+        {{-- <a href="{{ route('transactions.index') }}">
             <li class="{{ Route::is('transactions.index') ? $isRoute : $isNotRoute }}">
                 <i class="fa-solid fa-file-alt"></i>Kelola Laporan Stok EOQ
             </li>
-        </a>
+        </a> --}}
         <li class="mt-5">
             <button class="w-full flex justify-between" onclick="openMenu('report')">
                 <span>Report</span>
